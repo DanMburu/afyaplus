@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Radioson</title>
+    <link rel="stylesheet" type="text/css" href="themes/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" type="text/css" href="themes/css/style.css">
+    <link rel="stylesheet" type="text/css" href="themes/css/landing.css">
+    <script src="themes/js/jquery-2.1.1.js"></script>
+    <script src="themes/js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="themes/js/common.js"></script>
+    <script src="themes/js/landing.js"></script>
+</head>
+<body onload="onDeviceReady()">
+<div data-role="page" id="decoyLanding"  >
+    <div data-role="header">
+
+        <img src="images/logo.png" width="254" height="56" alt=""/>
+
+    </div>
+    <div class="landing" data-role="content">
+
+    </div>
+</div>
+
+<div data-role="page" id="landing">
+    <div data-role="header">
+
+        <img src="images/logo.png" width="254" height="56" alt=""/>
+
+    </div>
+    <div class="landing" data-role="content">
+    
+        <a href="client.html" data-ajax="false" style="padding-top: 60px">
+            <img src="images/patient.png">
+            <span>Patients' App</span>
+        </a>
+        <a href="doctor.html" data-ajax="false"><img src="images/doctor.png">
+            <span>Doctors' App</span>
+        </a>
+
+    </div>
+    <div data-role="footer">
+        <h4></h4>
+    </div>
+</div>
+
+
+</body>
+</html>
