@@ -38,6 +38,8 @@ $(document).on("pageshow", "#login", function () { // When entering login
             var data = $('#frm-login').serialize();
             console.log(url);
             showLoader();
+			alert(url);
+			alert(data);
             $.post(url, data).done(function (data) {
                 hideLoader();
                 var rdata = data.trim();
