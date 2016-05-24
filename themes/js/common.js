@@ -13,6 +13,9 @@ $(document).ready(function () {
         if (e.keyCode == 13)
             $('.sendsignalr').trigger('click');
     });
+    $('#DateBooked').on('click',function(){
+        $('#datepicker .input-group-addon').trigger('click');
+    });
 });
 var ajaxAlways = function (object) {
     hideLoader();
@@ -38,8 +41,8 @@ $(document).on("pageshow", "#login", function () { // When entering login
             var data = $('#frm-login').serialize();
             console.log(url);
             showLoader();
-			//alert(url);
-			//alert(data);
+            //alert(url);
+            //alert(data);
             $.post(url, data).done(function (data) {
                 hideLoader();
                 var rdata = data.trim();
@@ -56,12 +59,12 @@ $(document).on("pageshow", "#login", function () { // When entering login
                     startChat();
 
 
-                     try{
-                      SaveUserDetails(data);
-                     }catch(err){}
+                    try{
+                        SaveUserDetails(data);
+                    }catch(err){}
 
 
-                   // $('.span-success').show();
+                    // $('.span-success').show();
                     $.mobile.changePage('#landing', {
                         type: "get",
                         transition: "slide"
@@ -81,44 +84,44 @@ $(document).on("pageshow", "#login", function () { // When entering login
 $(document).on("pageshow","#landing", function () { // When entering login
 
     setTimeout(function(){
-		if($('#runned').val()==='0'){
-			 $(".owl-carousel").owlCarousel({items:3,margin:5,nav:false,dots:true,autoplay:true,autoplayTimeout:2000,loop:true});
-			 $('#runned').val('1');
-			
-		}
-       
-		
+        if($('#runned').val()==='0'){
+            $(".owl-carousel").owlCarousel({items:3,margin:5,nav:false,dots:true,autoplay:true,autoplayTimeout:2000,loop:true});
+            $('#runned').val('1');
+
+        }
+
+
     },1000)
 }); //pageshow
 
 
 $(document).on("pageshow", "#forgot-password", function () {
     $('.passwordResetButton').off('click').on('click', function() {
-    if(!validateEmail($('#txtEmailReset').val())){
-        return false;
-    }
-
-    var options = {
-        url: $('#RootUrl').val()+'account/ForgotPassword/'+$('#txtEmailReset').val()+'/',
-        type: 'get',
-
-    };
-    showLoader();
-    $.ajax(options).success(function (data) {
-        hideLoader();
-        if (data.trim().toLowerCase() === 'success') {
-            $.dynamic_popup('<span>New password sent to your email.</span>');
-
-        }else if(data.trim() === 'notFound'){
-            $.dynamic_popup('<span class="error">Email address not registered.</span>');
-        }else if(data.trim() === 'fail'){
-            $.dynamic_popup('<span class="error">Sorry we haven\'t managed to reset your password\nKindly try again or Contact us .</span>');
+        if(!validateEmail($('#txtEmailReset').val())){
+            return false;
         }
 
+        var options = {
+            url: $('#RootUrl').val()+'account/ForgotPassword/'+$('#txtEmailReset').val()+'/',
+            type: 'get',
 
-    }).error(ajaxError).always(ajaxAlways);
+        };
+        showLoader();
+        $.ajax(options).success(function (data) {
+            hideLoader();
+            if (data.trim().toLowerCase() === 'success') {
+                $.dynamic_popup('<span>New password sent to your email.</span>');
 
-});
+            }else if(data.trim() === 'notFound'){
+                $.dynamic_popup('<span class="error">Email address not registered.</span>');
+            }else if(data.trim() === 'fail'){
+                $.dynamic_popup('<span class="error">Sorry we haven\'t managed to reset your password\nKindly try again or Contact us .</span>');
+            }
+
+
+        }).error(ajaxError).always(ajaxAlways);
+
+    });
 
 });
 
@@ -133,8 +136,8 @@ function convertDateTime(strDate) {
 $(document).on("pageshow", "#chatList", function () {
 
     // $('html,body,#chatList .ui-content').scrollTop(1E10);
-   // var target = $("#chatmessage").get(0).offsetTop;
-   // alert(target);
+    // var target = $("#chatmessage").get(0).offsetTop;
+    // alert(target);
     $("html, body").animate({ "scrollTop" : 1E10 }, 500);
 });
 
@@ -203,7 +206,7 @@ function menuOpen(){
 
         if ($('#menupanel').hasClass('ui-panel-open')) {
 
-             $('#menuclose').trigger('click');
+            $('#menuclose').trigger('click');
         } else {
 
             $('#menuicon').trigger('click');

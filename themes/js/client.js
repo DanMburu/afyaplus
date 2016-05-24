@@ -409,11 +409,11 @@ $(function(){
 
 
     var ajaxError = function (object) {
-        alert("Error: An error has occured processing your request. Please check your internet connection and try again.");
-        $('.ui-mobile .ui-footer').show();
-        var err=JSON.stringify(object, null, 4);
-        console.log(object);
-        $('#output').text(err);
+        alert("Error: An error has occurred processing your request. Please confirm all fields are filled.");
+       // $('.ui-mobile .ui-footer').show();
+      //  var err=JSON.stringify(object, null, 4);
+       // console.log(object);
+      //  $('#output').text(err);
     };
     var  ajaxAlways = function (object) {
         hideLoader();
@@ -619,11 +619,11 @@ $('#ddBookDoctorId').on('change',function(){
                 data: $form.serialize()
             };
             showLoader();
-            $.ajax(options).done(function (data) {
-                $('#lnkPaymentsAppointment').attr('href',data.trim());
+            $.ajax(options).done(function(data) {
+               $('#lnkPaymentsAppointment').attr('href',data.trim());
                 hideLoader();
                 $('#book-popup').popup('open');
-            }).fail(ajaxError);
+            }).fail(ajaxError).always(ajaxAlways);
         }
     });
     $('#btn-ask').on('click',function(){
@@ -653,26 +653,38 @@ $('#ddBookDoctorId').on('change',function(){
         }
     });	 //$('#btn-ask')
     $('#btnUpdateAppointment').on('click',function(){
-
-       var status=$('#AppointmentStatusId').val();
-        alert(status);
-        if(status==='true'){
-            $('#AppointmentStatusId').val('3');
-        }else{
-            $('#AppointmentStatusId').val('4');
-        }
-        var $form = $('#fmUpdateAppointment');
         var options = {
-            url: rootUrl+'Appointments/'+$('#appointmentId').val(),
-            type:'Put',
-            data: $form.serialize()
+            url: rootUrl+'Appointments/Edit/',
+            type:'Post',
+            data: {Id:$('#appointmentId').val(),Reasons:$('#cancellationReasons').val()}
         };
         showLoader();
         $.ajax(options).done(function (data) {
             hideLoader();
+            $('#edit-appointment-popup .popup-text p').text('Appointment Cancelled.');
             $('#lnk-edit-appointment-popup').trigger('click');
         }).fail(ajaxError);
     });
+
+    $('#btnDeleteAppointment').on('click',function(){
+        var options = {
+            url: rootUrl+'Appointments/'+$('#appointmentId').val(),
+            type:'Post',
+            data: {Id:$('#appointmentId').val()}
+        };
+        showLoader();
+        $.ajax(options).done(function (data) {
+            hideLoader();
+            $('#edit-appointment-popup .popup-text p').text('Appointment Deleted.');
+            $('#lnk-edit-appointment-popup').trigger('click');
+        }).fail(ajaxError);
+    });
+
+
+
+
+
+
 // $('#main-panel').on('submit', 'form[data-rev-ajax="true"]', ajaxFormSubmit);
     $('.close-popup').off('click').on("click", function(e) {
         window.history.back();

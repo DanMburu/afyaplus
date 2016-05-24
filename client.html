@@ -5,7 +5,7 @@
     <title>Client</title>
     <link rel="stylesheet" type="text/css" href="themes/jquery.mobile-1.4.5.min.css">
     <link rel="stylesheet" type="text/css" href="themes/css/jquery.mobile.datepicker.css">
-    <script src="themes/js/jquery-2.2.3.min.js"></script>
+    <script src="themes/js/jquery-1.11.1.min.js"></script>
     <script src="themes/js/jquery.mobile-1.4.5.min.js"></script>
     <script src="themes/js/jquery.mobile.dynamic.popup.js"></script>
 <!--
@@ -1158,7 +1158,7 @@
 
                     </div>
                 </div>
-                <div class="ui-field-contain">
+                <div id="datepicker" class="ui-field-contain">
                     <label for="DateBooked">Date</label>
                     <input name="DateBooked" id="DateBooked" data-role="datebox" type="text" data-options='{
                     "mode":"flipbox",
@@ -1270,8 +1270,6 @@
             </div>
 
             <!-- Start Popup --->
-
-
             <div data-role="popup" id="book-popup" data-dismissible="true" style="max-width: 400px;">
                 <div data-role="header">
                     <h1 class="popup-header">Success</h1>
@@ -1294,7 +1292,6 @@
             </div>
             <!-- End Popup --->
 
-
         </div>
         <div data-role="footer">
                  <pre id="output">
@@ -1315,7 +1312,7 @@
             <ul class="appointments" data-role="listview">
 
                 <li ng-repeat="appointment in appointments">
-                    <a href="#" ng-click="getAppointmentDetails(appointment.Id)" class="li-appointment ui-btn">
+                    <a href="#" ng-click="getAppointmentDetails(appointment.Id)" class="li-appointment ui-btn status-{{appointment.AppointmentStatusId}}">
                         <span class="sender-title">{{appointment.DateBooked | date:"MMM dd yyyy"}}</span>
                         <span class="timespan">{{appointment.AppointmentTimeSlot
                             .TimeSlot}}</span>
@@ -1377,15 +1374,17 @@
                         </option>
                     </select>
                 </div>
-                <div data-role="fieldcontain">
-                    <label>Date:</label>
-                    <input name="DateBooked" value="{{appointment.DateBooked}}" type="text" data-role="datebox"
-                           data-options='{"mode":"flipbox"}'>
+
+
+                <div id="datepicker" class="ui-field-contain">
+                    <label for="DateBooked">Date: </label>
+                    <span>{{appointment.DateBooked | date:'dd-MM-yyyy'}}</span>
                 </div>
+                <a href="#" id="getSlots" ng-click="getSlots()"></a>
+
                 <div data-role="fieldcontain">
                     <label>Time:</label>
-                    <input name="TimeBooked" value="{{appointment.TimeBooked}}" type="text" data-role="datebox"
-                           data-options='{"mode":"timeflipbox","overrideTimeFormat": 12}' readonly>
+                   <span>{{appointment.AppointmentTimeSlot.Name}}</span>
                 </div>
 
                 <div data-role="fieldcontain">
@@ -1456,25 +1455,41 @@
                     <label for="textarea">Cancellation Reasons:</label>
                     <input type="hidden" value="{{cancel}}" id="AppointmentStatusId" name="AppointmentStatusId"
                            value=""/>
-                    <textarea cols="40" rows="8"
+                    <textarea cols="40" rows="8" id="cancellationReasons"
                               name="CancellationReasons">{{appointment.CancellationReasons}}</textarea>
                 </div>
-
+<!--
                 <div data-role="fieldcontain" class="chkEditCont">
+
                     <label>
-                        <input id="chkEdit" type="checkbox" ng-click="show = !show">Edit
+                        <input id="chkEdit" type="checkbox" ng-click="show = !show">Delete
                     </label>
+
                     <label>
                         <input id="chkCancel" type="checkbox" ng-click="cancel = !cancel;show = !show">Cancel
                     </label>
 
 
                 </div>
-
+-->
 
                 <input type="hidden" class="bookUserId" name="UserId" value="{{appointment.UserId}}"/>
                 <input type="hidden" id="appointmentId" name="Id" value="{{appointment.Id}}"/>
-                <button ng-show="show" id="btnUpdateAppointment" data-icon="star">Update</button>
+
+                <div data-role="fieldcontain" class="chkEditCont col-md-6">
+                    <label>
+                        <input id="chkCancel" type="checkbox" ng-click="cancel = !cancel;show = !show">Cancel
+                    </label>
+                </div>
+                <div class="col-md-6">
+                    <button  id="btnDeleteAppointment" data-icon="star">Delete</button>
+                </div>
+
+                   <div ng-show="cancel" class="col-md-12">
+                       <button id="btnUpdateAppointment" data-icon="star">Submit</button>
+                   </div>
+
+
 
 
             </form>

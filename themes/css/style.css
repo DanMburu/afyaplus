@@ -373,10 +373,11 @@ width:100%;
 	width:50%;
 }
 .timespan {
-  float: right;
-  width:50%;
+	float: right;
+	padding-right: 15px;
+	text-align: right;
+	width: 50%;
 }
-
 .chat-msg {
   clear: both;
   float: left;
@@ -442,15 +443,16 @@ width:100%;
 }
 #chatControlsCont{border:none}
 #chatStatus{display:none}
+
 .read-status-0 {
-  background: none repeat scroll 0 0 red;
-  border-radius: 16px;
-  bottom: 22px;
-  display: block;
-  height: 15px;
-  position: absolute;
-  right: 10px;
-  width: 15px;
+	background: red none repeat scroll 0 0;
+	border-radius: 16px;
+	display: block;
+	height: 15px;
+	position: absolute;
+	right: 10px;
+	top: 12px;
+	width: 15px;
 }
 .li-appointment.ui-btn {
 	font-size: 13px;
@@ -586,3 +588,30 @@ input[type="checkbox"], input[type="radio"] {
 p.empty-results {
 	font-size: 14px !important;
 }
+#datepicker .ui-input-text{margin: 0;}
+#datepicker #DateBooked{border-right: 0}
+#datepicker .ui-input-text {
+	border-right: 0 none;
+	margin: 0 -3px 0 0;
+}
+#main-panel .ui-field-contain > label,#main-panel .ui-field-contain .ui-input-text, #main-panel .ui-select {
+	width: 100%;
+}
+#main-panel #appointmentDetails label {
+	display: inline-block;
+	font-weight: bold;
+	width: auto;
+}
+.col-md-6 {
+	float: left;
+	width: 50%;
+}
+#appointmentDetails .chkEditCont .ui-checkbox {
+	float: left;
+	margin-top: 0;
+	width: 100%;
+}
+.chkEditCont.col-md-6{
+	border: medium none;
+}
+.status-3 span{color: #999 !important;}
