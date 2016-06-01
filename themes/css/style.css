@@ -560,8 +560,10 @@ select option {
 .featured-products {
 	padding-top: 15px;
 }
-.featured-products .owl-item{
+.featured-products .owl-item--{
 	min-width: 30%;
+	max-width: 30%;
+	width: 30% !important;
 }
 
 .featured-products .thumbnail {

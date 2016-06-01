@@ -59,6 +59,8 @@ app.controller('clientCtrl',['$scope','$http', function (scope,http){
             scope.locations = data['locations'];
             $('#customPreloader').remove();
             hideLoader();
+			
+			
 
 
         });
