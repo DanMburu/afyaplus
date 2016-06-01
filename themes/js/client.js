@@ -65,6 +65,14 @@ app.controller('clientCtrl',['$scope','$http', function (scope,http){
 
         });
     };
+	
+scope.initCarousel = function(){
+	setTimeout(function(){
+   $(".owl-carousel").owlCarousel({items:3,margin:5,nav:false,dots:false,autoplay:true,autoplayTimeout:5000,loop:true});
+     $('.featured-products h2').fadeIn();
+    },1000);
+};
+			
     scope.myQuestions=function(){
         var url = $('#RootUrl').val() + 'Client/Queries/'+$('#UserId').val();
         showLoader();

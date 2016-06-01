@@ -559,6 +559,10 @@ select option {
 .landing img{padding: 0 auto}
 .featured-products {
 	padding-top: 15px;
+	
+}
+.featured-products h2{
+	display:none;
 }
 .featured-products .owl-item--{
 	min-width: 30%;

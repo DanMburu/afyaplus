@@ -96,7 +96,7 @@ $(document).on("pageshow", "#login", function () { // When entering login
 $(document).on("pageshow","#landing", function () { // When entering login
 
     setTimeout(function(){
-        if($('#runned').val()==='0'){
+        if($('#runned').val()==='0xxx'){
             $(".owl-carousel").owlCarousel({items:3,margin:5,nav:false,dots:false,autoplay:true,autoplayTimeout:3000,loop:true});
             $('#runned').val('1');
 
@@ -236,6 +236,8 @@ function validateEmail(email){
     }
     return true;
 }
+
+
 
 $(document).ready(function(){
     setTimeout(function(){

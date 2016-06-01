@@ -57,6 +57,12 @@ app.controller('clientCtrl',['$scope','$http','$filter', function (scope,http,fi
 
         });
     };
+	scope.initCarousel = function(){
+	setTimeout(function(){
+   $(".owl-carousel").owlCarousel({items:3,margin:5,nav:false,dots:false,autoplay:true,autoplayTimeout:5000,loop:true});
+    $('.featured-products h2').fadeIn();
+    },1000);
+};
 
     scope.getPatientQueries=function(){
         var url = $('#RootUrl').val() + 'Doctor/Queries/'+$('#UserId').val();

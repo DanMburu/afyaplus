@@ -131,7 +131,7 @@
             <div class="featured-products">
                 <h2>Featured Products</h2>
                 <div class="owl-carousel">
-                    <div ng-repeat="product in featuredProducts">
+                    <div ng-repeat="product in featuredProducts" ng-init="$last ? initCarousel() : angular.noop()">
                         <a href="#" ng-click="getProductDetails(product.Id)">
                             <div class="thumbnail">
                                 <img src="{{UploadsRoot}}/products/th_{{product.Image}}" class="img-responsive">
