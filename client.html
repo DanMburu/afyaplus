@@ -217,8 +217,8 @@
                     </a>
                     <span class="read-status-{{query.IsClientRead}}"></span>
                 </li>
-				 <li>
-				  <div ng-show="queries.length===0" class="col-md-12 col-xs-12">
+				 <li ng-show="queries.length===0">
+				  <div  class="col-md-12 col-xs-12">
                     <p class="empty-results">No questions found.</p>
                   </div>
                 </li>
@@ -1323,8 +1323,8 @@
                     <span class="read-status-{{appointment.IsRead}}"></span>
                 </li>
 				
-				<li>
-				 <div ng-show="appointments.length===0" class="col-md-12 col-xs-12">
+				<li ng-show="appointments.length===0">
+				 <div class="col-md-12 col-xs-12">
                     <p class="empty-results">No appointments found.</p>
                  </div>
 				</li>
