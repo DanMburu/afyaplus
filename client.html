@@ -217,14 +217,16 @@
                     </a>
                     <span class="read-status-{{query.IsClientRead}}"></span>
                 </li>
-
+				 <li>
+				  <div ng-show="queries.length===0" class="col-md-12 col-xs-12">
+                    <p class="empty-results">No questions found.</p>
+                  </div>
+                </li>
             </ul>
 
             <a class="lnkChat hidden" data-role="none" data-transition="slide" href="#chat"></a>
 
-            <div ng-show="queries.length===0" class="col-md-12 col-xs-12">
-                <p class="empty-results">No questions found.</p>
-            </div>
+          
 
         </div>
 
@@ -1320,11 +1322,15 @@
                     </a>
                     <span class="read-status-{{appointment.IsRead}}"></span>
                 </li>
+				
+				<li>
+				 <div ng-show="appointments.length===0" class="col-md-12 col-xs-12">
+                    <p class="empty-results">No appointments found.</p>
+                 </div>
+				</li>
 
             </ul>
-            <div ng-show="appointments.length===0" class="col-md-12 col-xs-12">
-                <p class="empty-results">No appointments found.</p>
-            </div>
+           
 
         </div>
 

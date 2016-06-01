@@ -562,6 +562,7 @@ select option {
 }
 .featured-products .thumbnail {
 	height: 100px;
+	overflow:hidden;
 }
 .featured-products > h2 {
 	font-size: 18px;
