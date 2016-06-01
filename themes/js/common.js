@@ -24,6 +24,18 @@ var ajaxError = function (object) {
     alert("An error has occured processing your request. Please check your internet connection and try again.");
     hideLoader();
 };
+$(document).on("pageshow",function(){ 
+$("a[target='_blank']").off('click').click(function(e){
+		
+	  e.preventDefault();
+	  var linktarget=$(e.currentTarget).attr('href');
+	  //window.open($(e.currentTarget).attr('href'), '_blank', 'location=yes');
+	 // window.open($(e.currentTarget).attr('href'), '_system', '');
+	   navigator.app.loadUrl(linktarget, {openExternal: true});
+	  return false;
+	});
+ 	
+});
 
 $(document).on("pageshow", "#login", function () { // When entering login
 
