@@ -31,7 +31,7 @@ function registerServerEvents(chat) {
 
 		if($('#chatmessage').val() !=='') {
 			showLoader();
-			alert($(this).attr('rel')+'-'+ $('#chatmessage').val());
+			// alert($(this).attr('rel')+'-'+ $('#chatmessage').val());
 			// Call the Send method on the hub.
 			chat.server.sendPrivateMessageToServer($(this).attr('rel'), $('#chatmessage').val());
 			// chat.server.hello($('#chatmessage').val());
