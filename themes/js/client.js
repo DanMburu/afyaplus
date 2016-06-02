@@ -204,19 +204,20 @@ scope.getChatList=function(id){
     var url = rootUrl+'Client/Queries/'+id+'/Details/';
     showLoader();
     http.get(url).success(function(data) {
-        $('.sendsignalr').attr('rel',data[0].Id);
-        scope.chatList = data[0].ChatMessages;
+        $('.sendsignalr').attr('rel',data.patientQuery.Id);
+        scope.chatList = data.patientQuery.ChatMessages;
 
-        if(data[0].PaymentStatusId !==2){
+        if(data.PaymentStatusId !==2){
             $('.send-btn').hide();
             $('.btnPayConsultationNow').show();
+			$('.btnPayConsultationNow').attr('href',data.paymentUrl);
             $('#chatmessage').hide();
         }else{
             $('.send-btn').show();
             $('.btnPayConsultationNow').hide();
             $('#chatmessage').show();
         }
-        if(data[0].StatusId ===5){
+        if(data.patientQuery.StatusId ===5){
 
             $('#chatStatus').show();
             $('#chatStatus').html('<p>Consultation closed.</p>');
@@ -312,10 +313,12 @@ scope.getAppointmentDetails=function(id){
         scope.paymentModes = data['PaymentModes'];
         scope.branches = data['branches'];
         scope.insuranceCompanies = data['InsuranceCompanies'];
-
         $.mobile.changePage( '#appointmentDetails', {type: "get", transition: "slide"});
         $('input:radio[name="GenderId"]').filter('[value="'+data['appointment'].GenderId+'"]').parent().find("label[for].ui-btn").click();
-
+  if(data.PaymentStatusId ===1){
+	        $('.btnPayAppointmentNow').show();
+			$('.btnPayAppointmentNow').attr('href',data.paymentUrl);
+  }
 
         scope.show=false;
         scope.cancel=false;

@@ -626,3 +626,11 @@ p.empty-results {
 	border: medium none;
 }
 .status-3 span{color: #999 !important;}
+.btnPayAppointmentNow {
+  color: red !important;
+  float: left;
+  width: 100%;
+}
+.btnPayConsultationNow {
+	color: red !important;
+}

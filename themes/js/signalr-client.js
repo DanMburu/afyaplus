@@ -69,7 +69,7 @@ function registerClientMethods(chat) {
 		$cont.append(data);
 	};
 	chat.client.paymentStatusNotification = function (paymentStatusId, paymentStatus, chatId) {
-		alert('Payment processed. Status:' + paymentStatus);
+		alert('Payment Status is ' + paymentStatus);
 		if (paymentStatusId == 2) {
 			$('#chatControlsCont.chat-' + value.chat_id).show();
 			$('#chatStatus.chat-' + value.chat_id).hide();
