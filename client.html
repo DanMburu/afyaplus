@@ -1148,7 +1148,7 @@
                 <div data-role="fieldcontain">
                     <label for="textinput6">Doctor:</label>
 
-                    <select id="ddBookDoctorId" name="DoctorId">
+                    <select id="ddBookDoctorId" name="DoctorId" ng-change="getSlots()" ng-model="ddBookDoctorId">
                         <option value="0">Any</option>
                         <option ng-repeat="doctor in bookDoctors" data-availability="{{doctor.Availability}}"
                                 value="{{doctor.Id}}">{{doctor.FirstName +' '+doctor.OtherNames}}

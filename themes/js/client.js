@@ -390,7 +390,8 @@ scope.getSlots = function () {
     var dateBooked=$('#DateBooked').val();
     var doctorId=$('#ddBookDoctorId').val();
 
-
+  if (typeof scope.selectedBranch !== 'undefined' && typeof scope.selectedSpeciality !== 'undefined' && dateBooked!=='' && doctorId!=='' ) {
+	  
     var url = rootUrl + 'Client/AvailableSlots/' + scope.selectedBranch + '/' + scope.selectedSpeciality + '/' + doctorId + '/' + dateBooked + '/';
     showLoader();
     http.get(url).success(function (data) {
@@ -399,6 +400,7 @@ scope.getSlots = function () {
         }
         hideLoader();
     }).error(ajaxError);
+  }
 }; // End Function
 scope.getProductDetails=function(id){
 
