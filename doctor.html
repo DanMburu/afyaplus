@@ -5,7 +5,7 @@
     <title>Radioson</title>
     <link rel="stylesheet" type="text/css" href="themes/jquery.mobile-1.4.5.min.css">
     <link rel="stylesheet" type="text/css" href="themes/css/jquery.mobile.datepicker.css">
-    <script src="themes/js/jquery-2.2.3.min.js"></script>
+    <script src="themes/js/jquery-1.11.1.min.js"></script>
     <script src="themes/js/jquery.mobile-1.4.5.min.js"></script>
     <script src="themes/js/jquery.mobile.dynamic.popup.js"></script>
     <!--<script src="themes/js/jquery.ui.datepicker.js"></script>
@@ -185,7 +185,7 @@
                -->
 
                 <li class="chat-33" ng-repeat="query in queries">
-                    <a href="#" ng-click="getChatList(query.Id)" class="li-chat-list ui-btn" doc="query.UserId"
+                    <a href="#" ng-click="getChatList(query.Id)" class="li-chat-list ui-btn status-{{query.StatusId}}" doc="query.UserId"
                        rel="{{query.Id}}" data-bind="attr: {rel: Id,doc: UserId}">
                         <span class="sender-title" data-bind="text: LatestSender">{{query.LatestSender}}</span>
                         <span class="timespan" data-bind="text: convertDateTime(DateSent)">{{query.DateSent | date:"dd/MM/yyyy h:mma"}}</span>
@@ -224,15 +224,40 @@
                 </div>
             </div>
             <div data-role="fieldcontain" id="chatControlsCont">
+
                 <textarea type="text" name="chatmessage" id="chatmessage" value=""></textarea>
+
                 <button class="send-btn sendsignalr" rel="" data-iconpos="right" data-icon="arrow-r">Send</button>
+
                 <input type="hidden" id="DoctorID"/>
+
+                <button id="btn-close-consultation" rel="" data-icon="delete" data-iconpos="left">Close Consultation</button>
+
             </div>
 
             <div id="chatStatus">
                 <p></p>
             </div>
 
+            <!-- Start Popup --->
+            <a id="lnk-close-chat" class="lnkpopup hidden" href="#close-chat-popup" data-rel="popup"
+               data-position-to="window" data-transition="pop" data-role="none">PopUp</a>
+
+            <div data-role="popup" id="close-chat-popup" data-dismissible="true" style="max-width: 400px;">
+                <div data-role="header">
+                    <h1 class="popup-header">Success</h1>
+                </div>
+                <div role="main" class="ui-content">
+                    <div class="popup-text">
+                        <p>Consultation Closed.</p>
+                    </div>
+                    <div class="mc-text-left">
+                        <a data-role="button" href="#" class="close-popup">Close</a>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End Popup --->
 
         </div>
         <div data-role="footer">
@@ -454,7 +479,7 @@
             <form id="fmEditAppointment">
 
                 <div data-role="fieldcontain">
-                    <label for="textinput6">Hospital: {{appointment.Hospital.Name}}</label>
+                    <label for="textinput6"><strong>Hospital:</strong> {{appointment.Hospital.Name}}</label>
                 </div>
                 <div data-role="fieldcontain">
                     <label for="textinput6"><strong>Branch: </strong>{{appointment.Branch.Name}}</label>
@@ -483,35 +508,27 @@
                 <div data-role="fieldcontain">
                     <label for="textinput6"><strong>Email: </strong>{{appointment.Email}}</label>
                 </div>
-
                 <div data-role="fieldcontain">
-                    <fieldset disabled data-role="controlgroup" data-type="horizontal">
-                        <legend>Gender</legend>
-                        <input type="radio" name="GenderId" ng-checked="(appointment.GenderId == 1)" id="gender_0"
-                               value="1"/>
-                        <label for="gender_0">Male</label>
-                        <input type="radio" name="GenderId" ng-checked="(appointment.GenderId == 2)" id="gender_1"
-                               value="2"/>
-                        <label for="gender_1">Female</label>
-                    </fieldset>
+                    <label><strong>Gender: </strong>
+                       <span ng-show="(appointment.GenderId == 1)">Male</span>
+                        <span ng-show="(appointment.GenderId == 2)">Female</span>
+                    </label>
                 </div>
-
                 <div data-role="fieldcontain">
-                    <label for="textinput6">Payment Mode: {{appointment.PaymentMode.Name}}</label>
+                    <label for="textinput6"><strong>Payment Mode:</strong> {{appointment.PaymentMode.Name}}</label>
                 </div>
                 <div class="insurance-cont" ng-show="{{appointment.PaymentModeId==2}}">
                     <div class="edit-insurance" data-role="fieldcontain">
-                        <label for="textinput6">Insurance: {{appointment.InsuranceCompany.Name}}</label>
+                        <label for="textinput6"><strong>Insurance:</strong> {{appointment.InsuranceCompany.Name}}</label>
                     </div>
                     <div class="edit-insurance" data-role="fieldcontain">
-                        <label for="textinput3">Membership No.: {{appointment.MembershipNo}}</label>
+                        <label for="textinput3"><strong>Membership No.:</strong> {{appointment.MembershipNo}}</label>
 
                     </div>
                 </div>
-                <div data-role="fieldcontain">
-                    <label for="textarea">Additional Information:</label>
-                    <textarea cols="40" rows="8" value="{{appointment.AdditionalInfo}}"
-                              name="AdditionalInfo"></textarea>
+                <div ng-show="(appointment.AdditionalInfo !== '' && appointment.AdditionalInfo !==null)" data-role="fieldcontain">
+                    <label><strong>Additional Information:</strong></label>
+                   <p>{{appointment.AdditionalInfo}}</p>
                 </div>
 
                 <input type="hidden" class="bookUserId" name="UserId" value="{{appointment.Id}}"/>
@@ -520,25 +537,7 @@
                 -->
             </form>
 
-            <!-- Start Popup --->
-            <a id="lnk-edit-appointment-popup" class="lnkpopup hidden" href="#edit-appointment-popup" data-rel="popup"
-               data-position-to="window" data-transition="pop" data-role="none">PopUp</a>
 
-            <div data-role="popup" id="edit-appointment-popup" data-dismissible="true" style="max-width: 400px;">
-                <div data-role="header">
-                    <h1 class="popup-header">Success</h1>
-                </div>
-                <div role="main" class="ui-content">
-                    <div class="popup-text">
-                        <p>Appointment successfully edited. The service will get back to you.</p>
-                    </div>
-                    <div class="mc-text-left">
-                        <a data-role="button" href="#" class="close-popup">Close</a>
-                    </div>
-
-                </div>
-            </div>
-            <!-- End Popup --->
 
 
         </div>

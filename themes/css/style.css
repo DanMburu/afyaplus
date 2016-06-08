@@ -610,7 +610,7 @@ p.empty-results {
 }
 #main-panel #appointmentDetails label {
 	display: inline-block;
-	font-weight: bold;
+
 	width: auto;
 }
 .col-md-6 {
@@ -625,7 +625,7 @@ p.empty-results {
 .chkEditCont.col-md-6{
 	border: medium none;
 }
-.status-3 span{color: #999 !important;}
+.status-3 span,.status-5 span{color: #999 !important;}
 .btnPayAppointmentNow {
   color: red !important;
   float: left;

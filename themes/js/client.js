@@ -269,8 +269,9 @@ scope.bookAppointment=function(id,branchId){
         scope.selectedBookBranch=0;
         scope.selectedHospital=0;
     }else{
-        scope.selectedBookBranch=branchId;
+
         scope.selectedHospital=id;
+        scope.selectedBookBranch=branchId;
          url = rootUrl + 'Appointments/Init/' + $('#UserId').val()+'/'+id+'/';
     }
 
@@ -450,12 +451,12 @@ $('#ddBookDoctorId').on('change',function(){
         var scope = angular.element(document.querySelector('body')).scope();
         $('[ng-controller="clientCtrl"]').scope.selectedPaymentMode=1;
 
-        $('#HospitalId').val(scope.selectedHospital);
-        $('#ddAppointmentBranches').val(scope.selectedBookBranch);
+        $('#ddBookHospitalId').val(scope.selectedHospital);
+        $('#ddBookAppointmentBranches').val(scope.selectedBookBranch);
 
 
-        $('#ddAppointmentPaymentMode,#AppointmentTimeSlotId,#HospitalId,#ddAppointmentBranches').selectmenu(); // initialize
-        $('#ddAppointmentPaymentMode,#AppointmentTimeSlotId,#HospitalId,#ddAppointmentBranches').selectmenu('refresh');
+        $('#ddAppointmentPaymentMode,#AppointmentTimeSlotId,#ddBookHospitalId,#ddBookAppointmentBranches').selectmenu(); // initialize
+        $('#ddAppointmentPaymentMode,#AppointmentTimeSlotId,#ddBookHospitalId,#ddBookAppointmentBranches').selectmenu('refresh');
 
         $('#appointmentPaymentMode').on("change", function(e) {
 
@@ -552,6 +553,9 @@ $('#ddBookDoctorId').on('change',function(){
     $(document).on("pageshow", "#profile", function (){
 
     });
+
+
+
     $(document).on("pageshow", "#appointmentDetails", function (){
 
 

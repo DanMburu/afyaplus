@@ -88,11 +88,22 @@ app.controller('clientCtrl',['$scope','$http','$filter', function (scope,http,fi
         var url = rootUrl+'Doctor/Queries/'+id+'/Details/';
         showLoader();
         http.get(url).success(function(data) {
-            $('.sendsignalr').attr('rel',data.Id);
+            $('.sendsignalr,#btn-close-consultation').attr('rel',data.Id);
             scope.chatList = data.ChatMessages;
             console.log( scope.chatList);
             $.mobile.changePage( '#chatList', {type: "get", transition: "slide"});
             hideLoader();
+
+            if(data.StatusId ===5){
+
+                $('#chatStatus').show();
+                $('#chatStatus').html('<p>Consultation closed.</p>');
+                $('#chatStatus').show();
+                $('.btnPayConsultationNow,.send-btn,#chatmessage,#btn-close-consultation').hide();
+            }else{
+                $('#chatStatus').hide();
+            }
+
         }).error(ajaxError);
     };// End Function
     scope.getClinic=function(){
@@ -326,11 +337,41 @@ $(document).on("pageshow", "#register", function () {
 		
  }); // pageshow
 
-    $('.close-popup').off('click').on("click", function(e) {
-        window.history.back();
-        e.preventDefault();
-        return false;
-    });
+$(document).on("pageshow", "#chatList", function (){
+
+$('#btn-close-consultation').on('click',function(){
+    var txt;
+    var r = confirm("Close this consultation?");
+    if (r == true) {
+        var options = {
+            url: rootUrl + 'PatientQueries/Close/'+$(this).attr('rel')+'/',
+            type: 'Post',
+            data: {Id: $(this).attr('rel')}
+        };
+        showLoader();
+        $.ajax(options).done(function (data) {
+            hideLoader();
+            $('#edit-appointment-popup .popup-text p').text('Appointment Closed.');
+            $('#lnk-close-chat').trigger('click');
+            $('.sendsignalr,#chatmessage,#btn-close-consultation').fadeOut();
+
+            $('#chatStatus').show();
+            $('#chatStatus').html('<p>Consultation closed.</p>');
+            $('#chatStatus').show();
+
+        }).fail(ajaxError);
+    }
+});
+
+});
+
+
+
+$('.close-popup').off('click').on("click", function(e) {
+    window.history.back();
+    e.preventDefault();
+    return false;
+});
 });
 function showLoader() {
 	

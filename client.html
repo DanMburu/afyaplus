@@ -212,7 +212,7 @@
                -->
 
                 <li class="chat-33" ng-repeat="query in queries">
-                    <a href="#" ng-click="getChatList(query.Id)" class="li-chat-list ui-btn" doc="query.UserId"
+                    <a href="#" ng-click="getChatList(query.Id)" class="li-chat-list ui-btn status-{{query.StatusId}}" doc="query.UserId"
                        rel="{{query.Id}}" data-bind="attr: {rel: Id,doc: UserId}">
                         <span class="sender-title">{{query.LatestSender}}</span>
                         <span class="timespan">{{query.DateSent | date:"dd/MM/yyyy h:mma"}}</span>
@@ -378,9 +378,7 @@
             <div data-role="fieldcontain" id="chatControlsCont">
                 <textarea type="text" name="chatmessage" id="chatmessage" value=""></textarea>
                 <button class="send-btn sendsignalr" rel="" data-iconpos="right" data-icon="arrow-r">Send</button>
-                
 				<a data-role="button"  class="btnPayConsultationNow" target="_blank" rel="" data-iconpos="right" data-icon="arrow-r">Pay Now</a>
-
                 <input type="hidden" id="DoctorID"/>
             </div>
 
@@ -741,9 +739,7 @@
                                                   data-rel="popup" data-position-to="window" data-transition="pop">Clinics</a>
                 </div>
 
-                <div class="col-xs-6 col-md-6"><a class="lnkBookNow" ng-click="bookAppointment(hospital.Id)" href="#">Book
-                    an
-                    Appointment</a></div>
+                <div class="col-xs-6 col-md-6"><a class="lnkBookNow" ng-click="bookAppointment(hospital.Id)" href="#">Book Appointment</a></div>
                 <div class="col-xs-6 col-md-6"><a class="lnkAskNow" ng-click="askQuiz(hospital.Id)"
                                                   data-transition="slide" href="#">Consult Online</a></div>
 
@@ -940,8 +936,7 @@
                 </div>
 
                 <div class="col-xs-6 col-md-6"><a class="lnkBookNow" ng-click="bookAppointment(hospital.Id,branch.Id)"
-                                                  href="#">Book an
-                    Appointment</a></div>
+                                                  href="#">Book Appointment</a></div>
                 <div class="col-xs-6 col-md-6"><a class="lnkAskNow" ng-click="askQuiz(hospital.Id,branch.Id)"
                                                   data-transition="slide" href="#">Consult Online</a></div>
 
@@ -1125,7 +1120,7 @@
                 <div data-role="fieldcontain">
                     <label for="textinput6">Hospital:</label>
 
-                    <select name="HospitalId" class="HospitalId" ng-model="selectedHospital"
+                    <select id="ddBookHospitalId" name="HospitalId" class="HospitalId" ng-model="selectedHospital"
                             ng-change="getBranches()">
                         <option value="0" ng-selected="1" selected="selected">Select</option>
                         <option ng-repeat="hospital in hospitals" value="{{hospital.Id}}">{{hospital.Name}}</option>
@@ -1134,7 +1129,7 @@
                 <div id="bookAppointmentBranch" data-role="fieldcontain">
                     <label for="textinput6">Branch:</label>
 
-                    <select ng-change="getDoctorsBooking()" name="BranchId" id="ddAppointmentBranches" ng-model="selectedBranch">
+                    <select ng-change="getDoctorsBooking()" name="BranchId" id="ddBookAppointmentBranches" ng-model="selectedBranch">
                         <option value="0">Select</option>
                         <option ng-repeat="branch in branches" value="{{branch.Id}}">{{branch.Name}}</option>
                     </select>
@@ -1179,7 +1174,7 @@
                     <select id="AppointmentTimeSlotId" name="AppointmentTimeSlotId" class="TimeBooked"
                             ng-model="TimeBooked">
                         <option value="0" ng-selected="1" selected="selected">Select</option>
-                        <option ng-repeat="slot in availableSlots" value="{{slot.Id}}">{{slot.TimeSlot}}</option>
+                        <option ng-repeat="slot in availableSlots" ng-disabled="slot.Disabled" value="{{slot.Value}}">{{slot.Text}}</option>
                     </select>
                 </div>
 
@@ -1351,115 +1346,56 @@
             <form id="fmUpdateAppointment">
 
                 <div data-role="fieldcontain">
-                    <label for="HospitalId">Hospital:</label>
-
-
-                    <select id="appointmentHospitalId" data-role="select" name="HospitalId" class="HospitalId">
-                        <option value="0">Select</option>
-                        <option ng-repeat="hospital in hospitals" value="{{hospital.Id}}"
-                                ng-selected="{{hospital.Id==appointment.HospitalId}}">{{hospital.Name}}
-                        </option>
-
-                    </select>
+                    <label for="textinput6"><strong>Hospital:</strong> {{appointment.Hospital.Name}}</label>
                 </div>
                 <div data-role="fieldcontain">
-                    <label for="textinput6">Branch:</label>
-
-                    <select name="BranchId" id="appointmentBranchId">
-                        <option value="0" ng-selected="1" selected="selected">Select</option>
-                        <option ng-repeat="branch in branches" value="{{branch.Id}}"
-                                ng-selected="{{branch.Id==appointment.BranchId}}">{{branch.Name}}
-                        </option>
-                    </select>
-
+                    <label for="textinput6"><strong>Branch: </strong>{{appointment.Branch.Name}}</label>
                 </div>
                 <div data-role="fieldcontain">
-                    <label for="textinput6">Specialist:</label>
-
-                    <select id="appointmentSpecialityId" name="SpecialityId">
-                        <option value="0">Select</option>
-                        <option ng-repeat="speciality in specialities" value="{{speciality.Id}}"
-                                ng-selected="{{speciality.Id==appointment.SpecialityId}}">{{speciality
-                            .Name}}
-                        </option>
-                    </select>
-                </div>
-
-
-                <div id="datepicker" class="ui-field-contain">
-                    <label for="DateBooked">Date: </label>
-                    <span>{{appointment.DateBooked | date:'dd-MM-yyyy'}}</span>
-                </div>
-                <a href="#" id="getSlots" ng-click="getSlots()"></a>
-
-                <div data-role="fieldcontain">
-                    <label>Time:</label>
-                   <span>{{appointment.AppointmentTimeSlot.Name}}</span>
-                </div>
-
-                <div data-role="fieldcontain">
-                    <label for="textinput6">Surname:</label>
-                    <input class="surname" type="text" name="Surname" value="{{appointment.Surname}}"/>
+                    <label for="textinput6"><strong>Speciality: </strong>{{appointment.Speciality.Name}}</label>
                 </div>
                 <div data-role="fieldcontain">
-                    <label for="textinput5">First Name:</label>
-                    <input type="text" name="FirstName" value="{{appointment.FirstName}}"/>
+                    <label><strong>Date: </strong>{{appointment.DateBooked | date:"MMM dd yyyy"}}</label>
                 </div>
                 <div data-role="fieldcontain">
-                    <label for="textinput5">Last Name:</label>
-                    <input type="text" name="LastName" value="{{appointment.LastName}}"/>
+                    <label><strong>Time: </strong>{{appointment.AppointmentTimeSlot.TimeSlot}}</label>
                 </div>
                 <div data-role="fieldcontain">
-                    <label for="textinput4">Phone:</label>
-                    <input type="text" name="Phone" value="{{appointment.Phone}}"/>
+                    <label for="textinput6"><strong>Surname: </strong>{{appointment.Surname}}</label>
                 </div>
                 <div data-role="fieldcontain">
-                    <label for="textinput3">Email:</label>
-                    <input type="text" name="Email" value="{{appointment.Email}}"/>
+                    <label for="textinput6"><strong>First Name: </strong>{{appointment.FirstName}}</label>
                 </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput6"><strong>Last Name: </strong>{{appointment.LastName}}</label>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput6"><strong>Phone: </strong>{{appointment.Phone}}</label>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput6"><strong>Email: </strong>{{appointment.Email}}</label>
+                </div>
+                <div data-role="fieldcontain">
+                    <label><strong>Gender: </strong>
+                        <span ng-show="(appointment.GenderId == 1)">Male</span>
+                        <span ng-show="(appointment.GenderId == 2)">Female</span>
+                    </label>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput6"><strong>Payment Mode:</strong> {{appointment.PaymentMode.Name}}</label>
+                </div>
+                <div class="insurance-cont" ng-show="{{appointment.PaymentModeId==2}}">
+                    <div class="edit-insurance" data-role="fieldcontain">
+                        <label for="textinput6"><strong>Insurance:</strong> {{appointment.InsuranceCompany.Name}}</label>
+                    </div>
+                    <div class="edit-insurance" data-role="fieldcontain">
+                        <label for="textinput3"><strong>Membership No.:</strong> {{appointment.MembershipNo}}</label>
 
-                <div data-role="fieldcontain">
-                    <fieldset data-role="controlgroup" data-type="horizontal">
-                        <legend>Gender</legend>
-                        <input type="radio" name="GenderId" ng-checked="(appointment.GenderId == 1)" id="gender_0"
-                               value="1"/>
-                        <label for="gender_0">Male</label>
-                        <input type="radio" name="GenderId" ng-checked="(appointment.GenderId == 2)" id="gender_1"
-                               value="2"/>
-                        <label for="gender_1">Female</label>
-                    </fieldset>
+                    </div>
                 </div>
-
-                <div data-role="fieldcontain">
-                    <label for="textinput6">Payment Mode:</label>
-                    <select name="PaymentModeId" id="appointmentPaymentMode">
-
-                        <option ng-repeat="paymentMode in paymentModes" value="{{paymentMode.Id}}"
-                                ng-selected="{{paymentMode.Id==appointment.PaymentModeId}}">
-                            {{paymentMode.Name}}
-                        </option>
-                    </select>
-                </div>
-                <div class="edit-insurance" data-role="fieldcontain">
-                    <label for="textinput6">Insurance:</label>
-
-                    <select name="InsuranceCompanyId" id="appointmentInsuranceCompanyId" class="InsuranceCompanyId">
-                        <option value="">Select</option>
-                        <option ng-repeat="insuranceCompany in insuranceCompanies"
-                                value="{{insuranceCompany.Id}}"
-                                ng-selected="{{insuranceCompany.Id==appointment.InsuranceCompanyId}}">
-                            {{insuranceCompany.Name}}
-                        </option>
-                    </select>
-                </div>
-
-                <div class="edit-insurance" data-role="fieldcontain">
-                    <label for="textinput3">Membership No.:</label>
-                    <input type="text" value="{{appointment.MembershipNo}}" name="MembershipNo" value=""/>
-                </div>
-                <div data-role="fieldcontain">
-                    <label for="textarea">Additional Information:</label>
-                    <textarea cols="40" rows="8" name="AdditionalInfo">{{appointment.AdditionalInfo}}</textarea>
+                <div ng-show="(appointment.AdditionalInfo !== '' && appointment.AdditionalInfo !==null)" data-role="fieldcontain">
+                    <label><strong>Additional Information:</strong></label>
+                    <p>{{appointment.AdditionalInfo}}</p>
                 </div>
                 <div ng-show="cancel" data-role="fieldcontain">
                     <label for="textarea">Cancellation Reasons:</label>
