@@ -634,3 +634,15 @@ p.empty-results {
 .btnPayConsultationNow {
 	color: red !important;
 }
+#owl-carousel{padding-top:15px;}
+#owl-carousel .owl-item div{margin-right:2px;}
+#customPreloaderBg {
+  background: #000 none repeat scroll 0 0;
+  display: inline-block;
+  height: 100%;
+  opacity: 0.8;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+}
+

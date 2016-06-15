@@ -102,7 +102,7 @@ function GetUserDetails() {
 
 
                 var row = result.rows.item(0);
-                $('#USERID').val(row.UserId);
+                $('#UserId').val(row.UserId);
                 $.mobile.changePage( '#landing', {
                     type: "get",
                     transition: "flip"

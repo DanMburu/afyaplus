@@ -51,7 +51,7 @@ app.controller('clientCtrl',['$scope','$http','$filter', function (scope,http,fi
             scope.specialities = data['specialities'];
             scope.counties = data['counties'];
             scope.locations = data['locations'];
-            $('#customPreloader').remove();
+             $('#customPreloader,#customPreloaderBg').remove();
             hideLoader();
 
 

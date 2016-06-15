@@ -95,14 +95,15 @@ $(document).on("pageshow", "#login", function () { // When entering login
 
 $(document).on("pageshow","#landing", function () { // When entering login
 
+
     setTimeout(function(){
-        if($('#runned').val()==='0xxx'){
-            $(".owl-carousel").owlCarousel({items:3,margin:5,nav:false,dots:false,autoplay:true,autoplayTimeout:3000,loop:true});
-            $('#runned').val('1');
+		 try{
+$("#owl-carousel").data('owlCarousel').destroy();	
+}catch(err){}
 
-        }
+		 $("#owl-carousel").owlCarousel({items:3,margin:5,autoplay:true,autoplayTimeout:5000,loop:true,responsive: false});
 
-    },1000);
+    },100);
 }); //pageshow
 
 

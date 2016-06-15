@@ -33,13 +33,14 @@
 
     <link href="themes/css/lightbox.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="themes/css/owl.carousel.css">
-    <script src="themes/js/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="themes/owl-carousel/owl.carousel.css">
+	<link rel="stylesheet" href="themes/owl-carousel/owl.theme.css">
+    <script src="themes/owl-carousel/owl.carousel.min.js"></script>
 </head>
 
 <body ng-controller="clientCtrl">
 
-
+<div id="customPreloaderBg"></div>
 <!--
 <input type="hidden" id="HFLatitude" value="-1.268125" />
 <input type="hidden" id="HFLongitude" value="36.806330" />
@@ -130,9 +131,9 @@
             <!-- Set up your HTML -->
            <div  class="featured-products">
                 <h2>Featured Products</h2>
-            <div class="owl-carousel">
-
-                <div ng-repeat="product in featuredProducts" ng-init="$last ? initCarousel() : angular.noop()">
+            <div  id="owl-carousel" class="owl-carousel">
+<!-- <div ng-repeat="product in featuredProducts" ng-init="$last ? initCarousel() : angular.noop()">-->
+                <div ng-repeat="product in featuredProducts">
                     <a href="#" ng-click="getProductDetails(product.Id)">
                     <div class="thumbnail">
                     <img src="{{UploadsRoot}}/products/th_{{product.Image}}" class="img-responsive">
@@ -636,7 +637,7 @@
 </main>
 
 
-<input type="hidden" id="UserId" value="908240ce-3808-4d93-9bce-36425996b57d"/>
+<input type="hidden" id="UserId" value=""/>
 <input type="hidden" id="runned" value="0"/>
 <input type="hidden" id="accessToken" value=""/>
 

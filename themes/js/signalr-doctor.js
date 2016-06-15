@@ -80,14 +80,12 @@ function registerClientMethods(chat) {
 	};
 	chat.client.appointmentNotification = function (appointment) {
 		alert(appointment);
-		console.log(appointment);
-
 		var scope = angular.element(document.querySelector('body')).scope();
 		scope.$apply(function(filter){
 			scope.appointments.unshift(appointment);
 		});
 		try {
-			notification('New Appointment', appointment.Hospital+' - '+ appointment.Branch.Name);
+			notificationAppointment('New Appointment', appointment.Hospital+' - '+ appointment.Branch.Name);
 		}catch(err){
 
 		}
