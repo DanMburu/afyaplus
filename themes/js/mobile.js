@@ -159,7 +159,7 @@ function notification(title,id, msg) {
         text: msg,
         at: _1seconds_from_now,
         smallIcon: 'res://icon',
-        data: { Id:id}
+        data: {chatId:id}
     });
     // Join BBM Meeting when user has clicked on the notification
     cordova.plugins.notification.local.on("click", function (notification) {
@@ -170,7 +170,7 @@ function notification(title,id, msg) {
         });*/
 		
 		var scope = angular.element(document.querySelector('body')).scope();
-		scope.getChatList(notification.data.Id);
+		scope.getChatList(notification.data.chatId);
     });
 } //Close notification
 
@@ -183,7 +183,7 @@ function notificationAppointment(title,id, msg) {
         text: msg,
         at: _1seconds_from_now,
         smallIcon: 'res://icon',
-        data: { Id:id}
+        data: { chatId:id}
     });
     cordova.plugins.notification.local.on("click", function (notification) {
        /* $.mobile.changePage('#my-appointments', {
@@ -191,7 +191,7 @@ function notificationAppointment(title,id, msg) {
             transition: "flip"
         });*/
 		var scope = angular.element(document.querySelector('body')).scope();
-		scope.getAppointmentDetails(notification.data.Id);
+		scope.getAppointmentDetails(notification.data.chatId);
     });
 } //Close notification
 
