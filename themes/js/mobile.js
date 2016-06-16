@@ -172,10 +172,12 @@ function notification(title,id, msg) {
               alert(err);
 		 var err=JSON.stringify(notification.data, null, 4);
               alert(err);	
-        var err=JSON.stringify(notification.data.chatI, null, 4);
-              alert(err);			  
+        var err=JSON.stringify(notification.data.chatId, null, 4);
+              alert(err);
+var chatId=notification.data.chatId;
+alert(chatId);		  
 		var scope = angular.element(document.querySelector('body')).scope();
-		scope.getChatList(notification.data.chatId);
+		scope.getChatList(chatId);
     });
 } //Close notification
 
