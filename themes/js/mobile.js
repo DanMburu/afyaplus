@@ -172,9 +172,9 @@ function notification(title,id, msg) {
               alert(err);
 		 var err=JSON.stringify(notification.data, null, 4);
               alert(err);	
-        var err=JSON.stringify(notification.data.chatId, null, 4);
+        var err=JSON.stringify(notification.data[0].chatId, null, 4);
               alert(err);
-var chatId=notification.data.chatId;
+var chatId=notification.data[0].chatId;
 alert(chatId);		  
 		var scope = angular.element(document.querySelector('body')).scope();
 		scope.getChatList(chatId);
