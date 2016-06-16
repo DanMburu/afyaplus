@@ -148,44 +148,48 @@ function SaveUserDetails(data) {
 }
 
 
-function notification(title, msg) {
+function notification(title,id, msg) {
     var now = new Date().getTime();
-    _3seconds_from_now = new Date(now + 1 * 100);
-    _1seconds_from_now = new Date(now + 1 * 100);
+    _3seconds_from_now = new Date(now + 1 * 10);
+    _1seconds_from_now = new Date(now + 1 * 10);
     cordova.plugins.notification.local.schedule({
         id: 10,
         title: title,
         text: msg,
         at: _1seconds_from_now,
         smallIcon: 'res://icon',
-        data: { meetingId:"#123FG8" }
+        data: { Id:id}
     });
     // Join BBM Meeting when user has clicked on the notification
     cordova.plugins.notification.local.on("click", function (notification) {
-        // joinMeeting(notification.data.meetingId);
+       /*
         $.mobile.changePage('#patient-queries', {
             type: "get",
             transition: "flip"
-        });
+        });*/
+		var scope = angular.element(document.querySelector('body')).scope();
+		scope.getChatList(notification.data.Id);
     });
 } //Close notification
 
-function notificationAppointment(title, msg) {
+function notificationAppointment(title,id, msg) {
     var now = new Date().getTime();
-    _1seconds_from_now = new Date(now + 1 * 100);
+    _1seconds_from_now = new Date(now + 1 * 10);
     cordova.plugins.notification.local.schedule({
         id: 10,
         title: title,
         text: msg,
         at: _1seconds_from_now,
         smallIcon: 'res://icon',
-        data: { meetingId:"#123FG8" }
+        data: { Id:id}
     });
     cordova.plugins.notification.local.on("click", function (notification) {
-        $.mobile.changePage('#my-appointments', {
+       /* $.mobile.changePage('#my-appointments', {
             type: "get",
             transition: "flip"
-        });
+        });*/
+		var scope = angular.element(document.querySelector('body')).scope();
+		scope.getAppointmentDetails(notification.data.Id);
     });
 } //Close notification
 

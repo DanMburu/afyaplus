@@ -101,7 +101,7 @@ function registerClientMethods(chat) {
 		})
 
 
-		console.log(message);
+		// console.log(message);
 		if ($('.sendsignalr').attr('rel') === chatId.trim()) {
 			var $cont = $('#chatcont');
 			var data = '<span class="chat-inner-date">' + message.DateSent + '</span>';
@@ -113,7 +113,7 @@ function registerClientMethods(chat) {
 			$cont.append(data);
 		}
 		try {
-			notification('New Message', message.LatestMessage);
+			notification('New Message',chatId, message.LatestMessage);
 		}catch(err){
 
 		}
