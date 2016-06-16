@@ -149,6 +149,7 @@ function SaveUserDetails(data) {
 
 
 function notification(title,id, msg) {
+	alert(id);
     var now = new Date().getTime();
     _3seconds_from_now = new Date(now + 1 * 10);
     _1seconds_from_now = new Date(now + 1 * 10);
@@ -167,6 +168,7 @@ function notification(title,id, msg) {
             type: "get",
             transition: "flip"
         });*/
+		
 		var scope = angular.element(document.querySelector('body')).scope();
 		scope.getChatList(notification.data.Id);
     });
