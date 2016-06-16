@@ -170,6 +170,10 @@ function notification(title,id, msg) {
         });*/
 		 var err=JSON.stringify(notification, null, 4);
               alert(err);
+		 var err=JSON.stringify(notification.data, null, 4);
+              alert(err);	
+        var err=JSON.stringify(notification.data.chatI, null, 4);
+              alert(err);			  
 		var scope = angular.element(document.querySelector('body')).scope();
 		scope.getChatList(notification.data.chatId);
     });

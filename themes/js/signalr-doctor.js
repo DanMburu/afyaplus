@@ -126,7 +126,7 @@ function registerClientMethods(chat) {
 			$cont.append(data);
 		}
 		try {
-			alert('chatId:'+chatId);
+		
 			notification('New Message',chatId, message.LatestMessage);
 		}catch(err){
 

@@ -84,8 +84,7 @@ app.controller('clientCtrl',['$scope','$http','$filter', function (scope,http,fi
             hideLoader();
         });
     }; // End Function
-    scope.getChatList=function(id){
-		
+    scope.getChatList=function(id){		
         var url = rootUrl+'Doctor/Queries/'+id+'/Details/';
         showLoader();
         http.get(url).success(function(data) {
