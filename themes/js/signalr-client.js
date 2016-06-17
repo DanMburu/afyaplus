@@ -56,7 +56,7 @@ function registerClientMethods(chat) {
 		alert(message);
 	};
 
-	chat.client.appendMessage = function (name, date, message) {
+	chat.client.appendMessage = function (message) {
 		hideLoader();
         var scope = angular.element(document.querySelector('body')).scope();
 		 scope.$apply(function(filter){

@@ -146,7 +146,25 @@ function SaveUserDetails(data) {
     );
 }
 
+function notification(title,id, msg) {
 
+    var now = new Date().getTime();
+    _3seconds_from_now = new Date(now + 1 * 10);
+    _1seconds_from_now = new Date(now + 1 * 10);
+    cordova.plugins.notification.local.schedule({
+        id: id,
+        title: title,
+        text: msg,
+        at: _1seconds_from_now,
+        smallIcon: 'res://icon',
+        data: {chatId:id}
+    });
+    // Join BBM Meeting when user has clicked on the notification
+    cordova.plugins.notification.local.on("click", function (notification) {
+             
+       
+    });
+}
 function notificationOuter(title,id, msg) {
 
     var now = new Date().getTime();
@@ -169,25 +187,7 @@ function notificationOuter(title,id, msg) {
 		
     });
 } //Close notification
-function notification(title,id, msg) {
 
-    var now = new Date().getTime();
-    _3seconds_from_now = new Date(now + 1 * 10);
-    _1seconds_from_now = new Date(now + 1 * 10);
-    cordova.plugins.notification.local.schedule({
-        id: id,
-        title: title,
-        text: msg,
-        at: _1seconds_from_now,
-        smallIcon: 'res://icon',
-        data: {chatId:id}
-    });
-    // Join BBM Meeting when user has clicked on the notification
-    cordova.plugins.notification.local.on("click", function (notification) {
-             
-       
-    });
-}
 function notificationInner(title,id, msg) {
 
     var now = new Date().getTime();

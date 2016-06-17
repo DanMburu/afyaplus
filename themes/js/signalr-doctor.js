@@ -57,10 +57,13 @@ function registerClientMethods(chat) {
 		alert(message);
 	};
 
-	chat.client.appendMessage = function (name, date, message) {
+	chat.client.appendMessage = function (message) {
 		hideLoader();
-		// console.log(message);
-		// vmChat.chatMessages.push(message);
+		 var scope = angular.element(document.querySelector('body')).scope();
+		 scope.$apply(function(filter){
+			 scope.chatList.push(message.ChatMessages[0]);			 
+		   });
+		/*
 		
 		var $cont = $('#chatcont');
 		var data = '<span class="chat-inner-date">' + date + '</span>';
@@ -70,6 +73,7 @@ function registerClientMethods(chat) {
 		data += '</div>';
 		data += '</div>';
 		$cont.append(data);
+		*/
 	};
 	chat.client.paymentStatusNotification = function (paymentStatusId, paymentStatus, chatId) {
 		alert('Payment processed. Status:' + paymentStatus);
