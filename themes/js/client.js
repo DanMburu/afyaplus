@@ -225,11 +225,7 @@ scope.getChatList=function(id){
             $('.btnPayConsultationNow,.send-btn,#chatmessage').hide();
         }else{
             $('#chatStatus').hide();
-        }
-
-
-
-        console.log( scope.chatList);
+        }       
         $.mobile.changePage( '#chatList', {type: "get", transition: "slide"});
         hideLoader();
     });
@@ -277,7 +273,7 @@ scope.bookAppointment=function(id,branchId){
 
     showLoader();
     http.get(url).success(function(data) {
-        console.log(data);
+      
         scope.user = data['user'];
         scope.hospitals = data['hospitals'];
         scope.hospitalSpecialities = data['specialities'];
@@ -428,7 +424,7 @@ $(function(){
         alert("Error: An error has occurred processing your request. Please confirm all fields are filled.");
        // $('.ui-mobile .ui-footer').show();
       //  var err=JSON.stringify(object, null, 4);
-       // console.log(object);
+      
       //  $('#output').text(err);
     };
     var  ajaxAlways = function (object) {
@@ -490,7 +486,7 @@ $('#ddBookDoctorId').on('change',function(){
             var allFilled = true;
             $('#frm-register :input:not(:button)').each(function(index, element) {
                 if (element.value === '') {
-                    console.log(element);
+                   
                     allFilled = false;
                 }
             });
@@ -512,7 +508,7 @@ $('#ddBookDoctorId').on('change',function(){
             if (allFilled) {
                 var url = $('#RootUrl').val() + 'account/register/';
                 var data=$('#frm-register').serialize();
-                console.log(url);
+              
                 showLoader();
                 $.post(url,data).done(function(data) {
                     hideLoader();
@@ -621,7 +617,7 @@ $('#ddBookDoctorId').on('change',function(){
         }
         $('#frmbook :input:not(:button)').each(function(index, element) {
             if (element.value === '') {
-                console.log(element);
+               
                 allFilled = false;
             }
         });
@@ -649,7 +645,7 @@ $('#ddBookDoctorId').on('change',function(){
         allFilled = true;
         $('#frmaskquiz :input:not(:button)').each(function(index, element) {
             if (element.value === '') {
-                console.log(element);
+               
                 allFilled = false;
             }
         });

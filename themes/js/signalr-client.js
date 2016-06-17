@@ -82,7 +82,7 @@ function registerClientMethods(chat) {
 	};
 	chat.client.error = function (message) {
 		alert(message);
-		console.log(message);
+		
 		hideLoader();
 	};
 	chat.client.receivePrivateMessage = function (message) {
@@ -92,19 +92,22 @@ function registerClientMethods(chat) {
 		var scope = angular.element(document.querySelector('body')).scope();
 		scope.$apply(function(filter){
 
-			var items=$.map(scope.queries, function(el) { return el });
-			console.log(items);
+			var items=$.map(scope.queries, function(el) { return el });			
 			var index=indexByKeyValue(items,"Id",chatId);
 			scope.queries.splice(index, 1);
 			scope.queries.unshift(message);
 			
 
-		})
+		});
 
 
-		// console.log(message);
+	
 		if ($('.sendsignalr').attr('rel') === chatId.trim()) {
-			scope.chatList.push(message);
+
+		  scope.$apply(function(filter){
+			 scope.chatList.push(message.ChatMessages[0]);			 
+		   });
+			
 			/*
 			var $cont = $('#chatcont');
 			var data = '<span class="chat-inner-date">' + message.DateSent + '</span>';

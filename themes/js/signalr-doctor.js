@@ -116,7 +116,10 @@ function registerClientMethods(chat) {
 		// If inner page was open
 		// alert($('.sendsignalr').attr('rel') +'-'+ chatId.trim());
 		if ($('.sendsignalr').attr('rel') === chatId.trim()) {
-			scope.chatList.push(message);
+			
+		   scope.$apply(function(filter){
+			 scope.chatList.push(message.ChatMessages[0]);			 
+		   });
 			/*
 			var $cont = $('#chatcont');
 			var data = '<span class="chat-inner-date">' + message.DateSent + '</span>';

@@ -84,7 +84,7 @@ function populateDB(data) {
             tx.executeSql(sql);
         },
         function (error) {
-            console.log(error);
+           
             alert('An error has occured.'+error);
         }
     );
@@ -122,8 +122,7 @@ function GetUserDetails() {
 } // GetUserDetails
 
 function transaction_error(tx, error) {
-    console.log('Error Message');
-    console.log(error);
+ 
     alert("Database Error: " + error);
 }
 
@@ -170,12 +169,14 @@ function notification(title,id, msg) {
         });*/
 		// var err=JSON.stringify(notification, null, 4);        
          var chatId=notification.id;
-		var activePage = $.mobile.activePage.attr('id')
-if(activepage != 'chatList')
-{ 
-        var scope = angular.element(document.querySelector('body')).scope();
-		scope.getChatList(chatId);
-}  
+		var activePage = $.mobile.activePage.attr('id');
+		
+		if(activepage != 'chatList')
+		{ 
+	alert('PAge not active');
+				var scope = angular.element(document.querySelector('body')).scope();
+				scope.getChatList(chatId);
+		}  
 		
     });
 } //Close notification
