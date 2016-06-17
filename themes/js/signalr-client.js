@@ -105,7 +105,7 @@ function registerClientMethods(chat) {
 
 		});
 
-
+       // console.log(message);
 	
 		if ($('.sendsignalr').attr('rel') === chatId.trim()) {
 
