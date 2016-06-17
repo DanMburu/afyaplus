@@ -154,7 +154,7 @@ function notification(title,id, msg) {
     _3seconds_from_now = new Date(now + 1 * 10);
     _1seconds_from_now = new Date(now + 1 * 10);
     cordova.plugins.notification.local.schedule({
-        id: 10,
+        id: id,
         title: title,
         text: msg,
         at: _1seconds_from_now,
@@ -174,8 +174,8 @@ function notification(title,id, msg) {
               alert(err);	
         var err=JSON.stringify(notification.data[0].chatId, null, 4);
               alert(err);
-var chatId=notification.data[0].chatId;
-alert(chatId);		  
+var chatId=notification.id;
+		  
 		var scope = angular.element(document.querySelector('body')).scope();
 		scope.getChatList(chatId);
     });
@@ -185,7 +185,7 @@ function notificationAppointment(title,id, msg) {
     var now = new Date().getTime();
     _1seconds_from_now = new Date(now + 1 * 10);
     cordova.plugins.notification.local.schedule({
-        id: 10,
+        id: id,
         title: title,
         text: msg,
         at: _1seconds_from_now,
