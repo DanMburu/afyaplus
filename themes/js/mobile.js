@@ -168,13 +168,8 @@ function notification(title,id, msg) {
             type: "get",
             transition: "flip"
         });*/
-		 var err=JSON.stringify(notification, null, 4);
-              alert(err);
-		 var err=JSON.stringify(notification.data, null, 4);
-              alert(err);	
-        var err=JSON.stringify(notification.data[0].chatId, null, 4);
-              alert(err);
-var chatId=notification.id;
+		 var err=JSON.stringify(notification, null, 4);        
+         var chatId=notification.id;
 		  
 		var scope = angular.element(document.querySelector('body')).scope();
 		scope.getChatList(chatId);

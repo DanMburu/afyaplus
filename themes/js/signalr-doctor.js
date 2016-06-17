@@ -116,6 +116,8 @@ function registerClientMethods(chat) {
 		// If inner page was open
 		// alert($('.sendsignalr').attr('rel') +'-'+ chatId.trim());
 		if ($('.sendsignalr').attr('rel') === chatId.trim()) {
+			scope.chatList.push(message);
+			/*
 			var $cont = $('#chatcont');
 			var data = '<span class="chat-inner-date">' + message.DateSent + '</span>';
 			data += '<div class="talk-bubble tri-right round '+message.CssClass+'">';
@@ -124,6 +126,7 @@ function registerClientMethods(chat) {
 			data += '</div>';
 			data += '</div>';
 			$cont.append(data);
+			*/
 		}
 		try {
 		
