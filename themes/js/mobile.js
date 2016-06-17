@@ -168,8 +168,8 @@ function notification(title,id, msg) {
 function notificationOuter(title,id, msg) {
 
     var now = new Date().getTime();
-    _3seconds_from_now = new Date(now + 1 * 10);
-    _1seconds_from_now = new Date(now + 1 * 10);
+   
+    _1seconds_from_now = new Date(now + 1 * 1000);
     cordova.plugins.notification.local.schedule({
         id: id,
         title: title,
@@ -191,8 +191,8 @@ function notificationOuter(title,id, msg) {
 function notificationInner(title,id, msg) {
 
     var now = new Date().getTime();
-    _3seconds_from_now = new Date(now + 1 * 10);
-    _1seconds_from_now = new Date(now + 1 * 10);
+ 
+    _1seconds_from_now = new Date(now + 1 * 1000);
     cordova.plugins.notification.local.schedule({
         id: id,
         title: title,
@@ -209,7 +209,7 @@ function notificationInner(title,id, msg) {
 }
 function notificationAppointment(title,id, msg) {
     var now = new Date().getTime();
-    _1seconds_from_now = new Date(now + 1 * 10);
+    _1seconds_from_now = new Date(now + 1 * 1000);
     cordova.plugins.notification.local.schedule({
         id: id,
         title: title,
