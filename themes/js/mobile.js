@@ -164,7 +164,8 @@ function notification(title,id, msg) {
     cordova.plugins.notification.local.on("click", function (notification) {
              
          var chatId=notification.id;
-		var activePage = $.mobile.activePage.attr('id');
+		 try{
+			var activePage = $.mobile.activePage.attr('id');
 		 alert(activepage);
 		if(activepage != 'chatList')
 		{ 
@@ -173,7 +174,11 @@ function notification(title,id, msg) {
 				scope.getChatList(chatId);
 		} else{
 			alert('else');
-		} 
+		}  
+		 }catch(err){
+			alert(err); 
+		 }
+		
 		
     });
 } //Close notification
