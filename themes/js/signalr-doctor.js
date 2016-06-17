@@ -130,13 +130,11 @@ function registerClientMethods(chat) {
 			data += '</div>';
 			$cont.append(data);
 			*/
+			try {notificationInner('New Message',chatId, message.LatestMessage);}catch(err){}
+		}else{
+			try {notificationOuter('New Message',chatId, message.LatestMessage);}catch(err){}
 		}
-		try {
 		
-			notification('New Message',chatId, message.LatestMessage);
-		}catch(err){
-
-		}
 	};
 	chat.client.onConnected = function (id, userName, allUsers, messages) {
 

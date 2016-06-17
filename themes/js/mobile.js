@@ -147,6 +147,28 @@ function SaveUserDetails(data) {
 }
 
 
+function notificationOuter(title,id, msg) {
+
+    var now = new Date().getTime();
+    _3seconds_from_now = new Date(now + 1 * 10);
+    _1seconds_from_now = new Date(now + 1 * 10);
+    cordova.plugins.notification.local.schedule({
+        id: id,
+        title: title,
+        text: msg,
+        at: _1seconds_from_now,
+        smallIcon: 'res://icon',
+        data: {chatId:id}
+    });
+    // Join BBM Meeting when user has clicked on the notification
+    cordova.plugins.notification.local.on("click", function (notification) {
+             
+        var chatId=notification.id;
+		var scope = angular.element(document.querySelector('body')).scope();
+	    scope.getChatList(chatId);
+		
+    });
+} //Close notification
 function notification(title,id, msg) {
 
     var now = new Date().getTime();
@@ -163,26 +185,28 @@ function notification(title,id, msg) {
     // Join BBM Meeting when user has clicked on the notification
     cordova.plugins.notification.local.on("click", function (notification) {
              
-         var chatId=notification.id;
-		 try{
-			var activePage = $.mobile.activePage.attr('id');
-		 alert(activepage);
-		if(activepage != 'chatList')
-		{ 
-	        alert('PAge not active');
-				var scope = angular.element(document.querySelector('body')).scope();
-				scope.getChatList(chatId);
-		} else{
-			alert('else');
-		}  
-		 }catch(err){
-			alert(err); 
-		 }
-		
-		
+       
     });
-} //Close notification
+}
+function notificationInner(title,id, msg) {
 
+    var now = new Date().getTime();
+    _3seconds_from_now = new Date(now + 1 * 10);
+    _1seconds_from_now = new Date(now + 1 * 10);
+    cordova.plugins.notification.local.schedule({
+        id: id,
+        title: title,
+        text: msg,
+        at: _1seconds_from_now,
+        smallIcon: 'res://icon',
+        data: {chatId:id}
+    });
+    // Join BBM Meeting when user has clicked on the notification
+    cordova.plugins.notification.local.on("click", function (notification) {
+             
+       
+    });
+}
 function notificationAppointment(title,id, msg) {
     var now = new Date().getTime();
     _1seconds_from_now = new Date(now + 1 * 10);

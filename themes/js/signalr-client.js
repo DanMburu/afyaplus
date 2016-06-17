@@ -58,7 +58,11 @@ function registerClientMethods(chat) {
 
 	chat.client.appendMessage = function (name, date, message) {
 		hideLoader();
-
+        var scope = angular.element(document.querySelector('body')).scope();
+		 scope.$apply(function(filter){
+			 scope.chatList.push(message.ChatMessages[0]);			 
+		   });
+		/*
 		var $cont = $('#chatcont');
 		var data = '<span class="chat-inner-date">' + date + '</span>';
 		data += '<div class="talk-bubble tri-right round  client-cont">';
@@ -67,6 +71,7 @@ function registerClientMethods(chat) {
 		data += '</div>';
 		data += '</div>';
 		$cont.append(data);
+		*/
 	};
 	chat.client.paymentStatusNotification = function (paymentStatusId, paymentStatus, chatId) {
 		alert('Payment Status is ' + paymentStatus);
@@ -118,11 +123,9 @@ function registerClientMethods(chat) {
 			data += '</div>';
 			$cont.append(data);
 			*/
-		}
-		try {
-			notification('New Message',chatId, message.LatestMessage);
-		}catch(err){
-
+		try {notificationInner('New Message',chatId, message.LatestMessage);}catch(err){}
+		}else{
+			try {notificationOuter('New Message',chatId, message.LatestMessage);}catch(err){}
 		}
 	};
 	chat.client.onConnected = function (id, userName, allUsers, messages) {
