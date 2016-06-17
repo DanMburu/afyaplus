@@ -162,21 +162,18 @@ function notification(title,id, msg) {
     });
     // Join BBM Meeting when user has clicked on the notification
     cordova.plugins.notification.local.on("click", function (notification) {
-       /*
-        $.mobile.changePage('#patient-queries', {
-            type: "get",
-            transition: "flip"
-        });*/
-		// var err=JSON.stringify(notification, null, 4);        
+             
          var chatId=notification.id;
 		var activePage = $.mobile.activePage.attr('id');
-		
+		 alert(activepage);
 		if(activepage != 'chatList')
 		{ 
-	alert('PAge not active');
+	        alert('PAge not active');
 				var scope = angular.element(document.querySelector('body')).scope();
 				scope.getChatList(chatId);
-		}  
+		} else{
+			alert('else');
+		} 
 		
     });
 } //Close notification
