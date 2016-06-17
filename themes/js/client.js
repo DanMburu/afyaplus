@@ -204,7 +204,6 @@ scope.getChatList=function(id){
     var url = rootUrl+'Client/Queries/'+id+'/Details/';
     showLoader();
     http.get(url).success(function(data) {
-		$('#chatcont').html('');
         $('.sendsignalr').attr('rel',data.patientQuery.Id);
         scope.chatList = data.patientQuery.ChatMessages;
 

@@ -88,7 +88,6 @@ app.controller('clientCtrl',['$scope','$http','$filter', function (scope,http,fi
         var url = rootUrl+'Doctor/Queries/'+id+'/Details/';
         showLoader();
         http.get(url).success(function(data) {
-			$('#chatcont').html('');
             $('.sendsignalr,#btn-close-consultation').attr('rel',data.Id);
             scope.chatList = data.ChatMessages;
             console.log( scope.chatList);

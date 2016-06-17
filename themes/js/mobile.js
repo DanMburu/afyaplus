@@ -168,11 +168,15 @@ function notification(title,id, msg) {
             type: "get",
             transition: "flip"
         });*/
-		 var err=JSON.stringify(notification, null, 4);        
+		// var err=JSON.stringify(notification, null, 4);        
          var chatId=notification.id;
-		  
-		var scope = angular.element(document.querySelector('body')).scope();
+		var activePage = $.mobile.activePage.attr('id')
+if(activepage != 'chatList')
+{ 
+        var scope = angular.element(document.querySelector('body')).scope();
 		scope.getChatList(chatId);
+}  
+		
     });
 } //Close notification
 
@@ -187,11 +191,7 @@ function notificationAppointment(title,id, msg) {
         smallIcon: 'res://icon',
         data: { chatId:id}
     });
-    cordova.plugins.notification.local.on("click", function (notification) {
-       /* $.mobile.changePage('#my-appointments', {
-            type: "get",
-            transition: "flip"
-        });*/
+    cordova.plugins.notification.local.on("click", function (notification) {      
 		var scope = angular.element(document.querySelector('body')).scope();
 		scope.getAppointmentDetails(notification.data.chatId);
     });
