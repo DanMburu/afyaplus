@@ -58,16 +58,11 @@
 
         <li><a href="#landing" id="lnklanding" data-transition="pop" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Home</a>
         </li>
-        <li><a href="#" class="lnkhospitalsearch ui-btn ui-btn-icon-right ui-icon-carat-r">Search Hospitals</a></li>
-        <li><a href="#" class="lnkMyQuestions ui-btn ui-btn-icon-right ui-icon-carat-r">My Questions</a></li>
-        <li><a href="#" data-transition="slide" class="lnkAskQuiz ui-btn ui-btn-icon-right ui-icon-carat-r">Ask a
-            Quiz</a></li>
-        <li><a href="#" data-transition="slide" class="lnkfirstaid ui-btn ui-btn-icon-right ui-icon-carat-r">First Aid
-            Tips</a></li>
-        <li class="ui-last-child"><a href="#" class="lnkMyAccount ui-btn ui-btn-icon-right ui-icon-carat-r">My
-            Account</a></li>
+        <li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="getPatientQueries()" >Patient Queries</a></li>
+        <li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r"  ng-click="getMyAppointments()" >Appointments</a></li>
+        <li><a href="#" data-transition="slide" class="ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="getClinic()" >My Clinics</a></li>
+        <li><a href="#" data-transition="slide" class="ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="getProfile()" >My Profile</a></li>
         <li><a class="lnkLanding ui-btn ui-btn-icon-right ui-icon-carat-r"  href="#main-landing"  data-transition="slide" >Landing Page</a></li>
-
         <li><a class="lnkLogout ui-btn ui-btn-icon-right ui-icon-carat-r"  href="#">Log out</a></li>
     </ul>
 </div>
@@ -337,6 +332,7 @@
             <img src="images/logo.png" width="254" height="56" alt=""/>
         </div>
         <div id="appointments-list-cont" data-role="content">
+		<h2 class="page-title">My Clinics</h2>
             <ul class="appointments" data-role="listview">
 
                 <li ng-repeat="clinic in clinics">

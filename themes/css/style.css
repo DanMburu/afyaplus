@@ -645,4 +645,10 @@ p.empty-results {
   width: 100%;
   z-index: 1000;
 }
-
+.page-title {
+  color: #ea920d;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 0;
+  padding-bottom: 15px;
+}
