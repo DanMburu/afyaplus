@@ -94,6 +94,13 @@ function registerClientMethods(chat) {
 
 		}
 	};
+	chat.client.appointmentStatus = function (appointment) {
+		try {
+			notificationAppointment('Appointment '+appointment.AppointmentStatus,appointment.Id, appointment.Hospital.Name+' - '+ appointment.Branch.Name);
+		}catch(err){
+
+		}
+	};
 	chat.client.questionFeedback = function () {
 		// alert('server');
 		ProcessMessageList();
