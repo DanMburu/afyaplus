@@ -662,3 +662,9 @@ p.empty-results {
 #exam-preparation-details ul {
 	padding-left: 25px;
 }
+.appointment-status.ng-binding {
+	clear: left;
+	float: left;
+	font-weight: bold;
+	padding-top: 5px;
+}
