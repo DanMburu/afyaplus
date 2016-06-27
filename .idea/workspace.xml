@@ -169,11 +169,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mobile.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mobile.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/themes/js/mobile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="207" column="32" selection-start-line="207" selection-start-column="9" selection-end-line="207" selection-end-column="32" />
+            <state relative-caret-position="449">
+              <caret line="204" column="7" selection-start-line="204" selection-start-column="7" selection-end-line="204" selection-end-column="7" />
               <folding>
                 <element signature="n#!!block;n#onSuccess#0" expanded="false" />
                 <element signature="n#!!block;n#onError#0" expanded="false" />
@@ -188,27 +188,24 @@
                 <element signature="e#3657#3854#0" expanded="false" />
                 <element signature="n#!!block;n#notification#0" expanded="false" />
                 <element signature="e#4087#4242#0" expanded="false" />
-                <element signature="e#4386#4415#0" expanded="false" />
-                <element signature="n#!!block;n#notificationOuter#0" expanded="false" />
                 <element signature="e#4604#4759#0" expanded="false" />
-                <element signature="e#4903#5066#0" expanded="false" />
                 <element signature="n#!!block;n#SetLocationNotification#0" expanded="false" />
-                <element signature="e#6271#6689#0" expanded="false" />
-                <element signature="e#6371#6546#0" expanded="false" />
-                <element signature="e#6898#7201#0" expanded="false" />
-                <element signature="e#6969#7196#0" expanded="false" />
-                <element signature="e#7002#7071#0" expanded="false" />
-                <element signature="e#7120#7187#0" expanded="false" />
-                <element signature="e#7258#7818#0" expanded="false" />
-                <element signature="e#7396#7666#0" expanded="false" />
-                <element signature="e#7513#7575#0" expanded="false" />
-                <element signature="e#7615#7652#0" expanded="false" />
-                <element signature="e#7676#7816#0" expanded="false" />
-                <element signature="e#7709#7802#0" expanded="false" />
+                <element signature="e#6275#6693#0" expanded="false" />
+                <element signature="e#6375#6550#0" expanded="false" />
+                <element signature="e#6902#7205#0" expanded="false" />
+                <element signature="e#6973#7200#0" expanded="false" />
+                <element signature="e#7006#7075#0" expanded="false" />
+                <element signature="e#7124#7191#0" expanded="false" />
+                <element signature="e#7262#7822#0" expanded="false" />
+                <element signature="e#7400#7670#0" expanded="false" />
+                <element signature="e#7517#7579#0" expanded="false" />
+                <element signature="e#7619#7656#0" expanded="false" />
+                <element signature="e#7680#7820#0" expanded="false" />
+                <element signature="e#7713#7806#0" expanded="false" />
                 <element signature="n#!!block;n#landing#0" expanded="false" />
-                <element signature="e#7948#8030#0" expanded="false" />
-                <element signature="e#8040#8124#0" expanded="false" />
-                <marker date="1467004814786" expanded="true" signature="2514:2536" ph="SELECT * FRO... fd_users" />
+                <element signature="e#7952#8034#0" expanded="false" />
+                <element signature="e#8044#8128#0" expanded="false" />
+                <marker date="1467027323580" expanded="true" signature="2514:2536" ph="SELECT * FRO... fd_users" />
               </folding>
             </state>
           </provider>
@@ -224,11 +221,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="signalr-client.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="signalr-client.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/js/signalr-client.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="448">
-              <caret line="138" column="80" selection-start-line="138" selection-start-column="80" selection-end-line="138" selection-end-column="80" />
+              <caret line="138" column="35" selection-start-line="138" selection-start-column="12" selection-end-line="138" selection-end-column="35" />
               <folding>
                 <element signature="e#1275#1572#0" expanded="false" />
                 <element signature="e#1614#1636#0" expanded="false" />
@@ -891,13 +888,13 @@
       <list>
         <option value="$PROJECT_DIR$/themes/js/common.js" />
         <option value="$PROJECT_DIR$/themes/js/doctor.js" />
-        <option value="$PROJECT_DIR$/themes/js/mobile.js" />
         <option value="$PROJECT_DIR$/themes/js/client.js" />
         <option value="$PROJECT_DIR$/client.html" />
         <option value="$PROJECT_DIR$/themes/css/style.css" />
         <option value="$PROJECT_DIR$/doctor.html" />
         <option value="$PROJECT_DIR$/themes/js/signalr-doctor.js" />
         <option value="$PROJECT_DIR$/themes/js/signalr-client.js" />
+        <option value="$PROJECT_DIR$/themes/js/mobile.js" />
       </list>
     </option>
   </component>
@@ -1066,12 +1063,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1464072110108</updated>
-      <workItem from="1467003322227" duration="8869000" />
+      <workItem from="1467003322227" duration="9591000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8869000" />
+    <option name="totallyTimeSpent" value="9591000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -2296,49 +2293,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/js/mobile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="207" column="32" selection-start-line="207" selection-start-column="9" selection-end-line="207" selection-end-column="32" />
-          <folding>
-            <element signature="n#!!block;n#onSuccess#0" expanded="false" />
-            <element signature="n#!!block;n#onError#0" expanded="false" />
-            <element signature="e#1139#1251#0" expanded="false" />
-            <element signature="n#!!block;n#onSuccess2#0" expanded="false" />
-            <element signature="n#!!block;n#populateDB#0" expanded="false" />
-            <element signature="e#1892#2295#0" expanded="false" />
-            <element signature="e#2322#2395#0" expanded="false" />
-            <element signature="n#!!block;n#SaveUserDetails#0" expanded="false" />
-            <element signature="e#3325#3327#0" expanded="false" />
-            <element signature="e#3530#3630#0" expanded="false" />
-            <element signature="e#3657#3854#0" expanded="false" />
-            <element signature="n#!!block;n#notification#0" expanded="false" />
-            <element signature="e#4087#4242#0" expanded="false" />
-            <element signature="e#4386#4415#0" expanded="false" />
-            <element signature="n#!!block;n#notificationOuter#0" expanded="false" />
-            <element signature="e#4604#4759#0" expanded="false" />
-            <element signature="e#4903#5066#0" expanded="false" />
-            <element signature="n#!!block;n#SetLocationNotification#0" expanded="false" />
-            <element signature="e#6271#6689#0" expanded="false" />
-            <element signature="e#6371#6546#0" expanded="false" />
-            <element signature="e#6898#7201#0" expanded="false" />
-            <element signature="e#6969#7196#0" expanded="false" />
-            <element signature="e#7002#7071#0" expanded="false" />
-            <element signature="e#7120#7187#0" expanded="false" />
-            <element signature="e#7258#7818#0" expanded="false" />
-            <element signature="e#7396#7666#0" expanded="false" />
-            <element signature="e#7513#7575#0" expanded="false" />
-            <element signature="e#7615#7652#0" expanded="false" />
-            <element signature="e#7676#7816#0" expanded="false" />
-            <element signature="e#7709#7802#0" expanded="false" />
-            <element signature="n#!!block;n#landing#0" expanded="false" />
-            <element signature="e#7948#8030#0" expanded="false" />
-            <element signature="e#8040#8124#0" expanded="false" />
-            <marker date="1467004814786" expanded="true" signature="2514:2536" ph="SELECT * FRO... fd_users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/doctor.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="241">
@@ -2923,6 +2877,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/themes/js/signalr-doctor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="43" column="1" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
+          <folding>
+            <element signature="e#1203#1500#0" expanded="false" />
+            <element signature="e#1542#1564#0" expanded="false" />
+            <element signature="e#1615#2116#0" expanded="false" />
+            <element signature="e#1737#1799#0" expanded="false" />
+            <element signature="e#1804#2113#0" expanded="false" />
+            <element signature="e#2209#2408#0" expanded="false" />
+            <element signature="e#2294#2405#0" expanded="false" />
+            <element signature="e#2472#2810#0" expanded="false" />
+            <element signature="e#3093#3143#0" expanded="false" />
+            <element signature="e#3185#3258#0" expanded="false" />
+            <element signature="e#3316#4476#0" expanded="false" />
+            <element signature="e#3455#3667#0" expanded="false" />
+            <element signature="e#3672#3697#0" expanded="false" />
+            <element signature="e#3816#4369#0" expanded="false" />
+            <element signature="e#3856#3918#0" expanded="false" />
+            <element signature="e#3924#4273#0" expanded="false" />
+            <element signature="e#4373#4470#0" expanded="false" />
+            <element signature="e#4549#4573#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/js/signalr-client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="138" column="35" selection-start-line="138" selection-start-column="12" selection-end-line="138" selection-end-column="35" />
+          <folding>
+            <element signature="e#1275#1572#0" expanded="false" />
+            <element signature="e#1614#1636#0" expanded="false" />
+            <element signature="e#1687#2190#0" expanded="false" />
+            <element signature="e#1814#1876#0" expanded="false" />
+            <element signature="e#1881#2187#0" expanded="false" />
+            <element signature="e#2283#2474#0" expanded="false" />
+            <element signature="e#2360#2471#0" expanded="false" />
+            <element signature="e#2521#2571#0" expanded="false" />
+            <element signature="e#2613#2654#0" expanded="false" />
+            <element signature="e#2712#3791#0" expanded="false" />
+            <element signature="e#2846#3042#0" expanded="false" />
+            <element signature="e#3135#3687#0" expanded="false" />
+            <element signature="e#3171#3233#0" expanded="false" />
+            <element signature="e#3243#3592#0" expanded="false" />
+            <element signature="e#3691#3788#0" expanded="false" />
+            <element signature="e#3864#3888#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/themes/js/client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="326">
@@ -3068,54 +3074,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/js/signalr-doctor.js">
+    <entry file="file://$PROJECT_DIR$/themes/js/mobile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="43" column="1" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
+        <state relative-caret-position="449">
+          <caret line="204" column="7" selection-start-line="204" selection-start-column="7" selection-end-line="204" selection-end-column="7" />
           <folding>
-            <element signature="e#1203#1500#0" expanded="false" />
-            <element signature="e#1542#1564#0" expanded="false" />
-            <element signature="e#1615#2116#0" expanded="false" />
-            <element signature="e#1737#1799#0" expanded="false" />
-            <element signature="e#1804#2113#0" expanded="false" />
-            <element signature="e#2209#2408#0" expanded="false" />
-            <element signature="e#2294#2405#0" expanded="false" />
-            <element signature="e#2472#2810#0" expanded="false" />
-            <element signature="e#3093#3143#0" expanded="false" />
-            <element signature="e#3185#3258#0" expanded="false" />
-            <element signature="e#3316#4476#0" expanded="false" />
-            <element signature="e#3455#3667#0" expanded="false" />
-            <element signature="e#3672#3697#0" expanded="false" />
-            <element signature="e#3816#4369#0" expanded="false" />
-            <element signature="e#3856#3918#0" expanded="false" />
-            <element signature="e#3924#4273#0" expanded="false" />
-            <element signature="e#4373#4470#0" expanded="false" />
-            <element signature="e#4549#4573#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/js/signalr-client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="138" column="80" selection-start-line="138" selection-start-column="80" selection-end-line="138" selection-end-column="80" />
-          <folding>
-            <element signature="e#1275#1572#0" expanded="false" />
-            <element signature="e#1614#1636#0" expanded="false" />
-            <element signature="e#1687#2190#0" expanded="false" />
-            <element signature="e#1814#1876#0" expanded="false" />
-            <element signature="e#1881#2187#0" expanded="false" />
-            <element signature="e#2283#2474#0" expanded="false" />
-            <element signature="e#2360#2471#0" expanded="false" />
-            <element signature="e#2521#2571#0" expanded="false" />
-            <element signature="e#2613#2654#0" expanded="false" />
-            <element signature="e#2712#3791#0" expanded="false" />
-            <element signature="e#2846#3042#0" expanded="false" />
-            <element signature="e#3135#3687#0" expanded="false" />
-            <element signature="e#3171#3233#0" expanded="false" />
-            <element signature="e#3243#3592#0" expanded="false" />
-            <element signature="e#3691#3788#0" expanded="false" />
-            <element signature="e#3864#3888#0" expanded="false" />
+            <element signature="n#!!block;n#onSuccess#0" expanded="false" />
+            <element signature="n#!!block;n#onError#0" expanded="false" />
+            <element signature="e#1139#1251#0" expanded="false" />
+            <element signature="n#!!block;n#onSuccess2#0" expanded="false" />
+            <element signature="n#!!block;n#populateDB#0" expanded="false" />
+            <element signature="e#1892#2295#0" expanded="false" />
+            <element signature="e#2322#2395#0" expanded="false" />
+            <element signature="n#!!block;n#SaveUserDetails#0" expanded="false" />
+            <element signature="e#3325#3327#0" expanded="false" />
+            <element signature="e#3530#3630#0" expanded="false" />
+            <element signature="e#3657#3854#0" expanded="false" />
+            <element signature="n#!!block;n#notification#0" expanded="false" />
+            <element signature="e#4087#4242#0" expanded="false" />
+            <element signature="e#4604#4759#0" expanded="false" />
+            <element signature="n#!!block;n#SetLocationNotification#0" expanded="false" />
+            <element signature="e#6275#6693#0" expanded="false" />
+            <element signature="e#6375#6550#0" expanded="false" />
+            <element signature="e#6902#7205#0" expanded="false" />
+            <element signature="e#6973#7200#0" expanded="false" />
+            <element signature="e#7006#7075#0" expanded="false" />
+            <element signature="e#7124#7191#0" expanded="false" />
+            <element signature="e#7262#7822#0" expanded="false" />
+            <element signature="e#7400#7670#0" expanded="false" />
+            <element signature="e#7517#7579#0" expanded="false" />
+            <element signature="e#7619#7656#0" expanded="false" />
+            <element signature="e#7680#7820#0" expanded="false" />
+            <element signature="e#7713#7806#0" expanded="false" />
+            <element signature="n#!!block;n#landing#0" expanded="false" />
+            <element signature="e#7952#8034#0" expanded="false" />
+            <element signature="e#8044#8128#0" expanded="false" />
+            <marker date="1467027323580" expanded="true" signature="2514:2536" ph="SELECT * FRO... fd_users" />
           </folding>
         </state>
       </provider>

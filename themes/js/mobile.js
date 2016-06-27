@@ -216,9 +216,10 @@ function notificationAppointment(title,id, msg) {
         smallIcon: 'res://icon',
         data: { chatId:id}
     });
-    cordova.plugins.notification.local.on("click", function (notification) {      
+    cordova.plugins.notification.local.on("click", function (notification) {
+        var id=notification.id;
 		var scope = angular.element(document.querySelector('body')).scope();
-		scope.getAppointmentDetails(notification.data.chatId);
+		scope.getAppointmentDetails(id);
     });
 } //Close notification
 
