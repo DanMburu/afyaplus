@@ -652,3 +652,13 @@ p.empty-results {
   margin-top: 0;
   padding-bottom: 15px;
 }
+#exam-categories-cont {
+	border: medium none;
+	float: left;
+	margin-bottom: 0;
+	width: 100%;
+}
+#main-panel h2{font-size: 20px}
+#exam-preparation-details ul {
+	padding-left: 25px;
+}

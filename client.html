@@ -61,6 +61,7 @@
         <li><a class=" ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="myQuestions()" href="#">My Questions</a></li>
         <li><a class="lnkAskQuiz ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="askQuiz()" href="#">Ask a Quiz</a>
         </li>
+        <li><a class="lnkfirstaid ui-btn ui-btn-icon-right ui-icon-carat-r" data-transition="slide" href="#exam-preparation">Exam Preparations</a></li>
         <li><a class="lnkfirstaid ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="getFirstAidList()" href="#">First
             Aid Tips</a></li>
         <li><a class="lnkMyAccount ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="getProfile()" href="#">My
@@ -135,6 +136,7 @@
                 <li><a class="lnkMyAppointments" ng-click="getMyAppointments()" href="#">My Appointments</a></li>
                 <li><a class="lnkMyQuestions--" ng-click="myQuestions()" href="#">My Questions</a></li>
                 <li><a class="lnkAskQuiz" ng-click="askQuiz()" href="#">Ask a Quiz</a></li>
+                <li><a class="exam-preparation" data-transition="slide" href="#exam-preparation">Exam Preparations</a></li>
                 <li><a class="lnkfirstaid" ng-click="getFirstAidList()" href="#">First Aid Tips</a></li>
                 <li><a class="lnkMyAccount" ng-click="getProfile()" href="#">My Profile</a></li>
                 <li><a class="lnkLogout ui-btn ui-btn-icon-right ui-icon-carat-r"  href="#">Log out</a></li>
@@ -1492,6 +1494,52 @@
 
     </div>
     <!--Close Page-->
+    <div data-role="page" id="exam-preparation" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div id="hospital-list-cont" data-role="content">
+            <div id="exam-categories-cont" data-role="fieldcontain">
+                <label for="textinput6">Select Category:</label>
+
+                <select id="ddExamCategories" name="ddExamCategories" class="ddExamCategories" ng-model="ddExamCategories">
+                    <option value="0" ng-selected="1" selected="selected">Select</option>
+                    <option ng-repeat="category in examCategories" value="{{category.Id}}">{{category.Name}}</option>
+                </select>
+            </div>
+            <ul class="firstaid-list" data-role="listview">
+                <li ng-repeat="item in examPreparations| filter: { ExamPreparationCategoryId : ddExamCategories }">
+                    <a ng-click="getExamPreparation(item.Id)"
+                                                        class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="#">{{item.Title}}</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <!--Close Page-->
+    <div data-role="page" id="exam-preparation-details" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div id="hospital-list-cont" data-role="content">
+
+            <div class="detailscont" ng-repeat="item in examPreparations| filter: { Id : examId }:true">
+
+                <h2>{{item.Title}}</h2>
+
+                <div ng-bind-html="item.Description" class="paratext"></div>
+
+            </div>
+        </div>
+
+    </div>
+    <!--Close Page-->
+
+
     <div data-role="page" id="profile" data-theme="a">
         <div data-role="header">
             <a href="#" data-role="none"
@@ -1596,7 +1644,6 @@
 
         </div>
     </div>
-
     <div data-role="page" id="product-details" data-theme="a">
         <div data-role="header">
             <a href="#" data-role="none"
@@ -1654,11 +1701,6 @@
 
         </div>
     </div>
-
-
-
-
-
     <div id="customPreloader" class="ui-loader ui-corner-all ui-body-a ui-loader-default"><span
             class="ui-icon-loading"></span>
 

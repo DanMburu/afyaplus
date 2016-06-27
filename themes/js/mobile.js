@@ -99,8 +99,6 @@ function GetUserDetails() {
         transaction.executeSql("SELECT * FROM fd_users", [],
             function (tx, result) { // On Success
                 var len = result.rows.length;
-
-
                 var row = result.rows.item(0);
                 $('#UserId').val(row.UserId);
                 $.mobile.changePage( '#landing', {
