@@ -276,7 +276,7 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
             scope.selectedBookBranch = branchId;
             url = rootUrl + 'Appointments/Init/' + $('#UserId').val() + '/' + id + '/';
         }
-
+        
         showLoader();
         http.get(url).success(function (data) {
 
@@ -321,6 +321,8 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
             if (data.PaymentStatusId === 1) {
                 $('.btnPayAppointmentNow').show();
                 $('.btnPayAppointmentNow').attr('href', data.paymentUrl);
+            }else{
+                $('.btnPayAppointmentNow').hide();
             }
 
             scope.show = false;
