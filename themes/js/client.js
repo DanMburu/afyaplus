@@ -465,10 +465,10 @@ $(function () {
 
         $('#ddBookHospitalId').val(scope.selectedHospital);
         $('#ddBookAppointmentBranches').val(scope.selectedBookBranch);
+        $('#AppointmentTimeSlotId,#ddBookDoctorId,#bookSpecialityId').val("0");
 
-
-        $('#ddAppointmentPaymentMode,#AppointmentTimeSlotId,#ddBookHospitalId,#ddBookAppointmentBranches').selectmenu(); // initialize
-        $('#ddAppointmentPaymentMode,#AppointmentTimeSlotId,#ddBookHospitalId,#ddBookAppointmentBranches').selectmenu('refresh');
+        $('#ddAppointmentPaymentMode,#AppointmentTimeSlotId,#ddBookHospitalId,#ddBookAppointmentBranches,#ddBookDoctorId,#bookSpecialityId').selectmenu(); // initialize
+        $('#ddAppointmentPaymentMode,#AppointmentTimeSlotId,#ddBookHospitalId,#ddBookAppointmentBranches,#ddBookDoctorId,#bookSpecialityId').selectmenu('refresh');
 
         $('#appointmentPaymentMode').on("change", function (e) {
 
@@ -627,12 +627,15 @@ $(function () {
         }
         $('#frmbook :input:not(:button)').each(function (index, element) {
             if (element.value === '') {
-
                 allFilled = false;
             }
         });
         if ($('#ddAppointmentPaymentMode').val() == '1') {
             $('#membershipno').val('');
+        }
+        if ($('#AppointmentTimeSlotId').val() == '0') {
+            alert('Select one slot from Available Slots');
+            allFilled = false;
         }
 
         if (allFilled) {

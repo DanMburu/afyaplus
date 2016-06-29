@@ -1130,7 +1130,7 @@
                 <div data-role="fieldcontain">
                     <label for="textinput6">Specialist:</label>
 
-                    <select name="SpecialityId" ng-change="getDoctorsBooking()" ng-model="selectedSpeciality">
+                    <select id="bookSpecialityId" name="SpecialityId" ng-change="getDoctorsBooking()" ng-model="selectedSpeciality">
                         <option value="0">Select</option>
                         <option ng-repeat="speciality in hospitalSpecialities" value="{{speciality.Id}}">{{speciality
                             .Name}}
@@ -1163,8 +1163,7 @@
 
                 <div data-role="fieldcontain">
                     <label>Available Slots:</label>
-                    <select id="AppointmentTimeSlotId" name="AppointmentTimeSlotId" class="TimeBooked"
-                            ng-model="TimeBooked">
+                    <select id="AppointmentTimeSlotId" name="AppointmentTimeSlotId" class="TimeBooked" ng-model="TimeBooked">
                         <option value="0" ng-selected="1" selected="selected">Select</option>
                         <option ng-repeat="slot in availableSlots" ng-disabled="slot.Disabled" value="{{slot.Value}}">{{slot.Text}}</option>
                     </select>
