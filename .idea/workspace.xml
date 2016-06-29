@@ -22,7 +22,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="client.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="client.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/js/client.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="476">
@@ -131,6 +131,16 @@
                 <element signature="e#26968#27134#0" expanded="false" />
                 <element signature="n#!!block;n#linker#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/themes/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="671" column="4" selection-start-line="671" selection-start-column="4" selection-end-line="671" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -579,13 +589,13 @@
       <list>
         <option value="$PROJECT_DIR$/themes/js/common.js" />
         <option value="$PROJECT_DIR$/themes/js/doctor.js" />
-        <option value="$PROJECT_DIR$/themes/css/style.css" />
         <option value="$PROJECT_DIR$/doctor.html" />
         <option value="$PROJECT_DIR$/themes/js/signalr-doctor.js" />
         <option value="$PROJECT_DIR$/themes/js/signalr-client.js" />
         <option value="$PROJECT_DIR$/themes/js/mobile.js" />
         <option value="$PROJECT_DIR$/client.html" />
         <option value="$PROJECT_DIR$/themes/js/client.js" />
+        <option value="$PROJECT_DIR$/themes/css/style.css" />
       </list>
     </option>
   </component>
@@ -756,12 +766,12 @@
       <updated>1464072110108</updated>
       <workItem from="1467003322227" duration="10792000" />
       <workItem from="1467094503786" duration="2151000" />
-      <workItem from="1467180191354" duration="1460000" />
+      <workItem from="1467180191354" duration="2068000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14403000" />
+    <option name="totallyTimeSpent" value="15011000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -3057,14 +3067,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13380">
-          <caret line="669" column="1" selection-start-line="669" selection-start-column="1" selection-end-line="669" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/doctor.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="740">
@@ -3674,6 +3676,14 @@
             <element signature="e#26968#27134#0" expanded="false" />
             <element signature="n#!!block;n#linker#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="671" column="4" selection-start-line="671" selection-start-column="4" selection-end-line="671" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
