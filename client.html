@@ -276,8 +276,7 @@
 
                     <select name="DoctorId">
                         <option value="0">Select</option>
-                        <option ng-repeat="doctor in doctors" value="{{doctor.Id}}">{{doctor
-                            .FirstName +' '+doctor.OtherNames}}
+                        <option ng-repeat="doctor in doctors" value="{{doctor.Id}}">{{doctor.FirstName +' '+doctor.OtherNames}}
                         </option>
                     </select>
                 </div>
@@ -1144,11 +1143,12 @@
                     <label for="textinput6">Doctor:</label>
 
                     <select id="ddBookDoctorId" name="DoctorId" ng-change="getSlots()" ng-model="ddBookDoctorId">
-                        <option value="0">Any</option>
+                        <option ng-selected="1" value="0">Any</option>
                         <option ng-repeat="doctor in bookDoctors" data-availability="{{doctor.Availability}}"
                                 value="{{doctor.Id}}">{{doctor.FirstName +' '+doctor.OtherNames}}
                         </option>
                     </select>
+					
 
                     <div id="availability">
 

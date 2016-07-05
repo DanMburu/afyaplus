@@ -284,7 +284,7 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
             scope.hospitals = data['hospitals'];
             scope.hospitalSpecialities = data['specialities'];
             scope.paymentModes = data['PaymentModes'];
-            scope.availableSlots = data['availableSlots'];
+           // scope.availableSlots = data['availableSlots'];
             scope.insuranceCompanies = data['InsuranceCompanies'];
             scope.selectedSpeciality = 0;
             scope.TimeBooked = 0;
@@ -423,6 +423,7 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
         $.mobile.changePage('#exam-preparation-details', {type: "get", transition: "slide"});
     };// End Function
 
+	scope.ddBookDoctorId = 0;
 }]);
 
 
