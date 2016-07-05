@@ -633,7 +633,10 @@ $(function () {
         if ($('#ddAppointmentPaymentMode').val() == '1') {
             $('#membershipno').val('');
         }
-        if ($('#AppointmentTimeSlotId').val() == '0') {
+		var slot=parseInt($('#AppointmentTimeSlotId').val());
+	
+        if (slot<=0) {
+			
             alert('Select one slot from Available Slots');
             allFilled = false;
         }
