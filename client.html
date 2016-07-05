@@ -274,7 +274,7 @@
                 <div data-role="fieldcontain">
                     <label for="textinput6">Doctor:</label>
 
-                    <select name="DoctorId">
+                    <select class="DoctorId" name="DoctorId">
                         <option value="0">Select</option>
                         <option ng-repeat="doctor in doctors" value="{{doctor.Id}}">{{doctor.FirstName +' '+doctor.OtherNames}}
                         </option>
@@ -1123,7 +1123,7 @@
                 <div id="bookAppointmentBranch" data-role="fieldcontain">
                     <label for="textinput6">Branch:</label>
 
-                    <select ng-change="getDoctorsBooking()" name="BranchId" id="ddBookAppointmentBranches" ng-model="selectedBranch">
+                    <select ng-change="getDoctorsBooking()" name="BranchId" id="ddBookAppointmentBranches" ng-model="selectedBookBranch">
                         <option value="0">Select</option>
                         <option ng-repeat="branch in branches" value="{{branch.Id}}">{{branch.Name}}</option>
                     </select>
@@ -1142,7 +1142,7 @@
                 <div data-role="fieldcontain">
                     <label for="textinput6">Doctor:</label>
 
-                    <select id="ddBookDoctorId" name="DoctorId" ng-change="getSlots()" ng-model="ddBookDoctorId">
+                    <select class="DoctorId"  id="ddBookDoctorId" name="DoctorId" ng-change="getSlots()" ng-model="ddBookDoctorId">
                         <option ng-selected="1" value="0">Any</option>
                         <option ng-repeat="doctor in bookDoctors" data-availability="{{doctor.Availability}}"
                                 value="{{doctor.Id}}">{{doctor.FirstName +' '+doctor.OtherNames}}

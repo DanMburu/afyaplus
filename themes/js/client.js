@@ -92,25 +92,26 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
         });
     };
     scope.askQuiz = function (id, branchId) {
+
         var url = rootUrl + 'PatientQueries/Init/' + $('#UserId').val();
         $('#selectedHospitalId').val()
         if (typeof id !== 'undefined') {
             url = rootUrl + 'PatientQueries/Init/' + $('#UserId').val() + '/' + id + '/';
             scope.quizHId = id;
-            scope.selectedQuizHospital = id;
-            scope.selectedQuizBranch = branchId;
+            scope.selectedHospital = id;
+            scope.selectedBranch = branchId;
 
         } else {
-            scope.selectedQuizHospital = 0;
-            scope.selectedQuizBranch = 0;
+            scope.selectedHospital = 0;
+            scope.selectedBranch = 0;
         }
+
         showLoader();
         http.get(url).success(function (data) {
             scope.user = data['user'];
             scope.hospitals = data['hospitals'];
-            scope.specialities = data['specialities'];
+            scope.hospitalSpecialities = data['specialities'];
             scope.branches = data['branches'];
-            scope.selectedBranch = 0;
             scope.quizHId = id;
 
 
@@ -364,30 +365,35 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
     }; // End Function
     scope.selectedBranch = 0;
     scope.selectedSpeciality = 0;
+	
     scope.getDoctors = function () {
         if (scope.selectedBranch !== 0 && scope.selectedSpeciality !== 0) {
             var url = rootUrl + 'Client/Doctors/' + scope.selectedBranch + '/' + scope.selectedSpeciality;
             showLoader();
             http.get(url).success(function (data) {
-                if (typeof data[0] !== 'undefined') {
-                    scope.doctors = data;
-                }
+                $('.DoctorId.ng-scope').text('Select');
+
+
+                scope.ddBookDoctorId=0;
+                scope.doctors = data;
                 hideLoader();
             }).error(ajaxError);
         }
     }; // End Function
-    scope.selectedBranch = 0;
+	
+	
+    scope.selectedBookBranch = 0;
     scope.selectedSpeciality = 0;
     scope.getDoctorsBooking = function () {
-        if (scope.selectedBranch !== 0 && scope.selectedSpeciality !== 0) {
+        if (scope.selectedBookBranch !== 0 && scope.selectedSpeciality !== 0) {
 
-
-            var url = rootUrl + 'Client/Doctors/Booking/' + scope.selectedBranch + '/' + scope.selectedSpeciality;
+            var url = rootUrl + 'Client/Doctors/Booking/' + scope.selectedBookBranch + '/' + scope.selectedSpeciality;
             showLoader();
             http.get(url).success(function (data) {
-                if (typeof data !== 'undefined') {
+                $('#ddBookDoctorId-button span').text('Any');
+                    scope.ddBookDoctorId=0;
                     scope.bookDoctors = data;
-                }
+
                 hideLoader();
             }).error(ajaxError);
         }
@@ -396,9 +402,9 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
         var dateBooked = $('#DateBooked').val();
         var doctorId = $('#ddBookDoctorId').val();
 
-        if (typeof scope.selectedBranch !== 'undefined' && typeof scope.selectedSpeciality !== 'undefined' && dateBooked !== '' && doctorId !== '') {
+        if (typeof scope.selectedBookBranch !== 'undefined' && typeof scope.selectedSpeciality !== 'undefined' && dateBooked !== '' && doctorId !== '') {
 
-            var url = rootUrl + 'Client/AvailableSlots/' + scope.selectedBranch + '/' + scope.selectedSpeciality + '/' + doctorId + '/' + dateBooked + '/';
+            var url = rootUrl + 'Client/AvailableSlots/' + scope.selectedBookBranch + '/' + scope.selectedSpeciality + '/' + doctorId + '/' + dateBooked + '/';
             showLoader();
             http.get(url).success(function (data) {
                 if (typeof data !== 'undefined') {
@@ -485,8 +491,9 @@ $(function () {
     $(document).on("pageshow", "#ask-quiz", function () {
 
         var scope = angular.element(document.querySelector('body')).scope();
-        $('#QuizHospitalId').val(scope.selectedQuizHospital);
-        $('#ddQBranches').val(scope.selectedQuizBranch);
+        $('#QuizHospitalId').val(scope.selectedHospital);
+        $('#ddQBranches').val(scope.selectedBranch);
+
 
         $('#QuizHospitalId,#ddQBranches').selectmenu(); // initialize
         $('#QuizHospitalId,#ddQBranches').selectmenu('refresh');
