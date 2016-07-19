@@ -86,6 +86,7 @@ app.controller('clientCtrl',['$scope','$http','$filter', function (scope,http,fi
     }; // End Function
     scope.getChatList=function(id){		
         var url = rootUrl+'Doctor/Queries/'+id+'/Details/';
+        $('#chat-'+id).removeClass('read-status-0');
         showLoader();
         http.get(url).success(function(data) {
             $('.sendsignalr,#btn-close-consultation').attr('rel',data.Id);
@@ -176,7 +177,7 @@ app.controller('clientCtrl',['$scope','$http','$filter', function (scope,http,fi
     }; // End Function
     scope.getAppointmentDetails=function(id){
         var url = rootUrl+'Appointments/'+id;
-
+        $('#app-'+id).removeClass('read-status-0');
         console.log(url);
         showLoader();
         http.get(url).success(function(data) {

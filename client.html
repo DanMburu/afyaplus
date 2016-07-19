@@ -207,13 +207,13 @@
                -->
 
                 <li class="chat-33" ng-repeat="query in queries">
-                    <a href="#" ng-click="getChatList(query.Id)" class="li-chat-list ui-btn status-{{query.StatusId}}" doc="query.UserId"
+                    <a  href="#" ng-click="getChatList(query.Id)" class="li-chat-list ui-btn status-{{query.StatusId}}" doc="query.UserId"
                        rel="{{query.Id}}" data-bind="attr: {rel: Id,doc: UserId}">
                         <span class="sender-title">{{query.LatestSender}}</span>
                         <span class="timespan">{{query.DateSent | date:"dd/MM/yyyy h:mma"}}</span>
                         <span class="chat-msg">{{query.LatestMessage}}</span>
                     </a>
-                    <span class="read-status-{{query.IsClientRead}}"></span>
+                    <span id="chat-{{query.Id}}" class="read-status-{{query.IsClientRead}}"></span>
                 </li>
 				 <li ng-show="queries.length===0">
 				  <div  class="col-md-12 col-xs-12">
@@ -1273,13 +1273,13 @@
                     <div class="popup-text">
                         <p>Appointment successfully booked. The service provider will get back to you.</p>
 
-                        <p>Click on the button below to pay.</p>
+                        <p class="hidden">Click on the button below to pay.</p>
                     </div>
                     <div class="mc-text-left">
                         <div class="mc-text-left">
-                            <a data-role="button" id="lnkPaymentsAppointment" target="_blank" href="#">Procede to
+                            <a data-role="button" class="hidden" id="lnkPaymentsAppointment" target="_blank" href="#">Procede to
                                 Payment</a>
-                            <a data-role="button" href="#" class="close-popup">Close</a>
+                            <a data-role="button" ng-click="getMyAppointments()" href="#" class="close-popup-1">Close</a>
                         </div>
                     </div>
 
@@ -1315,7 +1315,7 @@
                         <span class="appointment-status">{{appointment.AppointmentStatus.Name}}</span>
 
                     </a>
-                    <span class="read-status-{{appointment.IsRead}}"></span>
+                    <span id="app-{{appointment.Id}}"  class="read-status-{{appointment.IsRead}}"></span>
                 </li>
 				
 				<li ng-show="appointments.length===0">

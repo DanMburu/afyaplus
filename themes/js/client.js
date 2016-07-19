@@ -210,6 +210,7 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
 
     scope.getChatList = function (id) {
         var url = rootUrl + 'Client/Queries/' + id + '/Details/';
+        $('#chat-'+id).removeClass('read-status-0');
         showLoader();
         http.get(url).success(function (data) {
             $('.sendsignalr').attr('rel', data.patientQuery.Id);
@@ -308,6 +309,7 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
     }; // End Function
     scope.getAppointmentDetails = function (id) {
 
+        $('#app-'+id).removeClass('read-status-0');
         var url = rootUrl + 'Client/Appointment/' + id;
         showLoader();
         http.get(url).success(function (data) {

@@ -182,13 +182,13 @@
                -->
 
                 <li class="chat-33" ng-repeat="query in queries">
-                    <a href="#" ng-click="getChatList(query.Id)" class="li-chat-list ui-btn status-{{query.StatusId}}" doc="query.UserId"
+                    <a  href="#" ng-click="getChatList(query.Id)" class="li-chat-list ui-btn status-{{query.StatusId}}" doc="query.UserId"
                        rel="{{query.Id}}" data-bind="attr: {rel: Id,doc: UserId}">
                         <span class="sender-title" data-bind="text: LatestSender">{{query.LatestSender}}</span>
                         <span class="timespan" data-bind="text: convertDateTime(DateSent)">{{query.DateSent | date:"dd/MM/yyyy h:mma"}}</span>
                         <span class="chat-msg" data-bind="text: LatestMessage">{{query.LatestMessage}}</span>
                     </a>
-                    <span class="read-status-{{query.IsDoctorRead}}"
+                    <span id="chat-{{query.Id}}" class="read-status-{{query.IsDoctorRead}}"
                           data-bind="attr: {class: 'read-status-'+ IsRead}"></span>
                 </li>
                 <li ng-show="queries.length===0" class="col-md-12 col-xs-12">
@@ -455,7 +455,7 @@
                         <span class="chat-msg">{{appointment.Hospital.Name}},{{appointment.Branch.Name}}</span>
                         <span class="appointment-status">{{appointment.AppointmentStatus.Name}}</span>
                     </a>
-                    <span class="read-status-{{appointment.IsRead}}"></span>
+                    <span id="app-{{appointment.Id}}" class="read-status-{{appointment.IsRead}}"></span>
                 </li>
                 <li ng-show="appointments.length===0" class="col-md-12 col-xs-12">
                     <p class="empty-results">No appointments found.</p>
