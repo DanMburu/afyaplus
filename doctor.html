@@ -271,6 +271,12 @@
         <div data-role="content">
             <form id="frm-register">
                 <div data-role="fieldcontain">
+                    <label>Title:</label>
+                    <select name="UserTitleId"  ng-model="UserTitleId">
+                        <option ng-selected="(title.Id == 1)" ng-repeat="title in titles" value="{{title.Id}}">{{title.Name}}</option>
+                    </select>
+                </div>
+                <div data-role="fieldcontain">
                     <label for="textinput6">Speciality:</label>
                     <select name="SpecialityId" id="registerSpecialityId" ng-model="selectedSpeciality">
                         <option ng-selected="(speciality.Id == 1)" ng-repeat="speciality in specialities" value="{{speciality.Id}}">{{speciality
@@ -295,10 +301,7 @@
                     <label>Phone:</label>
                     <input type="text" name="Phone"  value=""/>
                 </div>
-                <div data-role="fieldcontain">
-                    <label>Email:</label>
-                    <input type="text" name="Email" id="RegUserEmail" value=""/>
-                </div>
+
                 <div data-role="fieldcontain">
                     <label>ID Number:</label>
                     <input type="text" name="IdNumber" value=""/>
@@ -311,6 +314,36 @@
                         <input type="radio" name="GenderId" id="gender_1" value="2"/>
                         <label for="gender_1">Female</label>
                     </fieldset>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="selectmenu2" class="select">County:</label>
+
+                    <div custom-select="s.Id as s.Name for s in counties | filter: { Name: $searchTerm }"
+                         ng-model="DoctorCountyId"></div>
+                    <input type="hidden" name="CountyId" value="{{DoctorCountyId}}">
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="selectmenu" class="select">Location:</label>
+
+                    <div custom-select="s.Id as s.Name for s in locations | filter:{Name: $searchTerm,CountyId: DoctorCountyId||''}"
+                         ng-model="doctorLocationId"></div>
+                    <input type="hidden" name="LocationId" value="{{doctorLocationId}}">
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput3">Profession Summary:</label>
+                    <textarea type="text" name="ProfessionSummary" value=""></textarea>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput3">Profession Training:</label>
+                    <textarea type="text" name="ProfessionTraining" value=""></textarea>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput3">Hospitals of Practice:</label>
+                    <textarea type="text" name="HospitalsOfPractice" value=""></textarea>
+                </div>
+                <div data-role="fieldcontain">
+                    <label>Email:</label>
+                    <input type="text" name="Email" id="RegUserEmail" value=""/>
                 </div>
                 <div data-role="fieldcontain">
                     <label>Password:</label>

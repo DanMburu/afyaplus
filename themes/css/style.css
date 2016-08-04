@@ -388,6 +388,7 @@ width:100%;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+#doctors-list .chat-msg{font-weight: normal}
 .chat-inner-date {
   float: right;
   font-size: 11px;

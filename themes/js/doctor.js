@@ -51,6 +51,7 @@ app.controller('clientCtrl',['$scope','$http','$filter', function (scope,http,fi
             scope.specialities = data['specialities'];
             scope.counties = data['counties'];
             scope.locations = data['locations'];
+            scope.titles = data['userTitles'];
              $('#customPreloader,#customPreloaderBg').remove();
             hideLoader();
 
@@ -276,7 +277,7 @@ $(document).on("pageshow", "#register", function () {
     $('#registerSpecialityId').selectmenu('refresh');
      $('#btnRegister').off('click').on("click", function(e) {
          var allFilled = true;
-        $('#frm-register :input:not(:button)').each(function(index, element) {
+        $('#frm-register :input:not(:button):not([class*=undefined])').each(function(index, element) {
             if (element.value === '') {
                 console.log(element);
                 allFilled = false;

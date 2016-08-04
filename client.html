@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
 
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>Client</title>
     <link rel="stylesheet" type="text/css" href="themes/jquery.mobile-1.4.5.min.css">
@@ -11,16 +12,18 @@
     <script src="themes/js/jquery-1.11.1.min.js"></script>
     <script src="themes/js/jquery.mobile-1.4.5.min.js"></script>
     <script src="themes/js/jquery.mobile.dynamic.popup.js"></script>
-<!--
-    <link rel="stylesheet" type="text/css" href="themes/css/jqm-datebox.min.css">
-    <script src="themes/js/jqm-datebox.core.js"></script>
-    <script src="themes/js/jqm-datebox.mode.flipbox.min.js"></script>
--->
+    <!--
+        <link rel="stylesheet" type="text/css" href="themes/css/jqm-datebox.min.css">
+        <script src="themes/js/jqm-datebox.core.js"></script>
+        <script src="themes/js/jqm-datebox.mode.flipbox.min.js"></script>
+    -->
 
     <link rel="stylesheet" href="themes/css/bootstrap.min.css"/>
-    <link href="http://cdn.jtsage.com/jtsage-datebox/4.0.0/jtsage-datebox-4.0.0.bootstrap.min.css" rel="stylesheet" type="text/css">
-    <script src="http://cdn.jtsage.com/jtsage-datebox/4.0.0/jtsage-datebox-4.0.0.bootstrap.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="themes/fonts/stylesheet.css">	 
+    <link href="http://cdn.jtsage.com/jtsage-datebox/4.0.0/jtsage-datebox-4.0.0.bootstrap.min.css" rel="stylesheet"
+          type="text/css">
+    <script src="http://cdn.jtsage.com/jtsage-datebox/4.0.0/jtsage-datebox-4.0.0.bootstrap.min.js"
+            type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="themes/fonts/stylesheet.css">
     <link rel="stylesheet" type="text/css" href="themes/css/style.css">
     <script src="cordova.js" type="text/javascript"></script>
     <script src="themes/js/mobile.js"></script>
@@ -31,7 +34,7 @@
     <link href="themes/css/lightbox.css" rel="stylesheet">
 
     <link rel="stylesheet" href="themes/owl-carousel/owl.carousel.css">
-	<link rel="stylesheet" href="themes/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="themes/owl-carousel/owl.theme.css">
     <script src="themes/owl-carousel/owl.carousel.min.js"></script>
 
 </head>
@@ -64,18 +67,20 @@
         <li><a class=" ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="myQuestions()" href="#">My Questions</a></li>
         <li><a class="lnkAskQuiz ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="askQuiz()" href="#">Ask a Quiz</a>
         </li>
-        <li><a class="lnkfirstaid ui-btn ui-btn-icon-right ui-icon-carat-r" data-transition="slide" href="#exam-preparation">Exam Preparations</a></li>
+        <li><a class="lnkfirstaid ui-btn ui-btn-icon-right ui-icon-carat-r" data-transition="slide"
+               href="#exam-preparation">Exam Preparations</a></li>
         <li><a class="lnkfirstaid ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="getFirstAidList()" href="#">First
             Aid Tips</a></li>
         <li><a class="lnkMyAccount ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="getProfile()" href="#">My
             Profile</a></li>
-        <li><a class="lnkLanding ui-btn ui-btn-icon-right ui-icon-carat-r"  href="#main-landing"  data-transition="slide" >Landing Page</a></li>
-        <li><a class="lnkLogout ui-btn ui-btn-icon-right ui-icon-carat-r"  href="#">Log out</a></li>
+        <li><a class="lnkLanding ui-btn ui-btn-icon-right ui-icon-carat-r" href="#main-landing" data-transition="slide">Landing
+            Page</a></li>
+        <li><a class="lnkLogout ui-btn ui-btn-icon-right ui-icon-carat-r" href="#">Log out</a></li>
 
     </ul>
 </div>
 <main id="main-panel">
-    <div data-role="page" id="decoyLanding"  >
+    <div data-role="page" id="decoyLanding">
         <div data-role="header">
 
             <img src="images/logo.png" width="254" height="56" alt=""/>
@@ -119,11 +124,11 @@
 
     <div data-role="page" id="landing">
         <div data-role="header">
-		
+
             <a href="#" data-role="none"
                class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
-			  
-                <img src="images/logo.png" width="254" height="56" alt=""/>
+
+            <img src="images/logo.png" width="254" height="56" alt=""/>
 
         </div>
         <div data-role="content">
@@ -131,6 +136,8 @@
 
             <ul data-role="listview">
                 <li><a class="lnkhospitalsearch" ng-click="searchHospitals()" href="#">Hospitals Directory</a></li>
+                <li><a class="lnkhospitalsearch" data-transition="slide" href="#doctors-directory">Doctors Directory</a>
+                </li>
                 <!--
                 <li><a class="lnkhospitalsearchByDIstance" data-transition="slide" href="#nearby">Search By Distance</a>
                 </li>
@@ -139,28 +146,29 @@
                 <li><a class="lnkMyAppointments" ng-click="getMyAppointments()" href="#">My Appointments</a></li>
                 <li><a class="lnkMyQuestions--" ng-click="myQuestions()" href="#">My Questions</a></li>
                 <li><a class="lnkAskQuiz" ng-click="askQuiz()" href="#">Ask a Quiz</a></li>
-                <li><a class="exam-preparation" data-transition="slide" href="#exam-preparation">Exam Preparations</a></li>
+                <li><a class="exam-preparation" data-transition="slide" href="#exam-preparation">Exam Preparations</a>
+                </li>
                 <li><a class="lnkfirstaid" ng-click="getFirstAidList()" href="#">First Aid Tips</a></li>
                 <li><a class="lnkMyAccount" ng-click="getProfile()" href="#">My Profile</a></li>
-                <li><a class="lnkLogout ui-btn ui-btn-icon-right ui-icon-carat-r"  href="#">Log out</a></li>
+                <li><a class="lnkLogout ui-btn ui-btn-icon-right ui-icon-carat-r" href="#">Log out</a></li>
             </ul>
             <a data-role="none" id="lnkInit" ng-click="initApp()" href="#"></a>
             <!-- Set up your HTML -->
-            <div  class="featured-products">
+            <div class="featured-products">
                 <h2>Featured Products</h2>
-            <div id="owl-carousel" class="owl-carousel">
+                <div id="owl-carousel" class="owl-carousel">
 
-			<!--  <div ng-repeat="product in featuredProducts" ng-init="$last ? initCarousel() : angular.noop()">-->
-                <div ng-repeat="product in featuredProducts">
-                    <a href="#" ng-click="getProductDetails(product.Id)">
-                    <div class="thumbnail">
-                    <img src="{{UploadsRoot}}/products/th_{{product.Image}}" class="img-responsive">
+                    <!--  <div ng-repeat="product in featuredProducts" ng-init="$last ? initCarousel() : angular.noop()">-->
+                    <div ng-repeat="product in featuredProducts">
+                        <a href="#" ng-click="getProductDetails(product.Id)">
+                            <div class="thumbnail">
+                                <img src="{{UploadsRoot}}/products/th_{{product.Image}}" class="img-responsive">
+                            </div>
+                            <span>{{product.Name}}</span>
+                        </a>
                     </div>
-                    <span>{{product.Name}}</span>
-                    </a>
-                </div>
 
-            </div>
+                </div>
 
             </div>
 
@@ -207,7 +215,8 @@
                -->
 
                 <li class="chat-33" ng-repeat="query in queries">
-                    <a  href="#" ng-click="getChatList(query.Id)" class="li-chat-list ui-btn status-{{query.StatusId}}" doc="query.UserId"
+                    <a href="#" ng-click="getChatList(query.Id)" class="li-chat-list ui-btn status-{{query.StatusId}}"
+                       doc="query.UserId"
                        rel="{{query.Id}}" data-bind="attr: {rel: Id,doc: UserId}">
                         <span class="sender-title">{{query.LatestSender}}</span>
                         <span class="timespan">{{query.DateSent | date:"dd/MM/yyyy h:mma"}}</span>
@@ -215,16 +224,15 @@
                     </a>
                     <span id="chat-{{query.Id}}" class="read-status-{{query.IsClientRead}}"></span>
                 </li>
-				 <li ng-show="queries.length===0">
-				  <div  class="col-md-12 col-xs-12">
-                    <p class="empty-results">No questions found.</p>
-                  </div>
+                <li ng-show="queries.length===0">
+                    <div class="col-md-12 col-xs-12">
+                        <p class="empty-results">No questions found.</p>
+                    </div>
                 </li>
             </ul>
 
             <a class="lnkChat hidden" data-role="none" data-transition="slide" href="#chat"></a>
 
-          
 
         </div>
 
@@ -276,7 +284,8 @@
 
                     <select class="DoctorId" name="DoctorId">
                         <option value="0">Select</option>
-                        <option ng-repeat="doctor in doctors" value="{{doctor.Id}}">{{doctor.FirstName +' '+doctor.OtherNames}}
+                        <option ng-repeat="doctor in doctors" value="{{doctor.Id}}">{{doctor.FirstName +'
+                            '+doctor.OtherNames}}
                         </option>
                     </select>
                 </div>
@@ -372,7 +381,8 @@
             <div data-role="fieldcontain" id="chatControlsCont">
                 <textarea type="text" name="chatmessage" id="chatmessage" value=""></textarea>
                 <button class="send-btn sendsignalr" rel="" data-iconpos="right" data-icon="arrow-r">Send</button>
-				<a data-role="button"  class="btnPayConsultationNow" target="_blank" rel="" data-iconpos="right" data-icon="arrow-r">Pay Now</a>
+                <a data-role="button" class="btnPayConsultationNow" target="_blank" rel="" data-iconpos="right"
+                   data-icon="arrow-r">Pay Now</a>
                 <input type="hidden" id="DoctorID"/>
             </div>
 
@@ -439,6 +449,7 @@
                     <label for="textinput4">ID Number / Passport:</label>
                     <input type="text" name="IdNumber" value=""/>
                 </div>
+
                 <div data-role="fieldcontain">
                     <fieldset data-role="controlgroup" data-type="horizontal">
                         <legend>Gender</legend>
@@ -467,7 +478,8 @@
         </div>
     </div>
     <!-- Close Page -->
-    <div data-role="page" id="specialist-search" data-theme="a">
+
+    <div data-role="page" id="doctors-directory" data-theme="a">
         <div data-role="header">
             <a href="#" data-role="none"
                class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
@@ -475,7 +487,7 @@
         </div>
         <div data-role="content">
 
-            <form id="frmHospitalSearch" data-theme="b">
+            <form id="frmDoctorsSearch" data-theme="b">
 
                 <div data-role="fieldcontain">
                     <label for="selectmenu2" class="select">Specialist:</label>
@@ -502,12 +514,76 @@
                 </div>
 
                 <div data-role="fieldcontain">
-                    <a id="btn-search-hospital" href="#" ng-click="getHospitalSearchResults()" data-role="button"
+                    <a href="#" ng-click="getDoctorsSearchResults()" data-role="button"
                        data-icon="search">Search</a>
 
                 </div>
             </form>
 
+        </div>
+
+    </div>
+    <!--Close Page-->
+    <div data-role="page" id="doctors-list" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div data-role="content">
+
+            <ul class="firstaid-list" data-role="listview">
+                <li ng-repeat="doctor in doctorsDirectories">
+                    <a ng-click="getDoctorDetails(doctor.Id)"
+                       class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="#">
+                        <span class="sender-title" >{{doctor.User.UserTitle.Name}} {{doctor.User.Surname}} {{doctor.User.FirstName}}</span>
+                        <span class="chat-msg">{{doctor.Location.Name}}, {{doctor.County.Name}}</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div ng-show="doctorsDirectories.length===0" class="col-md-12 col-xs-12">
+                <p class="empty-results">No doctors found.</p>
+            </div>
+        </div>
+    </div>
+    <!--Close Page-->
+
+    <div data-role="page" id="doctors-details" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div id="hospital-list-cont" data-role="content">
+
+            <div class="detailscont" ng-repeat="doctor in doctorsDirectories| filter: { Id : doctorId }:true">
+                <div class="ui-field-contain"  data-role="fieldcontain">
+                    <label><strong>Name </strong>{{doctor.User.UserTitle.Name}} {{doctor.User.Surname}} {{doctor.User.FirstName}}</label>
+                </div>
+                <div class="ui-field-contain" data-role="fieldcontain">
+                    <p><strong>Phone: </strong><a href="tel:{{doctor.User.Phone}}">{{doctor.User.Phone}}</a></p>
+                    <p><strong>Email: </strong>{{doctor.User.Email}}</p>
+                </div>
+                <div class="ui-field-contain" data-role="fieldcontain">
+                    <label><strong>Location</strong></label>
+                     <p>{{doctor.Location.Name}}, {{doctor.County.Name}}, </p>
+                </div>
+                <div class="ui-field-contain" data-role="fieldcontain">
+                    <label><strong>Profession Summary </strong></label>
+                    <p>{{doctor.ProfessionSummary}}</p>
+                </div>
+                <div class="ui-field-contain" data-role="fieldcontain">
+                    <label><strong>Profession Training </strong></label>
+                    <p>{{doctor.ProfessionSummary}}</p>
+                </div>
+                <div class="ui-field-contain" data-role="fieldcontain">
+                    <label><strong>Hospitals of Practice</strong></label>
+                    <p>{{doctor.HospitalsOfPractice}}</p>
+                </div>
+
+
+            </div>
         </div>
 
     </div>
@@ -522,7 +598,7 @@
 
             <form id="frmHospitalSearch" data-theme="b">
 
-              
+
                 <div data-role="fieldcontain">
                     <label for="selectmenu2" class="select">County:</label>
 
@@ -533,17 +609,17 @@
                     <label for="selectmenu" class="select">Location:</label>
 
                     <div custom-select="s.Id as s.Name for s in locations | filter:{Name: $searchTerm,CountyId: dirCity||''}"
-                            ng-model="dirLocation"></div>
+                         ng-model="dirLocation"></div>
                 </div>
-				
-				  <div data-role="fieldcontain">
+
+                <div data-role="fieldcontain">
                     <label for="selectmenu2" class="select">Specialist:</label>
 
                     <div custom-select="s.Id as s.Name for s in specialities | filter: { Name: $searchTerm }"
                          ng-model="dirSpecialist"></div>
                 </div>
-				
-				
+
+
                 <div data-role="fieldcontain">
                     <label>Hospital Name:</label>
                     <input id="searchTerm" type="text" name="keyword"/>
@@ -653,7 +729,7 @@
                        class="li-hospital ui-btn ui-btn-icon-right ui-icon-carat-r">
                         <span class="list-title">{{branch.Name}}</span>
                         <span class="list-time">{{branch.OperatingHours}}</span>
-                         <span class="chat-msg">{{branch.Location.Name}},{{branch.County.Name}} - {{branch
+                        <span class="chat-msg">{{branch.Location.Name}},{{branch.County.Name}} - {{branch
                              .Mobile}}</span>
                     </a>
                 </li>
@@ -698,7 +774,6 @@
 
     </div>
     <!--Close Page-->
-
     <div data-role="page" id="hospitals-details" data-theme="a">
         <div data-role="header">
             <a href="#" data-role="none"
@@ -733,7 +808,8 @@
                                                   data-rel="popup" data-position-to="window" data-transition="pop">Clinics</a>
                 </div>
 
-                <div class="col-xs-6 col-md-6"><a class="lnkBookNow" ng-click="bookAppointment(hospital.Id)" href="#">Book Appointment</a></div>
+                <div class="col-xs-6 col-md-6"><a class="lnkBookNow" ng-click="bookAppointment(hospital.Id)" href="#">Book
+                    Appointment</a></div>
                 <div class="col-xs-6 col-md-6"><a class="lnkAskNow" ng-click="askQuiz(hospital.Id)"
                                                   data-transition="slide" href="#">Consult Online</a></div>
 
@@ -813,13 +889,13 @@
                 <div role="main" class="ui-content">
                     <div class="popup-text">
                         <p class="poptext"></p>
-                            <div class="branch-desc" ng-bind-html="branch.Description"></div>
-                            <ul class="insurance-cont">
-                                <li ng-repeat="clinic in clinics" class="clinic">
-                                    <h3>{{clinic.Name}}</h3>
-                                    <div class="clinic-desc" ng-bind-html="clinic.Description"></div>
-                                </li>
-                            </ul>
+                        <div class="branch-desc" ng-bind-html="branch.Description"></div>
+                        <ul class="insurance-cont">
+                            <li ng-repeat="clinic in clinics" class="clinic">
+                                <h3>{{clinic.Name}}</h3>
+                                <div class="clinic-desc" ng-bind-html="clinic.Description"></div>
+                            </li>
+                        </ul>
                     </div>
                     <div class="mc-text-center">
 
@@ -841,45 +917,44 @@
                 <script type="text/javascript">
 
 
+                    $(document).on("pageshow", "#hospitals-details", function () {
+                        try {
 
-                     $(document).on("pageshow", "#hospitals-details", function () {
-                     try {
+                            var markers = [{
+                                "title": $('#hospital-name').text(),
+                                "lat": $('#HospitalLatitude').val(),
+                                "lng": $('#HospitalLongitude').val(),
+                                "description": $('#desc').text()
+                            }];
+                            var mapOptions = {
+                                center: new google.maps.LatLng($('#HospitalLatitude').val(), $('#HospitalLongitude').val()),
+                                zoom: 14,
+                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                            };
 
-                     var markers = [{
-                     "title": $('#hospital-name').text(),
-                     "lat": $('#HospitalLatitude').val(),
-                     "lng": $('#HospitalLongitude').val(),
-                     "description": $('#desc').text()
-                     }];
-                     var mapOptions = {
-                     center: new google.maps.LatLng($('#HospitalLatitude').val(), $('#HospitalLongitude').val()),
-                     zoom: 14,
-                     mapTypeId: google.maps.MapTypeId.ROADMAP
-                     };
+                            var infoWindow = new google.maps.InfoWindow();
+                            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                            for (i = 0; i < markers.length; i++) {
+                                var data = markers[i]
+                                var myLatlng = new google.maps.LatLng(data.lat, data.lng);
 
-                     var infoWindow = new google.maps.InfoWindow();
-                     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-                     for (i = 0; i < markers.length; i++) {
-                     var data = markers[i]
-                     var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+                                var marker = new google.maps.Marker({
+                                    position: myLatlng,
+                                    map: map,
+                                    title: data.title
+                                });
 
-                     var marker = new google.maps.Marker({
-                     position: myLatlng,
-                     map: map,
-                     title: data.title
-                     });
+                                (function (marker, data) {
+                                    google.maps.event.addListener(marker, "click", function (e) {
+                                        infoWindow.setContent(data.description);
+                                        infoWindow.open(map, marker);
+                                    });
+                                })(marker, data);
+                            }
+                        } catch (err) {
 
-                     (function (marker, data) {
-                     google.maps.event.addListener(marker, "click", function (e) {
-                     infoWindow.setContent(data.description);
-                     infoWindow.open(map, marker);
-                     });
-                     })(marker, data);
-                     }
-                     } catch (err) {
-
-                     }
-                     });
+                        }
+                    });
 
                 </script>
 
@@ -892,7 +967,6 @@
         </div>
     </div>
     <!--Close Page-->
-
     <div data-role="page" id="branch-details" data-theme="a">
         <div data-role="header">
             <a href="#" data-role="none"
@@ -966,28 +1040,23 @@
             </div>
 
 
-
-
             <!-- Page Content -->
             <div class="row">
 
 
-            <div class="col-md-12">
-                <label>Gallery</label>
-            </div>
-                <div ng-show="galleryImages.length>0" id="gallery-cont"  class="row smaller-gutter client-profile">
+                <div class="col-md-12">
+                    <label>Gallery</label>
+                </div>
+                <div ng-show="galleryImages.length>0" id="gallery-cont" class="row smaller-gutter client-profile">
                     <div ng-repeat="image in galleryImages" class="col-md-4 col-xs-4 pic">
                         <a data-lightbox="memberPics" class="internal thumbnail" data-title=""
                            href='{{UploadsRoot}}/{{image.FileUrl}}'>
                             <img src='{{UploadsRoot}}/th-{{image.FileUrl}}'
-                                 alt='{{image.Name}}' />
+                                 alt='{{image.Name}}'/>
                         </a>
                     </div>
                 </div>
             </div>
-
-
-
 
 
             <!-- row-->
@@ -1049,45 +1118,44 @@
                 <script type="text/javascript">
 
 
+                    $(document).on("pageshow", "#hospitals-details", function () {
+                        try {
 
-                     $(document).on("pageshow", "#hospitals-details", function () {
-                     try {
+                            var markers = [{
+                                "title": $('#hospital-name').text(),
+                                "lat": $('#HospitalLatitude').val(),
+                                "lng": $('#HospitalLongitude').val(),
+                                "description": $('#desc').text()
+                            }];
+                            var mapOptions = {
+                                center: new google.maps.LatLng($('#HospitalLatitude').val(), $('#HospitalLongitude').val()),
+                                zoom: 14,
+                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                            };
 
-                     var markers = [{
-                     "title": $('#hospital-name').text(),
-                     "lat": $('#HospitalLatitude').val(),
-                     "lng": $('#HospitalLongitude').val(),
-                     "description": $('#desc').text()
-                     }];
-                     var mapOptions = {
-                     center: new google.maps.LatLng($('#HospitalLatitude').val(), $('#HospitalLongitude').val()),
-                     zoom: 14,
-                     mapTypeId: google.maps.MapTypeId.ROADMAP
-                     };
+                            var infoWindow = new google.maps.InfoWindow();
+                            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                            for (i = 0; i < markers.length; i++) {
+                                var data = markers[i]
+                                var myLatlng = new google.maps.LatLng(data.lat, data.lng);
 
-                     var infoWindow = new google.maps.InfoWindow();
-                     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-                     for (i = 0; i < markers.length; i++) {
-                     var data = markers[i]
-                     var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+                                var marker = new google.maps.Marker({
+                                    position: myLatlng,
+                                    map: map,
+                                    title: data.title
+                                });
 
-                     var marker = new google.maps.Marker({
-                     position: myLatlng,
-                     map: map,
-                     title: data.title
-                     });
+                                (function (marker, data) {
+                                    google.maps.event.addListener(marker, "click", function (e) {
+                                        infoWindow.setContent(data.description);
+                                        infoWindow.open(map, marker);
+                                    });
+                                })(marker, data);
+                            }
+                        } catch (err) {
 
-                     (function (marker, data) {
-                     google.maps.event.addListener(marker, "click", function (e) {
-                     infoWindow.setContent(data.description);
-                     infoWindow.open(map, marker);
-                     });
-                     })(marker, data);
-                     }
-                     } catch (err) {
-
-                     }
-                     });
+                        }
+                    });
 
                 </script>
 
@@ -1100,8 +1168,6 @@
         </div>
     </div>
     <!--Close Page-->
-
-
     <div data-role="page" id="bookAppointment" data-theme="a">
         <div data-role="header">
             <a href="#" data-role="none"
@@ -1123,7 +1189,8 @@
                 <div id="bookAppointmentBranch" data-role="fieldcontain">
                     <label for="textinput6">Branch:</label>
 
-                    <select ng-change="getDoctorsBooking()" name="BranchId" id="ddBookAppointmentBranches" ng-model="selectedBookBranch">
+                    <select ng-change="getDoctorsBooking()" name="BranchId" id="ddBookAppointmentBranches"
+                            ng-model="selectedBookBranch">
                         <option value="0">Select</option>
                         <option ng-repeat="branch in branches" value="{{branch.Id}}">{{branch.Name}}</option>
                     </select>
@@ -1132,7 +1199,8 @@
                 <div data-role="fieldcontain">
                     <label for="textinput6">Specialist:</label>
 
-                    <select id="bookSpecialityId" name="SpecialityId" ng-change="getDoctorsBooking()" ng-model="selectedSpeciality">
+                    <select id="bookSpecialityId" name="SpecialityId" ng-change="getDoctorsBooking()"
+                            ng-model="selectedSpeciality">
                         <option value="0">Select</option>
                         <option ng-repeat="speciality in hospitalSpecialities" value="{{speciality.Id}}">{{speciality
                             .Name}}
@@ -1142,13 +1210,14 @@
                 <div data-role="fieldcontain">
                     <label for="textinput6">Doctor:</label>
 
-                    <select class="DoctorId"  id="ddBookDoctorId" name="DoctorId" ng-change="getSlots()" ng-model="ddBookDoctorId">
+                    <select class="DoctorId" id="ddBookDoctorId" name="DoctorId" ng-change="getSlots()"
+                            ng-model="ddBookDoctorId">
                         <option ng-selected="1" value="0">Any</option>
                         <option ng-repeat="doctor in bookDoctors" data-availability="{{doctor.Availability}}"
                                 value="{{doctor.Id}}">{{doctor.FirstName +' '+doctor.OtherNames}}
                         </option>
                     </select>
-					
+
 
                     <div id="availability">
 
@@ -1166,9 +1235,12 @@
 
                 <div data-role="fieldcontain">
                     <label>Available Slots:</label>
-                    <select id="AppointmentTimeSlotId" name="AppointmentTimeSlotId" class="TimeBooked" ng-model="TimeBooked">
+                    <select id="AppointmentTimeSlotId" name="AppointmentTimeSlotId" class="TimeBooked"
+                            ng-model="TimeBooked">
                         <option value="0" ng-selected="1" selected="selected">Select</option>
-                        <option ng-repeat="slot in availableSlots" ng-disabled="slot.Disabled" value="{{slot.Value}}">{{slot.Text}}</option>
+                        <option ng-repeat="slot in availableSlots" ng-disabled="slot.Disabled" value="{{slot.Value}}">
+                            {{slot.Text}}
+                        </option>
                     </select>
                 </div>
 
@@ -1277,9 +1349,11 @@
                     </div>
                     <div class="mc-text-left">
                         <div class="mc-text-left">
-                            <a data-role="button" class="hidden" id="lnkPaymentsAppointment" target="_blank" href="#">Procede to
+                            <a data-role="button" class="hidden" id="lnkPaymentsAppointment" target="_blank" href="#">Procede
+                                to
                                 Payment</a>
-                            <a data-role="button" ng-click="getMyAppointments()" href="#" class="close-popup-1">Close</a>
+                            <a data-role="button" ng-click="getMyAppointments()" href="#"
+                               class="close-popup-1">Close</a>
                         </div>
                     </div>
 
@@ -1294,8 +1368,6 @@
                  </pre>
         </div>
     </div>
-
-
     <!-- Close Page -->
     <div data-role="page" id="my-appointments" data-theme="a">
         <div data-role="header">
@@ -1307,7 +1379,8 @@
             <ul class="appointments" data-role="listview">
 
                 <li ng-repeat="appointment in appointments">
-                    <a href="#" ng-click="getAppointmentDetails(appointment.Id)" class="li-appointment ui-btn status-{{appointment.AppointmentStatusId}}">
+                    <a href="#" ng-click="getAppointmentDetails(appointment.Id)"
+                       class="li-appointment ui-btn status-{{appointment.AppointmentStatusId}}">
                         <span class="sender-title">{{appointment.DateBooked | date:"MMM dd yyyy"}}</span>
                         <span class="timespan">{{appointment.AppointmentTimeSlot
                             .TimeSlot}}</span>
@@ -1315,23 +1388,22 @@
                         <span class="appointment-status">{{appointment.AppointmentStatus.Name}}</span>
 
                     </a>
-                    <span id="app-{{appointment.Id}}"  class="read-status-{{appointment.IsRead}}"></span>
+                    <span id="app-{{appointment.Id}}" class="read-status-{{appointment.IsRead}}"></span>
                 </li>
-				
-				<li ng-show="appointments.length===0">
-				 <div class="col-md-12 col-xs-12">
-                    <p class="empty-results">No appointments found.</p>
-                 </div>
-				</li>
+
+                <li ng-show="appointments.length===0">
+                    <div class="col-md-12 col-xs-12">
+                        <p class="empty-results">No appointments found.</p>
+                    </div>
+                </li>
 
             </ul>
-           
+
 
         </div>
 
     </div>
     <!--Close Page-->
-
     <div data-role="page" id="appointmentDetails" data-theme="a">
         <div data-role="header">
             <a href="#" data-role="none"
@@ -1382,14 +1454,16 @@
                 </div>
                 <div class="insurance-cont" ng-show="{{appointment.PaymentModeId==2}}">
                     <div class="edit-insurance" data-role="fieldcontain">
-                        <label for="textinput6"><strong>Insurance:</strong> {{appointment.InsuranceCompany.Name}}</label>
+                        <label for="textinput6"><strong>Insurance:</strong>
+                            {{appointment.InsuranceCompany.Name}}</label>
                     </div>
                     <div class="edit-insurance" data-role="fieldcontain">
                         <label for="textinput3"><strong>Membership No.:</strong> {{appointment.MembershipNo}}</label>
 
                     </div>
                 </div>
-                <div ng-show="(appointment.AdditionalInfo !== '' && appointment.AdditionalInfo !==null)" data-role="fieldcontain">
+                <div ng-show="(appointment.AdditionalInfo !== '' && appointment.AdditionalInfo !==null)"
+                     data-role="fieldcontain">
                     <label><strong>Additional Information:</strong></label>
                     <p>{{appointment.AdditionalInfo}}</p>
                 </div>
@@ -1400,20 +1474,20 @@
                     <textarea cols="40" rows="8" id="cancellationReasons"
                               name="CancellationReasons">{{appointment.CancellationReasons}}</textarea>
                 </div>
-<!--
-                <div data-role="fieldcontain" class="chkEditCont">
+                <!--
+                                <div data-role="fieldcontain" class="chkEditCont">
 
-                    <label>
-                        <input id="chkEdit" type="checkbox" ng-click="show = !show">Delete
-                    </label>
+                                    <label>
+                                        <input id="chkEdit" type="checkbox" ng-click="show = !show">Delete
+                                    </label>
 
-                    <label>
-                        <input id="chkCancel" type="checkbox" ng-click="cancel = !cancel;show = !show">Cancel
-                    </label>
+                                    <label>
+                                        <input id="chkCancel" type="checkbox" ng-click="cancel = !cancel;show = !show">Cancel
+                                    </label>
 
 
-                </div>
--->
+                                </div>
+                -->
 
                 <input type="hidden" class="bookUserId" name="UserId" value="{{appointment.UserId}}"/>
                 <input type="hidden" id="appointmentId" name="Id" value="{{appointment.Id}}"/>
@@ -1424,14 +1498,15 @@
                     </label>
                 </div>
                 <div class="col-md-6">
-                    <button  id="btnDeleteAppointment" data-icon="star">Delete</button>
+                    <button id="btnDeleteAppointment" data-icon="star">Delete</button>
                 </div>
 
-                   <div ng-show="cancel" class="col-md-12">
-                       <button id="btnUpdateAppointment" data-icon="star">Submit</button>
-                   </div>
+                <div ng-show="cancel" class="col-md-12">
+                    <button id="btnUpdateAppointment" data-icon="star">Submit</button>
+                </div>
 
-                 <a data-role="button"  class="btnPayAppointmentNow" target="_blank" rel="" data-iconpos="right" data-icon="arrow-r">Pay Now</a>
+                <a data-role="button" class="btnPayAppointmentNow" target="_blank" rel="" data-iconpos="right"
+                   data-icon="arrow-r">Pay Now</a>
 
 
             </form>
@@ -1463,7 +1538,6 @@
         </div>
     </div>
     <!-- Close Page -->
-
     <div data-role="page" id="first-aid" data-theme="a">
         <div data-role="header">
             <a href="#" data-role="none"
@@ -1508,7 +1582,8 @@
             <div id="exam-categories-cont" data-role="fieldcontain">
                 <label for="textinput6">Select Category:</label>
 
-                <select id="ddExamCategories" name="ddExamCategories" class="ddExamCategories" ng-model="ddExamCategories">
+                <select id="ddExamCategories" name="ddExamCategories" class="ddExamCategories"
+                        ng-model="ddExamCategories">
                     <option value="0" ng-selected="1" selected="selected">Select</option>
                     <option ng-repeat="category in examCategories" value="{{category.Id}}">{{category.Name}}</option>
                 </select>
@@ -1516,7 +1591,7 @@
             <ul class="firstaid-list" data-role="listview">
                 <li ng-repeat="item in examPreparations| filter: { ExamPreparationCategoryId : ddExamCategories }">
                     <a ng-click="getExamPreparation(item.Id)"
-                                                        class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="#">{{item.Title}}</a>
+                       class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="#">{{item.Title}}</a>
                 </li>
             </ul>
         </div>
@@ -1542,8 +1617,6 @@
 
     </div>
     <!--Close Page-->
-
-
     <div data-role="page" id="profile" data-theme="a">
         <div data-role="header">
             <a href="#" data-role="none"
@@ -1682,7 +1755,7 @@
                 <div class="col-md-12 details-cont">
                     <div ng-bind-html="product.Description" id="desc"></div>
 
-                 <h2 class="bordered">Surplier Details</h2>
+                    <h2 class="bordered">Surplier Details</h2>
                     <div>
                         <label>Name:</label>{{product.Surplier.Name}}
                     </div>
@@ -1726,7 +1799,6 @@
 <input type="hidden" id="HFLatitude" value="-1.268125" />
 <input type="hidden" id="HFLongitude" value="36.806330" />
 -->
-
 
 
 <script src="http://www.afyaplus.co.ke/Scripts/jquery.signalR-2.2.0.js"></script>

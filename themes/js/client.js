@@ -59,6 +59,7 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
             scope.locations = data['locations'];
             scope.examCategories = data['examCategories'];
             scope.examPreparations = data['examPreparations'];
+            scope.titles = data['userTitles'];
             $('#customPreloader,#customPreloaderBg').remove();
             hideLoader();
 
@@ -159,7 +160,40 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
             hideLoader();
         });
     };// End Function
+    scope.getDoctorsSearchResults = function () {
+        var city = scope.dirCity;
+        if (typeof city === 'undefined' || city === '') {
+            city = 0;
+        }
+        var location = scope.dirLocation;
+        if (typeof location === 'undefined' || location === '') {
+            location = 0;
+        }
+        var specialist = scope.dirSpecialist;
+        if (typeof specialist === 'undefined' || specialist === '') {
+            specialist = 0;
+        }
 
+
+        var search = 'any';
+        if ($('#SpecialistSearchTerm').val() !== '') {
+            search = $('#SpecialistSearchTerm').val();
+        }
+
+
+        var url = rootUrl + 'DoctorsDirectory/' + search + '/' + city + '/' + location + '/' + specialist + '/';
+        showLoader();
+        http.get(url).success(function (data) {
+            scope.doctorsDirectories = data;
+            $.mobile.changePage('#doctors-list', {type: "get", transition: "slide"});
+            hideLoader();
+        });
+    };// End Function
+    scope.getDoctorDetails = function (id) {
+        scope.doctorId=id;
+
+        $.mobile.changePage('#doctors-details', {type: "get", transition: "slide"});
+    };// End Function
     scope.getHospitalDetails = function (id, hasBranches) {
         if (hasBranches === true) {
             var city = scope.dirCity;
@@ -178,7 +212,6 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
             showLoader();
             http.get(url).success(function (data) {
                 scope.hospitalBranches = data;
-
                 $.mobile.changePage('#branches-list', {type: "get", transition: "slide"});
                 hideLoader();
             });
