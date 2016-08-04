@@ -491,9 +491,8 @@
 
                 <div data-role="fieldcontain">
                     <label for="selectmenu2" class="select">Specialist:</label>
-
                     <div custom-select="s.Id as s.Name for s in specialities | filter: { Name: $searchTerm }"
-                         ng-model="specialist"></div>
+                         ng-model="docSpecialistId"></div>
                 </div>
 
                 <div data-role="fieldcontain">

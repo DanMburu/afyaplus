@@ -599,6 +599,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 p.empty-results {
 	font-size: 14px !important;
+	padding-top: 10px;
 }
 #datepicker .ui-input-text{margin: 0;}
 #datepicker #DateBooked{border-right: 0}

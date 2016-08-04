@@ -169,7 +169,7 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
         if (typeof location === 'undefined' || location === '') {
             location = 0;
         }
-        var specialist = scope.dirSpecialist;
+        var specialist = scope.docSpecialistId;
         if (typeof specialist === 'undefined' || specialist === '') {
             specialist = 0;
         }
