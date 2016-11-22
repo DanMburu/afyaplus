@@ -15,12 +15,14 @@
     
     <access origin="*" />
 	
-	<feature name="http://api.phonegap.com/1.0/network"/>z
+	<feature name="http://api.phonegap.com/1.0/network"/>
 	<feature name="Notification">
         <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
    </feature>
    
-    <preference name="phonegap-version" value="3.7.0" /> 
+   <!-- 
+   <preference name="phonegap-version" value="3.7.0" /> 
+   -->
     <preference name="orientation"      value="default" />
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="false" />
@@ -38,7 +40,7 @@
 
       <gap:plugin name="com.footprint.cordova.plugin.local-notification"  version="0.8.0" source="pgb" />-->
 
-       <plugin name="de.appplant.cordova.plugin.local-notification 0.8.2dev" source="pgb"  />
+       <gap:plugin name="de.appplant.cordova.plugin.local-notification" />
 
        <!-- <gap:plugin name="com.jmi2.cordova.geolocation" />-->
        <plugin name="org.apache.cordova.inappbrowser" source="pgb" spec="0.6.0" />
