@@ -439,16 +439,14 @@
                 </div>
                 <div data-role="fieldcontain">
                     <label for="textinput4">Phone:</label>
-                    <input type="text" name="Phone" value=""/>
+                    <input type="text" id="registerPhoneNumber" name="Phone"  value=""/>
+                    <input type="hidden" id="registerIdNumber" name="IdNumber" value=""/>
                 </div>
                 <div data-role="fieldcontain">
                     <label for="textinput3">Email:</label>
                     <input type="text" name="Email" id="RegUserEmail" value=""/>
                 </div>
-                <div data-role="fieldcontain">
-                    <label for="textinput4">ID Number / Passport:</label>
-                    <input type="text" name="IdNumber" value=""/>
-                </div>
+                
 
                 <div data-role="fieldcontain">
                     <fieldset data-role="controlgroup" data-type="horizontal">
@@ -824,7 +822,7 @@
                     <div ng-show="hospital.Location.Name!==''">
                         <label>Location: </label><span>{{hospital.Location.Name}}</span>
                     </div>
-                    <div ng-show="hospital.Telephone!==''">
+                    <div ng-show="hospital.Mobile!==''">
                         <label>Mobile:</label><a href="tel:{{hospital.Mobile}}">{{hospital.Mobile}}</a>
                     </div>
                     <div ng-show="hospital.Telephone!==''">
@@ -1641,14 +1639,12 @@
                     <label for="textinput4">Phone:</label>
                     <input type="text" name="Phone" id="textinput4" value="{{user.Phone}}"/>
                 </div>
-                <div data-role="fieldcontain">
-                    <label for="textinput3">Email:</label>
-                    <input type="text" name="Email" id="ProfileUserEmail" value="{{user.Email}}"/>
+                 <div data-role="fieldcontain">
+                    <label for="textinput4">Phone:</label>
+                    <input type="text"   id="phoneUpdate" name="Phone" value="{{user.Phone}}"/>
+                    <input type="hidden" id="IdNumberUpdate" name="IdNumber" value="{{user.IdNumber}}"/>
                 </div>
-                <div data-role="fieldcontain">
-                    <label for="textinput4">ID Number / Passport:</label>
-                    <input type="text" name="IdNumber" value="{{user.IdNumber}}"/>
-                </div>
+               
 
                 <div data-role="fieldcontain">
 

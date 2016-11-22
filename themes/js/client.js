@@ -426,9 +426,9 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
             showLoader();
             http.get(url).success(function (data) {
                 $('#ddBookDoctorId-button span').text('Any');
-                    scope.ddBookDoctorId=0;
-                    scope.bookDoctors = data;
-
+                     scope.ddBookDoctorId=0;
+					 scope.bookDoctors = data;
+                    // scope.exams = data['exams'];
                 hideLoader();
             }).error(ajaxError);
         }
@@ -540,6 +540,7 @@ $(function () {
 
         $('#btnRegister').off('click').on("click", function (e) {
             var allFilled = true;
+           $('#registerIdNumber').val($('#registerPhoneNumber').val());
             $('#frm-register :input:not(:button)').each(function (index, element) {
                 if (element.value === '') {
 
@@ -562,6 +563,8 @@ $(function () {
                 return false;
             }
             if (allFilled) {
+
+               
                 var url = $('#RootUrl').val() + 'account/register/';
                 var data = $('#frm-register').serialize();
 
@@ -642,6 +645,7 @@ $(function () {
     });
 
     $('#updateProfile').on('click', function () {
+         $('#IdNumberUpdate').val($('#phoneUpdate').val());
         var $form = $('#frmUpdateProfile');
         var options = {
             url: rootUrl + 'Account/UpdateProfile',

@@ -252,6 +252,7 @@ var showResponse = function (object) {
 };
 
 $('#updateProfile').on('click',function(){
+     $('#IdNumberUpdate').val($('#phoneUpdate').val());
     var $form = $('#frmUpdateProfile');
     var options = {
         url: rootUrl+'Account/UpdateProfile',
@@ -277,6 +278,7 @@ $(document).on("pageshow", "#register", function () {
     $('#registerSpecialityId').selectmenu('refresh');
      $('#btnRegister').off('click').on("click", function(e) {
          var allFilled = true;
+          $('#registerIdNumber').val($('#registerPhoneNumber').val());
         $('#frm-register :input:not(:button):not([class*=undefined])').each(function(index, element) {
             if (element.value === '') {
                 console.log(element);
@@ -298,6 +300,7 @@ $(document).on("pageshow", "#register", function () {
             return false;
         }
         if (allFilled) {
+
 	   var url = $('#RootUrl').val() + 'account/register/';
 	   var data=$('#frm-register').serialize();
         console.log(url);

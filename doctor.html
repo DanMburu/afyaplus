@@ -299,13 +299,11 @@
                 </div>
                 <div data-role="fieldcontain">
                     <label>Phone:</label>
-                    <input type="text" name="Phone"  value=""/>
+                    <input type="text" id="registerPhoneNumber" name="Phone"  value=""/>
+                    <input type="hidden" id="registerIdNumber" name="IdNumber" value=""/>
                 </div>
 
-                <div data-role="fieldcontain">
-                    <label>ID Number:</label>
-                    <input type="text" name="IdNumber" value=""/>
-                </div>
+               
                 <div data-role="fieldcontain">
                     <fieldset data-role="controlgroup" data-type="horizontal">
                         <legend>Gender</legend>
@@ -375,6 +373,10 @@
                     </a>
                 </li>
 
+                 <li ng-show="clinics.length===0" class="col-md-12 col-xs-12">
+                    <p class="empty-results">No Clinics Found.</p>
+                </li>
+
             </ul>
 
 
@@ -415,16 +417,14 @@
                 </div>
                 <div data-role="fieldcontain">
                     <label for="textinput4">Phone:</label>
-                    <input type="text" name="Phone" id="textinput4" value="{{user.Phone}}"/>
+                    <input type="text"   id="phoneUpdate" name="Phone" value="{{user.Phone}}"/>
+                    <input type="hidden" id="IdNumberUpdate" name="IdNumber" value="{{user.IdNumber}}"/>
                 </div>
                 <div data-role="fieldcontain">
                     <label for="textinput3">Email:</label>
                     <input type="text" name="Email" id="RegUserEmail" value="{{user.Email}}"/>
                 </div>
-                <div data-role="fieldcontain">
-                    <label for="textinput4">ID Number / Passport:</label>
-                    <input type="text" name="IdNumber" value="{{user.IdNumber}}"/>
-                </div>
+               
                 <div data-role="fieldcontain">
 
                     <div data-role="fieldcontain">
