@@ -1038,13 +1038,11 @@
 
 
             <!-- Page Content -->
-            <div class="row">
-
-
+            <div class="row" ng-show="galleryImages.length>0">
                 <div class="col-md-12">
                     <label>Gallery</label>
                 </div>
-                <div ng-show="galleryImages.length>0" id="gallery-cont" class="row smaller-gutter client-profile">
+                <div  id="gallery-cont" class="row smaller-gutter client-profile">
                     <div ng-repeat="image in galleryImages" class="col-md-4 col-xs-4 pic">
                         <a data-lightbox="memberPics" class="internal thumbnail" data-title=""
                            href='{{UploadsRoot}}/{{image.FileUrl}}'>
