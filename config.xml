@@ -40,7 +40,7 @@
 
       <gap:plugin name="com.footprint.cordova.plugin.local-notification"  version="0.8.0" source="pgb" />-->
 
-       <gap:plugin name="de.appplant.cordova.plugin.local-notification" />
+       <gap:plugin name="cordova-plugin-local-notifications-npm" />
 
        <!-- <gap:plugin name="com.jmi2.cordova.geolocation" />-->
        <plugin name="org.apache.cordova.inappbrowser" source="pgb" spec="0.6.0" />
