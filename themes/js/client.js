@@ -480,6 +480,7 @@ $(function () {
     var ajaxError = function (object) {
         alert("Error: An error has occurred processing your request. Please confirm all fields are filled.");
         // $('.ui-mobile .ui-footer').show();
+         alert(JSON.stringify(object));
           var err=JSON.stringify(object, null, 4);
           alert(err);
     };
