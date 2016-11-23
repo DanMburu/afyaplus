@@ -1,3 +1,13 @@
+$.ajaxSetup({ cache: false });
+$(document).bind("mobileinit", function() {
+ // Make your jQuery Mobile framework configuration changes here!
+    $.support.cors = true;
+   $.mobile.allowCrossDomainPages = true;
+   alert($.support.cors);
+   
+
+});
+
 //var app = angular.module("clientApp", ["ngSanitize"]);
 var app = angular.module("clientApp", ["AxelSoft", "ngSanitize"]).filter('htmlToPlaintext', function () {
     return function (text) {
@@ -65,7 +75,7 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
             hideLoader();
 
 
-        }).error(ajaxError);
+        }).fail(ajaxError);
     };
 
     scope.initCarousel = function () {
@@ -478,11 +488,12 @@ $(function () {
 
 
     var ajaxError = function (object) {
+        hideLoader();
         alert("Error: An error has occurred processing your request. Please confirm all fields are filled.");
-        // $('.ui-mobile .ui-footer').show();
-         alert(JSON.stringify(object));
+         $('.ui-mobile .ui-footer').show();
           var err=JSON.stringify(object, null, 4);
-          alert(err);
+          $('#output').text(err);
+           alert(object);
     };
     var ajaxAlways = function (object) {
         hideLoader();
