@@ -1,13 +1,3 @@
-$.ajaxSetup({ cache: false });
-$(document).bind("mobileinit", function() {
- // Make your jQuery Mobile framework configuration changes here!
-    $.support.cors = true;
-   $.mobile.allowCrossDomainPages = true;
-   alert($.support.cors);
-   
-
-});
-
 //var app = angular.module("clientApp", ["ngSanitize"]);
 var app = angular.module("clientApp", ["AxelSoft", "ngSanitize"]).filter('htmlToPlaintext', function () {
     return function (text) {
@@ -57,11 +47,8 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
 
     scope.initApp = function () {
         var url = $('#RootUrl').val() + 'Client/Init/' + $('#UserId').val();
-
-        showLoader();
-        alert('started');
+        showLoader();      
         http.get(url).success(function (data) {
- alert('done');
             scope.featuredProducts = data['featuredProducts'];
             scope.user = data['user'];
             scope.hospitals = data['hospitals'];
@@ -73,8 +60,6 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
             scope.titles = data['userTitles'];
             $('#customPreloader,#customPreloaderBg').remove();
             hideLoader();
-
-
         }).fail(ajaxError);
     };
 
@@ -490,10 +475,10 @@ $(function () {
     var ajaxError = function (object) {
         hideLoader();
         alert("Error: An error has occurred processing your request. Please confirm all fields are filled.");
-         $('.ui-mobile .ui-footer').show();
-          var err=JSON.stringify(object, null, 4);
-          $('#output').text(err);
-           alert(object);
+         //$('.ui-mobile .ui-footer').show();
+        //  var err=JSON.stringify(object, null, 4);
+        //  $('#output').text(err);
+          
     };
     var ajaxAlways = function (object) {
         hideLoader();
