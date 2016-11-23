@@ -49,8 +49,9 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
         var url = $('#RootUrl').val() + 'Client/Init/' + $('#UserId').val();
 
         showLoader();
+        alert('started');
         http.get(url).success(function (data) {
-
+ alert('done');
             scope.featuredProducts = data['featuredProducts'];
             scope.user = data['user'];
             scope.hospitals = data['hospitals'];
@@ -64,7 +65,7 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
             hideLoader();
 
 
-        });
+        }).error(ajaxError);
     };
 
     scope.initCarousel = function () {
@@ -479,9 +480,8 @@ $(function () {
     var ajaxError = function (object) {
         alert("Error: An error has occurred processing your request. Please confirm all fields are filled.");
         // $('.ui-mobile .ui-footer').show();
-        //  var err=JSON.stringify(object, null, 4);
-
-        //  $('#output').text(err);
+          var err=JSON.stringify(object, null, 4);
+          alert(err);
     };
     var ajaxAlways = function (object) {
         hideLoader();
