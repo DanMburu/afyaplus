@@ -146,8 +146,7 @@
                 <li><a class="lnkMyAppointments" ng-click="getMyAppointments()" href="#">My Appointments</a></li>
                 <li><a class="lnkMyQuestions--" ng-click="myQuestions()" href="#">My Questions</a></li>
                 <li><a class="lnkAskQuiz" ng-click="askQuiz()" href="#">Ask a Quiz</a></li>
-                <li><a class="exam-preparation" data-transition="slide" href="#exam-preparation">Exam Preparations</a>
-                </li>
+                <li><a class="exam-preparation" data-transition="slide" href="#exam-preparation">Exam Preparations</a></li>
                 <li><a class="lnkfirstaid" ng-click="getFirstAidList()" href="#">First Aid Tips</a></li>
                 <li><a class="lnkMyAccount" ng-click="getProfile()" href="#">My Profile</a></li>
                 <li><a class="lnkLogout ui-btn ui-btn-icon-right ui-icon-carat-r" href="#">Log out</a></li>
@@ -1579,7 +1578,7 @@
 
                 <select id="ddExamCategories" name="ddExamCategories" class="ddExamCategories"
                         ng-model="ddExamCategories">
-                    <option value="0" ng-selected="1" selected="selected">Select</option>
+                    <option value="" ng-selected="1" selected="selected">Select</option>
                     <option ng-repeat="category in examCategories" value="{{category.Id}}">{{category.Name}}</option>
                 </select>
             </div>

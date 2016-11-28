@@ -51,6 +51,8 @@ app.controller('clientCtrl',['$scope','$http','$filter', function (scope,http,fi
             scope.specialities = data['specialities'];
             scope.counties = data['counties'];
             scope.locations = data['locations'];
+            scope.examCategories = data['examCategories'];
+            scope.examPreparations = data['examPreparations'];
             scope.titles = data['userTitles'];
              $('#customPreloader,#customPreloaderBg').remove();
             hideLoader();
@@ -229,6 +231,148 @@ app.controller('clientCtrl',['$scope','$http','$filter', function (scope,http,fi
             $.mobile.changePage( '#product-details', {type: "get", transition: "slide"});
             hideLoader();
         });
+    };// End Function
+ scope.searchHospitals = function () {
+        $.mobile.changePage('#hospitals-search', {type: "get", transition: "slide"});
+        /*var url = rootUrl+'Mobile/Counties';
+         showLoader();
+         http.get(url).success(function(data) {
+         scope.counties = data['Counties'];
+         scope.locations = data['Locations'];
+         $.mobile.changePage( '#hospitals-search', {type: "get", transition: "slide"});
+         hideLoader();
+         });*/
+    };
+    scope.getHospitalSearchResults = function () {
+        var city = scope.dirCity;
+        if (typeof city === 'undefined' || city === '') {
+            city = 0;
+        }
+        var location = scope.dirLocation;
+        if (typeof location === 'undefined' || location === '') {
+            location = 0;
+        }
+        var specialist = scope.dirSpecialist;
+        if (typeof specialist === 'undefined' || specialist === '') {
+            specialist = 0;
+        }
+
+
+        var search = 'any';
+        if ($('#searchTerm').val() !== '') {
+            search = $('#searchTerm').val();
+        }
+
+
+        var url = rootUrl + 'Hospitals/' + search + '/' + city + '/' + location + '/' + specialist + '/';
+        showLoader();
+        http.get(url).success(function (data) {
+            scope.hospitals = data;
+            $.mobile.changePage('#hospitals-list', {type: "get", transition: "slide"});
+            hideLoader();
+        });
+    };// End Function
+    scope.getDoctorsSearchResults = function () {
+        var city = scope.dirCity;
+        if (typeof city === 'undefined' || city === '') {
+            city = 0;
+        }
+        var location = scope.dirLocation;
+        if (typeof location === 'undefined' || location === '') {
+            location = 0;
+        }
+        var specialist = scope.docSpecialistId;
+        if (typeof specialist === 'undefined' || specialist === '') {
+            specialist = 0;
+        }
+
+
+        var search = 'any';
+        if ($('#SpecialistSearchTerm').val() !== '') {
+            search = $('#SpecialistSearchTerm').val();
+        }
+
+
+        var url = rootUrl + 'DoctorsDirectory/' + search + '/' + city + '/' + location + '/' + specialist + '/';
+        showLoader();
+        http.get(url).success(function (data) {
+            scope.doctorsDirectories = data;
+            $.mobile.changePage('#doctors-list', {type: "get", transition: "slide"});
+            hideLoader();
+        });
+    };// End Function
+    scope.getDoctorDetails = function (id) {
+        scope.doctorId=id;
+
+        $.mobile.changePage('#doctors-details', {type: "get", transition: "slide"});
+    };// End Function
+    scope.getHospitalDetails = function (id, hasBranches) {
+        if (hasBranches === true) {
+            var city = scope.dirCity;
+            if (typeof city === 'undefined' || city === '') {
+                city = 0;
+            }
+            var location = scope.dirLocation;
+            if (typeof location === 'undefined' || location === '') {
+                location = 0;
+            }
+            var search = 'any';
+            if ($('#searchTerm').val() !== '') {
+                search = $('#searchTerm').val();
+            }
+            var url = rootUrl + 'Hospitals/GetBranchesByHospital/' + id + '/' + search + '/' + city + '/' + location + '/';
+            showLoader();
+            http.get(url).success(function (data) {
+                scope.hospitalBranches = data;
+                $.mobile.changePage('#branches-list', {type: "get", transition: "slide"});
+                hideLoader();
+            });
+        } else {
+            var url = rootUrl + 'Hospitals/Details/' + id;
+            showLoader();
+            http.get(url).success(function (data) {
+                scope.hospital = data.hospital;
+                scope.clinics = data.clinics;
+                scope.insurancesAccepted = data.insuranceAccepted;
+                $.mobile.changePage('#hospitals-details', {type: "get", transition: "slide"});
+                hideLoader();
+            });
+        }
+    };// End Function
+    scope.getBranchDetails = function (hospitalId, branchId) {
+
+        var url = rootUrl + 'Hospitals/Branch/Details/' + hospitalId + '/' + branchId + '/';
+        showLoader();
+        http.get(url).success(function (data) {
+            scope.hospital = data.hospital;
+            scope.branch = data.branch;
+            scope.insurancesAccepted = data.insuranceAccepted;
+            scope.galleryImages = data.galleryImages;
+            $.mobile.changePage('#branch-details', {type: "get", transition: "slide"});
+            hideLoader();
+        });
+    };// End Function
+    scope.getFirstAidList = function () {
+        var url = rootUrl + 'FirstAid';
+        showLoader();
+        http.get(url).success(function (data) {
+            scope.firstAidList = data;
+            $.mobile.changePage('#first-aid', {type: "get", transition: "slide"});
+            hideLoader();
+        });
+    }; // End Function
+    scope.getFirstAid = function (id) {
+        var url = rootUrl + 'FirstAid/' + id;
+        showLoader();
+        http.get(url).success(function (data) {
+            scope.firstAidItem = data;
+            $.mobile.changePage('#first-aid-details', {type: "get", transition: "slide"});
+            hideLoader();
+        });
+    }; // End Function
+ scope.getExamPreparation = function (id) {
+        scope.examId=id;
+        $.mobile.changePage('#exam-preparation-details', {type: "get", transition: "slide"});
     };// End Function
 
 
