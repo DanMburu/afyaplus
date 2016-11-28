@@ -252,7 +252,7 @@ $(document).on("pageshow", function() { // login
 
         $.mobile.changePage( '#login', {
             type: "get",
-            transition: "flip"
+            transition: "slide"
         });
 
     });
