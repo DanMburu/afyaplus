@@ -1,51 +1,1814 @@
-﻿<!DOCTYPE html>
-<html>
+<!doctype html>
+<html ng-app="clientApp">
 <head>
     <meta charset="utf-8">
-    <title>Radioson</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Client</title>
     <link rel="stylesheet" type="text/css" href="themes/jquery.mobile-1.4.5.min.css">
-    <link rel="stylesheet" type="text/css" href="themes/css/style.css">
-    <link rel="stylesheet" type="text/css" href="themes/css/landing.css">
-    <script src="themes/js/jquery-2.1.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="themes/css/jquery.mobile.datepicker.css">
+    <script src="themes/js/jquery-1.11.1.min.js"></script>
     <script src="themes/js/jquery.mobile-1.4.5.min.js"></script>
-    <script src="cordova.js"></script>
-    <script src="themes/js/common.js"></script>
-    <script src="themes/js/landing.js"></script>
+    <script src="themes/js/jquery.mobile.dynamic.popup.js"></script>
+    <!--
+        <link rel="stylesheet" type="text/css" href="themes/css/jqm-datebox.min.css">
+        <script src="themes/js/jqm-datebox.core.js"></script>
+        <script src="themes/js/jqm-datebox.mode.flipbox.min.js"></script>
+    -->
+
+    <link rel="stylesheet" href="themes/css/bootstrap.min.css"/>
+    <link href="http://cdn.jtsage.com/jtsage-datebox/4.0.0/jtsage-datebox-4.0.0.bootstrap.min.css" rel="stylesheet"
+          type="text/css">
+    <script src="http://cdn.jtsage.com/jtsage-datebox/4.0.0/jtsage-datebox-4.0.0.bootstrap.min.js"
+            type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="themes/fonts/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="themes/css/style.css">
+    <script src="cordova.js" type="text/javascript"></script>
+    <script src="themes/js/mobile.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+
+    <link rel="stylesheet" href="themes/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="themes/css/custom-select.css"/>
+    <link href="themes/css/lightbox.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="themes/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="themes/owl-carousel/owl.theme.css">
+    <script src="themes/owl-carousel/owl.carousel.min.js"></script>
+
 </head>
-<body onload="onDeviceReady()">
-<div data-role="page" id="decoyLanding"  >
-    <div data-role="header">
 
-        <img src="images/logo.png" width="254" height="56" alt=""/>
+<body ng-controller="clientCtrl">
 
-    </div>
-    <div class="landing" data-role="content">
+<div id="customPreloaderBg"></div>
+<input type="hidden" id="HFLatitude" value=""/>
+<input type="hidden" id="HFLongitude" value=""/>
 
-    </div>
+<a data-role="none" href="#menupanel" id="menuicon"></a>
+<a data-role="none" href="#menupanel" id="menuclose" data-rel="close"></a>
+
+<div id="menupanel" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="push" data-theme="a">
+    <ul id="mainmenu" data-role="listview" class="ui-listview">
+        <li class="ui-first-child"><a href="#" id="menu-teaser" class="ui-btn">Main Menu</a></li>
+
+        <li><a class="lnkhospitalsearch ui-btn ui-btn-icon-right ui-icon-carat-r" href="#landing">Home</a></li>
+        <li><a class="lnkhospitalsearch ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="searchHospitals()" href="#">
+            Hospital Directory</a></li>
+        <!--
+    <li><a class="lnkhospitalsearchByDIstance ui-btn ui-btn-icon-right ui-icon-carat-r" data-transition="slide"
+           href="#nearby">Search By Distance</a>
+    </li>
+    -->
+        <li><a class="lnkBook ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="bookAppointment()" href="#">Book
+            Appointment</a></li>
+        <li><a class="lnkMyAppointments ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="getMyAppointments()"
+               href="#">My Appointments</a></li>
+        <li><a class=" ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="myQuestions()" href="#">My Questions</a></li>
+        <li><a class="lnkAskQuiz ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="askQuiz()" href="#">Ask a Quiz</a>
+        </li>
+        <li><a class="lnkfirstaid ui-btn ui-btn-icon-right ui-icon-carat-r" data-transition="slide"
+               href="#exam-preparation">Exam Preparations</a></li>
+        <li><a class="lnkfirstaid ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="getFirstAidList()" href="#">First
+            Aid Tips</a></li>
+        <li><a class="lnkMyAccount ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="getProfile()" href="#">My
+            Profile</a></li>
+        <li><a class="lnkLanding ui-btn ui-btn-icon-right ui-icon-carat-r" href="#main-landing" data-transition="slide">Landing
+            Page</a></li>
+        <li><a class="lnkLogout ui-btn ui-btn-icon-right ui-icon-carat-r" href="#">Log out</a></li>
+
+    </ul>
 </div>
+<main id="main-panel">
+    <div data-role="page" id="decoyLanding">
+        <div data-role="header">
 
-<div data-role="page" id="landing">
-    <div data-role="header">
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+            <a data-transition="slide" class="lnkToLoginPage" href="#login"></a>
+        </div>
+        <div class="landing" data-role="content">
 
-        <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+    </div>
+
+    <div data-role="page" id="login">
+        <div data-role="header">
+
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+
+        </div>
+        <div data-role="content">
+            <form id="frm-login">
+                <span class="span-success">Registration sucessful. Please login below.</span>
+
+                <div data-role="fieldcontain">
+                    <label for="textinput6">Email:</label>
+                    <input type="text" name="Email" value=""/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput5">Password</label>
+                    <input type="password" name="Password" value=""/>
+                </div>
+
+                <button id="btnLogin" data-icon="arrow-r">Login</button>
+
+                <a data-transition="slide" class="lnkForgotPassword lnkregister pull-left" href="#forgot-password">Forgot
+                    Password</a>
+
+                <a data-transition="slide" class="lnkregister" href="#register">Register</a>
+
+            </form>
+        </div>
+    </div>
+
+
+    <div data-role="page" id="landing">
+        <div data-role="header">
+
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+
+        </div>
+        <div data-role="content">
+
+
+            <ul data-role="listview">
+                <li><a class="lnkhospitalsearch" ng-click="searchHospitals()" href="#">Hospitals Directory</a></li>
+                <li><a class="lnkhospitalsearch" data-transition="slide" href="#doctors-directory">Doctors Directory</a>
+                </li>
+                <!--
+                <li><a class="lnkhospitalsearchByDIstance" data-transition="slide" href="#nearby">Search By Distance</a>
+                </li>
+                -->
+                <li><a class="lnkBook" ng-click="bookAppointment()" href="#">Book Appointment</a></li>
+                <li><a class="lnkMyAppointments" ng-click="getMyAppointments()" href="#">My Appointments</a></li>
+                <li><a class="lnkMyQuestions--" ng-click="myQuestions()" href="#">My Questions</a></li>
+                <li><a class="lnkAskQuiz" ng-click="askQuiz()" href="#">Ask a Quiz</a></li>
+                <li><a class="exam-preparation" data-transition="slide" href="#exam-preparation">Exam Preparations</a></li>
+                <li><a class="lnkfirstaid" ng-click="getFirstAidList()" href="#">First Aid Tips</a></li>
+                <li><a class="lnkMyAccount" ng-click="getProfile()" href="#">My Profile</a></li>
+                <li><a class="lnkLogout ui-btn ui-btn-icon-right ui-icon-carat-r" href="#">Log out</a></li>
+            </ul>
+            <a data-role="none" id="lnkInit" ng-click="initApp()" href="#"></a>
+            <!-- Set up your HTML -->
+            <div class="featured-products">
+                <h2>Featured Products</h2>
+                <div id="owl-carousel" class="owl-carousel">
+
+                    <!--  <div ng-repeat="product in featuredProducts" ng-init="$last ? initCarousel() : angular.noop()">-->
+                    <div ng-repeat="product in featuredProducts">
+                        <a href="#" ng-click="getProductDetails(product.Id)">
+                            <div class="thumbnail">
+                                <img src="{{UploadsRoot}}/products/th_{{product.Image}}" class="img-responsive">
+                            </div>
+                            <span>{{product.Name}}</span>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div data-role="footer">
+            <h4></h4>
+        </div>
+    </div>
+
+    <div data-role="page" id="main-landing">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+
+        </div>
+        <div class="landing" data-role="content">
+
+            <a href="#" onclick="landing()" style="padding-top: 60px">
+                <img src="images/patient.png">
+                <span>Patients' App</span>
+            </a>
+            <a href="doctor.html" data-ajax="false"><img src="images/doctor.png">
+                <span>Doctors' App</span>
+            </a>
+
+        </div>
+    </div>
+
+
+    <!--Close Page-->
+    <!--Close Page-->
+    <div data-role="page" id="patient-queries" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div id="hospital-list-cont" data-role="content">
+
+            <ul class="questions-list" data-role="listview">
+                <!--
+               <li ng-repeat="query in queries">{{query.LatestSender}}</li>
+               -->
+
+                <li class="chat-33" ng-repeat="query in queries">
+                    <a href="#" ng-click="getChatList(query.Id)" class="li-chat-list ui-btn status-{{query.StatusId}}"
+                       doc="query.UserId"
+                       rel="{{query.Id}}" data-bind="attr: {rel: Id,doc: UserId}">
+                        <span class="sender-title">{{query.LatestSender}}</span>
+                        <span class="timespan">{{query.DateSent | date:"dd/MM/yyyy h:mma"}}</span>
+                        <span class="chat-msg">{{query.LatestMessage}}</span>
+                    </a>
+                    <span id="chat-{{query.Id}}" class="read-status-{{query.IsClientRead}}"></span>
+                </li>
+                <li ng-show="queries.length===0">
+                    <div class="col-md-12 col-xs-12">
+                        <p class="empty-results">No questions found.</p>
+                    </div>
+                </li>
+            </ul>
+
+            <a class="lnkChat hidden" data-role="none" data-transition="slide" href="#chat"></a>
+
+
+        </div>
 
     </div>
-    <div class="landing" data-role="content">
-    
-        <a href="client.html" class="external" data-ajax="false" style="padding-top: 60px">
-            <img src="images/patient.png">
-            <span>Patients' App</span>
-        </a>
-        <a href="doctor.html" class="external" data-ajax="false"><img src="images/doctor.png">
-            <span>Doctors' App</span>
-        </a>
+    <!--Close Page-->
+    <div data-role="page" id="ask-quiz" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div data-role="content">
+            <form id="frmaskquiz">
+
+                <div data-role="fieldcontain">
+                    <label for="textinput6">Hospital:</label>
+
+                    <select id="QuizHospitalId" ng-model="selectedHospital" ng-change="getBranches()" name="HospitalId"
+                            class="HospitalId">
+                        <option value="0" ng-selected="1" selected="selected">Select</option>
+                        <option ng-repeat="hospital in hospitals" value="{{hospital.Id}}">{{hospital.Name}}</option>
+
+                    </select>
+                    <hidden id="selectedHospitalId"></hidden>
+                </div>
+                <div id="ask-quiz-branch" data-role="fieldcontain">
+                    <label for="textinput6">Branch:</label>
+
+                    <select name="BranchId" id="ddQBranches" ng-model="selectedBranch" ng-change="getDoctors()">
+                        <option value="0" ng-selected="1" selected="selected">Select</option>
+                        <option ng-repeat="branch in branches" value="{{branch.Id}}">{{branch.Name}}</option>
+                    </select>
+
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput6">Specialist:</label>
+
+                    <select name="SpecialityId" id="ddQSpeciality" ng-change="getDoctors()"
+                            ng-model="selectedSpeciality">
+                        <option value="0">Select</option>
+                        <option ng-repeat="speciality in hospitalSpecialities"
+                                value="{{speciality.Id}}">{{speciality
+                            .Name}}
+                        </option>
+                    </select>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput6">Doctor:</label>
+
+                    <select class="DoctorId" name="DoctorId">
+                        <option value="0">Select</option>
+                        <option ng-repeat="doctor in doctors" value="{{doctor.Id}}">{{doctor.FirstName +'
+                            '+doctor.OtherNames}}
+                        </option>
+                    </select>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <label for="textinput6">Surname:</label>
+                    <input type="text" name="Surname" value="{{user.Surname}}"/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput5">First Name:</label>
+                    <input type="text" name="FirstName" value="{{user.FirstName}}"/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput5">Last Name:</label>
+                    <input type="text" name="LastName" value="{{user.LastName}}"/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput4">Phone:</label>
+                    <input type="text" name="Phone" value="{{user.Phone}}"/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput3">Email:</label>
+                    <input type="text" name="Email" id="QuizUserEmail" value="{{user.Email}}"/>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <legend>Gender</legend>
+                        <input type="radio" name="GenderId" ng-checked="(user.GenderId == 1)" id="gender_0"
+                               value="1"/>
+                        <label for="gender_0">Male</label>
+                        <input type="radio" name="GenderId" ng-checked="(user.GenderId == 2)" id="gender_1"
+                               value="2"/>
+                        <label for="gender_1">Female</label>
+                    </fieldset>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <label for="textarea">Your Question:</label>
+                    <textarea cols="40" rows="8" name="LatestMessage" id="question"></textarea>
+                </div>
+
+                <input type="hidden" class="quizUserId" name="UserId" value="{{user.Id}}"/>
+                <a id="btn-ask" data-role="button" data-icon="star">Send</a>
+            </form>
+
+            <!-- Start Popup --->
+            <a id="payment-popup" class="lnkpopup hidden" href="#payments-popup" data-rel="popup"
+               data-position-to="window" data-transition="pop" data-role="none">PopUp</a>
+
+            <div data-role="popup" id="payments-popup" data-dismissible="true" style="max-width: 400px;">
+                <div data-role="header">
+                    <h1 class="popup-header">Success</h1>
+                </div>
+                <div role="main" class="ui-content">
+                    <div class="popup-text">
+                        <p>Your question was successfully submitted.</p>
+
+                        <p>Click on the button below to pay.</p>
+                    </div>
+                    <div class="mc-text-left">
+                        <a data-role="button" id="lnkPayments" target="_blank" href="#">Procede to Payment</a>
+                        <a data-role="button" href="#" class="close-popup">Close</a>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End Popup --->
+
+        </div>
+        <div data-role="footer">
+
+        </div>
+    </div>
+    <!-- Close Page -->
+    <div data-role="page" id="chatList" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div data-role="content">
+
+            <div id="chatcont">
+                <div class="msg" ng-repeat="message in chatList">
+                    <span class="chat-inner-date">{{message.DateSent | date:"dd/MM/yyyy h:mma"}}</span>
+
+                    <div class="talk-bubble tri-right round {{message.CssClass}}">
+                        <div class="talktext"><p>{{message.Message}}</p></div>
+                    </div>
+                </div>
+            </div>
+            <div data-role="fieldcontain" id="chatControlsCont">
+                <textarea type="text" name="chatmessage" id="chatmessage" value=""></textarea>
+                <button class="send-btn sendsignalr" rel="" data-iconpos="right" data-icon="arrow-r">Send</button>
+                <a data-role="button" class="btnPayConsultationNow" target="_blank" rel="" data-iconpos="right"
+                   data-icon="arrow-r">Pay Now</a>
+                <input type="hidden" id="DoctorID"/>
+            </div>
+
+            <div id="chatStatus">
+                <p></p>
+            </div>
+            <div data-role="popup" id="payConsultationPopup" data-dismissible="true" style="max-width: 400px;">
+                <div data-role="header">
+                    <h1 class="popup-header">Success</h1>
+                </div>
+                <div role="main" class="ui-content">
+                    <div class="popup-text">
+                        <p>Click on the button below to pay.</p>
+                    </div>
+                    <div class="mc-text-left">
+                        <div class="mc-text-left">
+                            <a data-role="button" id="lnkPayConsultation" target="_blank" href="#">Procede to
+                                Payment</a>
+                            <a data-role="button" href="#" class="close-popup">Close</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End Popup --->
+
+
+        </div>
+        <div data-role="footer">
+            <h4></h4>
+        </div>
+    </div>
+    <!-- Close page -->
+    <div data-role="page" id="register" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div data-role="content">
+            <form id="frm-register">
+
+                <div data-role="fieldcontain">
+                    <label for="textinput6">Surname:</label>
+                    <input type="text" name="Surname" value=""/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput5">First Name:</label>
+                    <input type="text" name="FirstName" value=""/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput5">Last Name:</label>
+                    <input type="text" name="LastName" value=""/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput4">Phone:</label>
+                    <input type="text" id="registerPhoneNumber" name="Phone"  value=""/>
+                    <input type="hidden" id="registerIdNumber" name="IdNumber" value=""/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput3">Email:</label>
+                    <input type="text" name="Email" id="RegUserEmail" value=""/>
+                </div>
+                
+
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <legend>Gender</legend>
+                        <input type="radio" name="GenderId" ng-checked="(user.GenderId == 1)" id="gender_0"
+                               value="1"/>
+                        <label for="gender_0">Male</label>
+                        <input type="radio" name="GenderId" ng-checked="(user.GenderId == 2)" id="gender_1"
+                               value="2"/>
+                        <label for="gender_1">Female</label>
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="passwordinput">Password:</label>
+                    <input type="password" class="password" name="Password" id="passwordinput" value=""/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="passwordinput2">Confirm Password:</label>
+                    <input type="password" class="passwordconfirm" name="ConfirmPassword" id="passwordinput2" value=""/>
+                </div>
+                <input type="hidden" name="AccountTypeId" value="2"/>
+                <button id="btnRegister" data-icon="star">Submit</button>
+            </form>
+        </div>
+        <div data-role="footer">
+
+        </div>
+    </div>
+    <!-- Close Page -->
+
+    <div data-role="page" id="doctors-directory" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div data-role="content">
+
+            <form id="frmDoctorsSearch" data-theme="b">
+
+                <div data-role="fieldcontain">
+                    <label for="selectmenu2" class="select">Specialist:</label>
+                    <div custom-select="s.Id as s.Name for s in specialities | filter: { Name: $searchTerm }"
+                         ng-model="docSpecialistId"></div>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <label for="selectmenu2" class="select">County:</label>
+
+                    <div custom-select="s.Id as s.Name for s in counties | filter: { Name: $searchTerm }"
+                         ng-model="dirCity"></div>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="selectmenu" class="select">Location:</label>
+
+                    <div custom-select="s.Id as s.Name for s in locations | filter:{Name: $searchTerm,CountyId: dirCity||''}"
+                         ng-model="dirLocation"></div>
+                </div>
+                <div data-role="fieldcontain">
+                    <label>Specialist Name:</label>
+                    <input id="SpecialistSearchTerm" type="text" name="keyword"/>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <a href="#" ng-click="getDoctorsSearchResults()" data-role="button"
+                       data-icon="search">Search</a>
+
+                </div>
+            </form>
+
+        </div>
 
     </div>
-    <div data-role="footer">
-        <h4></h4>
-    </div>
-</div>
+    <!--Close Page-->
+    <div data-role="page" id="doctors-list" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div data-role="content">
 
+            <ul class="firstaid-list" data-role="listview">
+                <li ng-repeat="doctor in doctorsDirectories">
+                    <a ng-click="getDoctorDetails(doctor.Id)"
+                       class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="#">
+                        <span class="sender-title" >{{doctor.User.UserTitle.Name}} {{doctor.User.Surname}} {{doctor.User.FirstName}}</span>
+                        <span class="chat-msg">{{doctor.Location.Name}}, {{doctor.County.Name}}</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div ng-show="doctorsDirectories.length===0" class="col-md-12 col-xs-12">
+                <p class="empty-results">No doctors found.</p>
+            </div>
+        </div>
+    </div>
+    <!--Close Page-->
+
+    <div data-role="page" id="doctors-details" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div id="hospital-list-cont" data-role="content">
+
+            <div class="detailscont" ng-repeat="doctor in doctorsDirectories| filter: { Id : doctorId }:true">
+                <div class="ui-field-contain"  data-role="fieldcontain">
+                    <label><strong>Name </strong>{{doctor.User.UserTitle.Name}} {{doctor.User.Surname}} {{doctor.User.FirstName}}</label>
+                </div>
+                <div class="ui-field-contain" data-role="fieldcontain">
+                    <p><strong>Phone: </strong><a href="tel:{{doctor.User.Phone}}">{{doctor.User.Phone}}</a></p>
+                    <p><strong>Email: </strong>{{doctor.User.Email}}</p>
+                </div>
+                <div class="ui-field-contain" data-role="fieldcontain">
+                    <label><strong>Location</strong></label>
+                     <p>{{doctor.Location.Name}}, {{doctor.County.Name}}, </p>
+                </div>
+                <div class="ui-field-contain" data-role="fieldcontain">
+                    <label><strong>Profession Summary </strong></label>
+                    <p>{{doctor.ProfessionSummary}}</p>
+                </div>
+                <div class="ui-field-contain" data-role="fieldcontain">
+                    <label><strong>Profession Training </strong></label>
+                    <p>{{doctor.ProfessionSummary}}</p>
+                </div>
+                <div class="ui-field-contain" data-role="fieldcontain">
+                    <label><strong>Hospitals of Practice</strong></label>
+                    <p>{{doctor.HospitalsOfPractice}}</p>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    <!--Close Page-->
+    <div data-role="page" id="hospitals-search" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div data-role="content">
+
+            <form id="frmHospitalSearch" data-theme="b">
+
+
+                <div data-role="fieldcontain">
+                    <label for="selectmenu2" class="select">County:</label>
+
+                    <div custom-select="s.Id as s.Name for s in counties | filter: { Name: $searchTerm }"
+                         ng-model="dirCity"></div>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="selectmenu" class="select">Location:</label>
+
+                    <div custom-select="s.Id as s.Name for s in locations | filter:{Name: $searchTerm,CountyId: dirCity||''}"
+                         ng-model="dirLocation"></div>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <label for="selectmenu2" class="select">Specialist:</label>
+
+                    <div custom-select="s.Id as s.Name for s in specialities | filter: { Name: $searchTerm }"
+                         ng-model="dirSpecialist"></div>
+                </div>
+
+
+                <div data-role="fieldcontain">
+                    <label>Hospital Name:</label>
+                    <input id="searchTerm" type="text" name="keyword"/>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <a id="btn-search-hospital" href="#" ng-click="getHospitalSearchResults()" data-role="button"
+                       data-icon="search">Search</a>
+
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+    <!--Close Page-->
+
+    <div data-role="page" id="hospitals-list" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div data-role="content">
+            <!--
+             <ul class="ul-hospital-list" data-bind="foreach: hospitals" data-role="listview">
+
+                 <li ng-repeat="hospital in hospitals">
+                     <a href="#" ng-click="getHospitalDetails(hospital.Id)"
+                        class="li-hospital ui-btn ui-btn-icon-right ui-icon-carat-r">
+                         <span>{{hospital.Name}}</span>
+                     </a>
+                 </li>
+
+             </ul>
+             -->
+
+
+            <div ng-repeat="hospital in hospitals" class="row small-gutter">
+                <div class="col-md-3 col-xs-3 clientlogo">
+                    <a class="clearfix text-white" ng-click="getHospitalDetails(hospital.Id,hospital.HasBranches)"
+                       href='#'>
+                        <img id="hospital-logo" ng-src="{{SiteUrl}}Content/uploads/hospitals/{{hospital.Logo}}">
+                    </a>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-9 no-gutter">
+                    <div class="col-lg-12 col-xs-12 col-sm-12">
+
+                        <a class="title-link" href="#"
+                           ng-click="getHospitalDetails(hospital.Id,hospital.HasBranches)">
+                            {{hospital.Name}}</a>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12">
+                        {{directory.LocationName}}
+
+                        <a href='tel:"{{directory.MobilePhone}}'
+                           class="pull-right text-right">{{directory.MobilePhone}} </a>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12">
+                        <a data-transition="slide" class="pull-left text-left">
+
+                            {{hospital.Latitude |Distance:hospital.Longitude}}
+
+                        </a>
+                        <!--
+                        <a ng-click="getDirections(directory.Id)" data-transition="slide" class="directions-label pull-right"  href='#'>Get Directions </a>
+                   -->
+                    </div>
+
+                    <div class="col-md-12 col-xs-12 pull-left">
+
+                        <p>{{hospital.Description | htmlToPlaintext | limitTo : 150 : begin}}...</p>
+
+                    </div>
+                    <!--
+                                   <div ng-show='hospital.WebsiteLink!=="" && hospital.WebsiteLink!="null"'  class="col-md-12 col-sm-4 text-right  col-xs-12">
+                                       <a target='_blank' href='{{hospital.WebsiteLink|httpWebsite}}'>View Website </a>
+                                   </div>
+                                  -->
+
+
+                </div>
+
+            </div>
+
+
+            <div ng-show="hospitals.length===0" class="col-md-12 col-xs-12">
+                <p class="empty-results">No hospitals found.</p>
+            </div>
+
+        </div>
+
+    </div>
+    <!--Close Page-->
+    <div data-role="page" id="branches-list" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div data-role="content">
+
+            <ul class="ul-hospital-list" data-role="listview">
+
+                <li ng-repeat="branch in hospitalBranches">
+                    <a href="#" ng-click="getBranchDetails(branch.HospitalId,branch.Id)"
+                       class="li-hospital ui-btn ui-btn-icon-right ui-icon-carat-r">
+                        <span class="list-title">{{branch.Name}}</span>
+                        <span class="list-time">{{branch.OperatingHours}}</span>
+                        <span class="chat-msg">{{branch.Location.Name}},{{branch.County.Name}} - {{branch
+                             .Mobile}}</span>
+                    </a>
+                </li>
+
+            </ul>
+
+            <!--
+            <div ng-repeat="hospital in hospitals" class="row small-gutter">
+                <div class="col-md-3 col-xs-3 clientlogo">
+                    <a class="clearfix text-white" ng-click="getHospitalDetails(hospital.Id,hospital.HasBranches)"
+                       href='#'>
+                        <img id="hospital-logo" ng-src="{{SiteUrl}}Content/uploads/hospitals/{{hospital.Logo}}">
+                    </a>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-9 no-gutter">
+                    <div class="col-lg-12 col-xs-12 col-sm-12">
+                        <a class="title-link" href="#"
+                           ng-click="getHospitalDetails(hospital.Id,hospital.HasBranches)">
+                            {{hospital.Name}}</a>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12">
+                        {{directory.LocationName}}
+                        <a href='tel:"{{directory.MobilePhone}}' class="pull-right text-right">{{directory.MobilePhone}} </a>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12">
+                        <a data-transition="slide" class="pull-left text-left">
+                            {{hospital.Latitude |Distance:hospital.Longitude}}
+                        </a>
+                    </div>
+                    <div class="col-md-12 col-xs-12 pull-left">
+                        <p>{{hospital.Description | htmlToPlaintext | limitTo : 150 : begin}}...</p>
+                    </div>
+                </div>
+
+            </div>
+           -->
+            <div ng-show="hospitals.length===0" class="col-md-12 col-xs-12">
+                <p class="empty-results">No branches found.</p>
+            </div>
+
+        </div>
+
+    </div>
+    <!--Close Page-->
+    <div data-role="page" id="hospitals-details" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div id="hospital-details" data-bind="foreach: singleHospital" data-role="content">
+
+
+            <div class="row small-gutter branch-header">
+                <div class="col-md-3 col-xs-3 clientlogo">
+                    <a class="clearfix text-white" ng-click="getHospitalDetails(hospital.Id)" href='#'>
+                        <img id="hospital-logo" ng-src="{{SiteUrl}}Content/uploads/hospitals/{{hospital.Logo}}">
+                    </a>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-9 no-gutter">
+                    <div class="col-lg-12 col-xs-12 col-sm-12">
+
+                        <a class="title-link" href="#"
+                           ng-click="getHospitalDetails(hospital.Id)">
+                            {{hospital.Name}}</a>
+                        <span> {{hospital.Location.Name}},{{hospital.County.Name}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row hospital-actions">
+                <div class="col-xs-6 col-md-6"><a class="insurance-accepted" href="#hospital-details-insurance"
+                                                  data-rel="popup" data-position-to="window" data-transition="pop">Insurance
+                    Accepted</a></div>
+
+                <div class="col-xs-6 col-md-6"><a class="branches" href="#branches-popup"
+                                                  data-rel="popup" data-position-to="window" data-transition="pop">Clinics</a>
+                </div>
+
+                <div class="col-xs-6 col-md-6"><a class="lnkBookNow" ng-click="bookAppointment(hospital.Id)" href="#">Book
+                    Appointment</a></div>
+                <div class="col-xs-6 col-md-6"><a class="lnkAskNow" ng-click="askQuiz(hospital.Id)"
+                                                  data-transition="slide" href="#">Consult Online</a></div>
+
+
+            </div>
+            <!-- row-->
+            <div class="row">
+
+                <div class="col-md-12 details-cont">
+                    <div ng-show="hospital.OperatingHours!==''">
+                        <label>Operating Hours: </label><span>{{hospital.OperatingHours}}</span>
+                    </div>
+                    <div ng-show="hospital.Location.Name!==''">
+                        <label>Location: </label><span>{{hospital.Location.Name}}</span>
+                    </div>
+                    <div ng-show="hospital.Mobile!==''">
+                        <label>Mobile:</label><a href="tel:{{hospital.Mobile}}">{{hospital.Mobile}}</a>
+                    </div>
+                    <div ng-show="hospital.Telephone!==''">
+                        <label>Telephone:</label><a href="tel:{{hospital.Telephone}}">{{hospital.Telephone}}</a>
+                    </div>
+                    <div ng-show="hospital.Email!==''">
+                        <label>Email:</label><a href="mailto:{{hospital.Email}}">{{hospital.Email}}</a>
+                    </div>
+                    <div ng-show="hospital.WebsiteLink!==''">
+                        <label>Website:</label><a href="{{hospital.WebsiteLink|httpWebsite}}">{{hospital
+                        .WebsiteLink}}</a>
+                    </div>
+
+                </div>
+                <div class="col-md-12">
+                    <div ng-bind-html="hospital.Description" id="desc"></div>
+                </div>
+
+            </div>
+            <div class="row hospital-actions">
+                <div class="col-md-12">
+                    <ul data-role="listview">
+                        <li ng-repeat="branch in hospital.Branches">
+                            <a class="insurance-accepted" href="#">branch.Name</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- row-->
+            <input type="hidden" value="{{hospital.Id}}" id="HOSPITALID"/>
+            <input type="hidden" value="{{hospital.Latitude}}" id="HospitalLatitude"/>
+            <input type="hidden" value="{{hospital.Longitude}}" id="HospitalLongitude"/>
+
+            <div data-role="popup" id="hospital-details-insurance" data-dismissible="true" style="max-width: 400px;">
+                <div data-role="header">
+                    <h1 class="popup-header"></h1>
+                </div>
+                <div role="main" class="ui-content">
+                    <div class="popup-text">
+                        <p class="poptext"></p>
+                        <ul id="insurance-cont">
+                            <li ng-repeat="accepted in hospital.InsurancesAccepted">
+                                {{accepted.InsuranceCompany.Name}}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mc-text-center">
+
+                        <a data-role="button" href="#" class="close-popup">Close</a>
+
+                    </div>
+
+                </div>
+            </div>
+            <div data-role="popup" id="branches-popup" data-dismissible="true" style="max-width: 400px;">
+                <div data-role="header">
+                    <h1 class="popup-header"></h1>
+                </div>
+                <div role="main" class="ui-content">
+                    <div class="popup-text">
+                        <p class="poptext"></p>
+                        <div class="branch-desc" ng-bind-html="branch.Description"></div>
+                        <ul class="insurance-cont">
+                            <li ng-repeat="clinic in clinics" class="clinic">
+                                <h3>{{clinic.Name}}</h3>
+                                <div class="clinic-desc" ng-bind-html="clinic.Description"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mc-text-center">
+
+                        <a data-role="button" href="#" class="close-popup">Close</a>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div id="maps-cont" class="col-md-12 col-xs-12">
+
+
+                <a class="directions-label" data-transition="slide" runat="server" href='#get-directions'>Get
+                    Directions</a>
+
+
+                <script type="text/javascript">
+
+
+                    $(document).on("pageshow", "#hospitals-details", function () {
+                        try {
+
+                            var markers = [{
+                                "title": $('#hospital-name').text(),
+                                "lat": $('#HospitalLatitude').val(),
+                                "lng": $('#HospitalLongitude').val(),
+                                "description": $('#desc').text()
+                            }];
+                            var mapOptions = {
+                                center: new google.maps.LatLng($('#HospitalLatitude').val(), $('#HospitalLongitude').val()),
+                                zoom: 14,
+                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                            };
+
+                            var infoWindow = new google.maps.InfoWindow();
+                            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                            for (i = 0; i < markers.length; i++) {
+                                var data = markers[i]
+                                var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+
+                                var marker = new google.maps.Marker({
+                                    position: myLatlng,
+                                    map: map,
+                                    title: data.title
+                                });
+
+                                (function (marker, data) {
+                                    google.maps.event.addListener(marker, "click", function (e) {
+                                        infoWindow.setContent(data.description);
+                                        infoWindow.open(map, marker);
+                                    });
+                                })(marker, data);
+                            }
+                        } catch (err) {
+
+                        }
+                    });
+
+                </script>
+
+                <div id="map">
+                </div>
+                <p>&nbsp;</p>
+            </div>
+
+
+        </div>
+    </div>
+    <!--Close Page-->
+    <div data-role="page" id="branch-details" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div id="hospital-details" data-bind="foreach: singleHospital" data-role="content">
+
+
+            <div class="row small-gutter branch-header">
+                <div class="col-md-3 col-xs-3 clientlogo">
+                    <a class="clearfix text-white" ng-click="getHospitalDetails(hospital.Id)" href='#'>
+                        <img id="hospital-logo" ng-src="{{SiteUrl}}Content/uploads/hospitals/{{hospital.Logo}}">
+                    </a>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-9 no-gutter">
+                    <div class="col-lg-12 col-xs-12 col-sm-12">
+
+                        <a class="title-link" href="#"
+                           ng-click="getHospitalDetails(hospital.Id)">
+                            {{branch.Name}},{{hospital.Name}}</a>
+                        <span> {{branch.Location.Name}},{{branch.County.Name}}</span>
+                    </div>
+                </div>
+            </div>
+            <!-- row-->
+            <div class="row hospital-actions">
+
+                <div class="col-xs-6 col-md-6"><a class="insurance-accepted" href="#branch-details-insurance"
+                                                  data-rel="popup" data-position-to="window" data-transition="pop">Insurance
+                    Accepted</a></div>
+
+                <div class="col-xs-6 col-md-6"><a class="branches" href="#branch-clinics-popup"
+                                                  data-rel="popup" data-position-to="window" data-transition="pop">Clinics</a>
+                </div>
+
+                <div class="col-xs-6 col-md-6"><a class="lnkBookNow" ng-click="bookAppointment(hospital.Id,branch.Id)"
+                                                  href="#">Book Appointment</a></div>
+                <div class="col-xs-6 col-md-6"><a class="lnkAskNow" ng-click="askQuiz(hospital.Id,branch.Id)"
+                                                  data-transition="slide" href="#">Consult Online</a></div>
+
+
+            </div>
+            <!-- row-->
+            <div class="row">
+
+                <div class="col-md-12 details-cont">
+                    <div ng-show="hospital.OperatingHours!==''">
+                        <label>Operating Hours: </label><span>{{branch.OperatingHours}}</span>
+                    </div>
+
+                    <div ng-show="hospital.Telephone!==''">
+                        <label>Mobile:</label><a href="tel:{{branch.Mobile}}">{{branch.Mobile}}</a>
+                    </div>
+                    <div ng-show="hospital.Telephone!==''">
+                        <label>Telephone:</label><a href="tel:{{branch.Telephone}}">{{branch.Telephone}}</a>
+                    </div>
+                    <div ng-show="hospital.Email!==''">
+                        <label>Email:</label><a href="mailto:{{branch.Email}}">{{branch.Email}}</a>
+                    </div>
+                    <div ng-show="hospital.WebsiteLink!==''">
+                        <label>Website:</label><a href="{{hospital.WebsiteLink|httpWebsite}}">{{hospital
+                        .WebsiteLink}}</a>
+                    </div>
+
+                </div>
+                <div class="col-md-12">
+                    <div ng-bind-html="branch.Description" id="desc"></div>
+                </div>
+
+            </div>
+
+
+            <!-- Page Content -->
+            <div class="row" ng-show="galleryImages.length>0">
+                <div class="col-md-12">
+                    <label>Gallery</label>
+                </div>
+                <div  id="gallery-cont" class="row smaller-gutter client-profile">
+                    <div ng-repeat="image in galleryImages" class="col-md-4 col-xs-4 pic">
+                        <a data-lightbox="memberPics" class="internal thumbnail" data-title=""
+                           href='{{UploadsRoot}}/{{image.FileUrl}}'>
+                            <img src='{{UploadsRoot}}/th-{{image.FileUrl}}'
+                                 alt='{{image.Name}}'/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- row-->
+            <input type="hidden" value="{{hospital.Id}}" id="HOSPITALID"/>
+            <input type="hidden" value="{{hospital.Latitude}}" id="HospitalLatitude"/>
+            <input type="hidden" value="{{hospital.Longitude}}" id="HospitalLongitude"/>
+
+            <div data-role="popup" id="branch-details-insurance" data-dismissible="true" style="max-width: 400px;">
+                <div data-role="header">
+                    <h1 class="popup-header"></h1>
+                </div>
+                <div role="main" class="ui-content">
+                    <div class="popup-text">
+                        <p class="poptext"></p>
+                        <ul id="insurance-cont">
+                            <li ng-repeat="accepted in insurancesAccepted">
+                                {{accepted.InsuranceCompany.Name}}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mc-text-center">
+
+                        <a data-role="button" href="#" class="close-popup">Close</a>
+
+                    </div>
+
+                </div>
+            </div>
+            <div data-role="popup" id="branch-clinics-popup" data-dismissible="true" style="max-width: 400px;">
+                <div data-role="header">
+                    <h1 class="popup-header"></h1>
+                </div>
+                <div role="main" class="ui-content">
+                    <div class="popup-text">
+                        <p class="poptext"></p>
+                        <ul class="insurance-cont">
+                            <li ng-repeat="clinic in branch.Clinics" class="clinic">
+                                <h3>{{clinic.Name}}</h3>
+
+                                <div class="clinic-desc" ng-bind-html="clinic.Description"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mc-text-center">
+                        <a data-role="button" href="#" class="close-popup">Close</a>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div id="maps-cont" class="col-md-12 col-xs-12">
+
+
+                <a class="directions-label" data-transition="slide" runat="server" href='#get-directions'>Get
+                    Directions</a>
+
+
+                <script type="text/javascript">
+
+
+                    $(document).on("pageshow", "#hospitals-details", function () {
+                        try {
+
+                            var markers = [{
+                                "title": $('#hospital-name').text(),
+                                "lat": $('#HospitalLatitude').val(),
+                                "lng": $('#HospitalLongitude').val(),
+                                "description": $('#desc').text()
+                            }];
+                            var mapOptions = {
+                                center: new google.maps.LatLng($('#HospitalLatitude').val(), $('#HospitalLongitude').val()),
+                                zoom: 14,
+                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                            };
+
+                            var infoWindow = new google.maps.InfoWindow();
+                            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                            for (i = 0; i < markers.length; i++) {
+                                var data = markers[i]
+                                var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+
+                                var marker = new google.maps.Marker({
+                                    position: myLatlng,
+                                    map: map,
+                                    title: data.title
+                                });
+
+                                (function (marker, data) {
+                                    google.maps.event.addListener(marker, "click", function (e) {
+                                        infoWindow.setContent(data.description);
+                                        infoWindow.open(map, marker);
+                                    });
+                                })(marker, data);
+                            }
+                        } catch (err) {
+
+                        }
+                    });
+
+                </script>
+
+                <div id="map">
+                </div>
+                <p>&nbsp;</p>
+            </div>
+
+
+        </div>
+    </div>
+    <!--Close Page-->
+    <div data-role="page" id="bookAppointment" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div data-role="content">
+            <form id="fmBookAppointment">
+
+                <div data-role="fieldcontain">
+                    <label for="textinput6">Hospital:</label>
+
+                    <select id="ddBookHospitalId" name="HospitalId" class="HospitalId" ng-model="selectedHospital"
+                            ng-change="getBranches()">
+                        <option value="0" ng-selected="1" selected="selected">Select</option>
+                        <option ng-repeat="hospital in hospitals" value="{{hospital.Id}}">{{hospital.Name}}</option>
+                    </select>
+                </div>
+                <div id="bookAppointmentBranch" data-role="fieldcontain">
+                    <label for="textinput6">Branch:</label>
+
+                    <select ng-change="getDoctorsBooking()" name="BranchId" id="ddBookAppointmentBranches"
+                            ng-model="selectedBookBranch">
+                        <option value="0">Select</option>
+                        <option ng-repeat="branch in branches" value="{{branch.Id}}">{{branch.Name}}</option>
+                    </select>
+
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput6">Specialist:</label>
+
+                    <select id="bookSpecialityId" name="SpecialityId" ng-change="getDoctorsBooking()"
+                            ng-model="selectedSpeciality">
+                        <option value="0">Select</option>
+                        <option ng-repeat="speciality in hospitalSpecialities" value="{{speciality.Id}}">{{speciality
+                            .Name}}
+                        </option>
+                    </select>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput6">Doctor:</label>
+
+                    <select class="DoctorId" id="ddBookDoctorId" name="DoctorId" ng-change="getSlots()"
+                            ng-model="ddBookDoctorId">
+                        <option ng-selected="1" value="0">Any</option>
+                        <option ng-repeat="doctor in bookDoctors" data-availability="{{doctor.Availability}}"
+                                value="{{doctor.Id}}">{{doctor.FirstName +' '+doctor.OtherNames}}
+                        </option>
+                    </select>
+
+
+                    <div id="availability">
+
+                    </div>
+                </div>
+                <div id="datepicker" class="ui-field-contain">
+                    <label for="DateBooked">Date</label>
+                    <input name="DateBooked" id="DateBooked" data-role="datebox" type="text" data-options='{
+                    "mode":"flipbox",
+                    "closeCallback":"linker",
+                    "closeCallbackArgs":["out_date"]
+                  }'>
+                </div>
+                <a href="#" id="getSlots" ng-click="getSlots()"></a>
+
+                <div data-role="fieldcontain">
+                    <label>Available Slots:</label>
+                    <select id="AppointmentTimeSlotId" name="AppointmentTimeSlotId" class="TimeBooked"
+                            ng-model="TimeBooked">
+                        <option value="0" ng-selected="1" selected="selected">Select</option>
+                        <option ng-repeat="slot in availableSlots" ng-disabled="slot.Disabled" value="{{slot.Value}}">
+                            {{slot.Text}}
+                        </option>
+                    </select>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <label for="textinput6">Surname:</label>
+                    <input type="text" name="Surname" value="{{user.Surname}}"/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput5">First Name:</label>
+                    <input type="text" name="FirstName" value="{{user.FirstName}}"/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput5">Last Name:</label>
+                    <input type="text" name="LastName" value="{{user.LastName}}"/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput4">Phone:</label>
+                    <input type="text" name="Phone" value="{{user.Phone}}"/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput3">Email:</label>
+                    <input type="text" name="Email" value="{{user.Email}}"/>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <legend>Gender</legend>
+                        <input type="radio" name="GenderId" ng-checked="(user.GenderId == 1)" id="gender_0"
+                               value="1"/>
+                        <label for="gender_0">Male</label>
+                        <input type="radio" name="GenderId" ng-checked="(user.GenderId == 2)" id="gender_1"
+                               value="2"/>
+                        <label for="gender_1">Female</label>
+                    </fieldset>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <label for="textinput6">Payment Mode:</label>
+
+                    <select ng-model="selectedPaymentMode" name="PaymentModeId" id="ddAppointmentPaymentMode">
+                        <option ng-repeat="paymentMode in paymentModes" value="{{paymentMode.Id}}">{{paymentMode
+                            .Name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="bookinsurance" data-role="fieldcontain">
+                    <label for="textinput6">Insurance:</label>
+
+                    <select name="InsuranceCompanyId" class="InsuranceCompanyId">
+                        <option value="">Select</option>
+                        <option ng-repeat="insuranceCompany in insuranceCompanies"
+                                value="{{insuranceCompany.Id}}">{{insuranceCompany
+                            .Name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="bookinsurance" data-role="fieldcontain">
+                    <label for="textinput3">Membership No.:</label>
+                    <input type="text" id="membershipno" name="MembershipNo" value=""/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textarea">Additional Information:</label>
+                    <textarea cols="40" rows="8" name="AdditionalInfo" id="AdditionalInfo"></textarea>
+                </div>
+
+                <input type="hidden" class="bookUserId" name="UserId" value="{{user.Id}}"/>
+                <input type="hidden" name="AppointmentStatusId" value="1"/>
+
+
+                <button id="btnBookAppointment" data-icon="star">Submit</button>
+            </form>
+
+
+            <a id="lnkinsurance-popup" class="lnkpopup hidden" href="#insurance-popup" data-rel="popup"
+               data-position-to="window" data-transition="pop" data-role="none">PopUp</a>
+
+            <div data-role="popup" id="insurance-popup" data-dismissible="true" style="max-width: 400px;">
+                <div data-role="header">
+                    <h1 class="popup-header"></h1>
+                </div>
+                <div role="main" class="ui-content">
+                    <div class="popup-text">
+                        <p class="poptext"></p>
+                        <ul id="insurance-ul"></ul>
+                    </div>
+                    <div class="mc-text-center">
+
+
+                        <a data-role="button" href="#" class="close-popup">Close</a>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Start Popup --->
+            <div data-role="popup" id="book-popup" data-dismissible="true" style="max-width: 400px;">
+                <div data-role="header">
+                    <h1 class="popup-header">Success</h1>
+                </div>
+                <div role="main" class="ui-content">
+                    <div class="popup-text">
+                        <p>Appointment successfully booked. The service provider will get back to you.</p>
+
+                        <p class="hidden">Click on the button below to pay.</p>
+                    </div>
+                    <div class="mc-text-left">
+                        <div class="mc-text-left">
+                            <a data-role="button" class="hidden" id="lnkPaymentsAppointment" target="_blank" href="#">Procede
+                                to
+                                Payment</a>
+                            <a data-role="button" ng-click="getMyAppointments()" href="#"
+                               class="close-popup-1">Close</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End Popup --->
+
+        </div>
+        <div data-role="footer">
+                 <pre id="output">
+
+                 </pre>
+        </div>
+    </div>
+    <!-- Close Page -->
+    <div data-role="page" id="my-appointments" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div id="appointments-list-cont" data-role="content">
+            <ul class="appointments" data-role="listview">
+
+                <li ng-repeat="appointment in appointments">
+                    <a href="#" ng-click="getAppointmentDetails(appointment.Id)"
+                       class="li-appointment ui-btn status-{{appointment.AppointmentStatusId}}">
+                        <span class="sender-title">{{appointment.DateBooked | date:"MMM dd yyyy"}}</span>
+                        <span class="timespan">{{appointment.AppointmentTimeSlot
+                            .TimeSlot}}</span>
+                        <span class="chat-msg">{{appointment.Hospital.Name}},{{appointment.Branch.Name}} Branch</span>
+                        <span class="appointment-status">{{appointment.AppointmentStatus.Name}}</span>
+
+                    </a>
+                    <span id="app-{{appointment.Id}}" class="read-status-{{appointment.IsRead}}"></span>
+                </li>
+
+                <li ng-show="appointments.length===0">
+                    <div class="col-md-12 col-xs-12">
+                        <p class="empty-results">No appointments found.</p>
+                    </div>
+                </li>
+
+            </ul>
+
+
+        </div>
+
+    </div>
+    <!--Close Page-->
+    <div data-role="page" id="appointmentDetails" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div data-role="content">
+            <form id="fmUpdateAppointment">
+
+                <div data-role="fieldcontain">
+                    <label for="textinput6"><strong>Hospital:</strong> {{appointment.Hospital.Name}}</label>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput6"><strong>Branch: </strong>{{appointment.Branch.Name}}</label>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput6"><strong>Speciality: </strong>{{appointment.Speciality.Name}}</label>
+                </div>
+                <div data-role="fieldcontain">
+                    <label><strong>Date: </strong>{{appointment.DateBooked | date:"MMM dd yyyy"}}</label>
+                </div>
+                <div data-role="fieldcontain">
+                    <label><strong>Time: </strong>{{appointment.AppointmentTimeSlot.TimeSlot}}</label>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput6"><strong>Surname: </strong>{{appointment.Surname}}</label>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput6"><strong>First Name: </strong>{{appointment.FirstName}}</label>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput6"><strong>Last Name: </strong>{{appointment.LastName}}</label>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput6"><strong>Phone: </strong>{{appointment.Phone}}</label>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput6"><strong>Email: </strong>{{appointment.Email}}</label>
+                </div>
+                <div data-role="fieldcontain">
+                    <label><strong>Gender: </strong>
+                        <span ng-show="(appointment.GenderId == 1)">Male</span>
+                        <span ng-show="(appointment.GenderId == 2)">Female</span>
+                    </label>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput6"><strong>Payment Mode:</strong> {{appointment.PaymentMode.Name}}</label>
+                </div>
+                <div class="insurance-cont" ng-show="{{appointment.PaymentModeId==2}}">
+                    <div class="edit-insurance" data-role="fieldcontain">
+                        <label for="textinput6"><strong>Insurance:</strong>
+                            {{appointment.InsuranceCompany.Name}}</label>
+                    </div>
+                    <div class="edit-insurance" data-role="fieldcontain">
+                        <label for="textinput3"><strong>Membership No.:</strong> {{appointment.MembershipNo}}</label>
+
+                    </div>
+                </div>
+                <div ng-show="(appointment.AdditionalInfo !== '' && appointment.AdditionalInfo !==null)"
+                     data-role="fieldcontain">
+                    <label><strong>Additional Information:</strong></label>
+                    <p>{{appointment.AdditionalInfo}}</p>
+                </div>
+                <div ng-show="cancel" data-role="fieldcontain">
+                    <label for="textarea">Cancellation Reasons:</label>
+                    <input type="hidden" value="{{cancel}}" id="AppointmentStatusId" name="AppointmentStatusId"
+                           value=""/>
+                    <textarea cols="40" rows="8" id="cancellationReasons"
+                              name="CancellationReasons">{{appointment.CancellationReasons}}</textarea>
+                </div>
+                <!--
+                                <div data-role="fieldcontain" class="chkEditCont">
+
+                                    <label>
+                                        <input id="chkEdit" type="checkbox" ng-click="show = !show">Delete
+                                    </label>
+
+                                    <label>
+                                        <input id="chkCancel" type="checkbox" ng-click="cancel = !cancel;show = !show">Cancel
+                                    </label>
+
+
+                                </div>
+                -->
+
+                <input type="hidden" class="bookUserId" name="UserId" value="{{appointment.UserId}}"/>
+                <input type="hidden" id="appointmentId" name="Id" value="{{appointment.Id}}"/>
+
+                <div data-role="fieldcontain" class="chkEditCont col-md-6">
+                    <label>
+                        <input id="chkCancel" type="checkbox" ng-click="cancel = !cancel;show = !show">Cancel
+                    </label>
+                </div>
+                <div class="col-md-6">
+                    <button id="btnDeleteAppointment" data-icon="star">Delete</button>
+                </div>
+
+                <div ng-show="cancel" class="col-md-12">
+                    <button id="btnUpdateAppointment" data-icon="star">Submit</button>
+                </div>
+
+                <a data-role="button" class="btnPayAppointmentNow" target="_blank" rel="" data-iconpos="right"
+                   data-icon="arrow-r">Pay Now</a>
+
+
+            </form>
+
+            <!-- Start Popup --->
+            <a id="lnk-edit-appointment-popup" class="lnkpopup hidden" href="#edit-appointment-popup" data-rel="popup"
+               data-position-to="window" data-transition="pop" data-role="none">PopUp</a>
+
+            <div data-role="popup" id="edit-appointment-popup" data-dismissible="true" style="max-width: 400px;">
+                <div data-role="header">
+                    <h1 class="popup-header">Success</h1>
+                </div>
+                <div role="main" class="ui-content">
+                    <div class="popup-text">
+                        <p>Appointment successfully updated.</p>
+                    </div>
+                    <div class="mc-text-left">
+                        <a data-role="button" href="#" class="close-popup">Close</a>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End Popup --->
+
+
+        </div>
+        <div data-role="footer">
+
+        </div>
+    </div>
+    <!-- Close Page -->
+    <div data-role="page" id="first-aid" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div id="hospital-list-cont" data-role="content">
+            <ul class="firstaid-list" data-role="listview">
+                <li ng-repeat="item in firstAidList"><a ng-click="getFirstAid(item.Id)"
+                                                        class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="#">{{item.Title}}</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <!--Close Page-->
+    <div data-role="page" id="first-aid-details" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div id="hospital-list-cont" data-role="content">
+            <div class="detailscont">
+
+                <h2>{{firstAidItem.Title}}</h2>
+
+                <div ng-bind-html="firstAidItem.Body" class="paratext"></div>
+
+            </div>
+        </div>
+
+    </div>
+    <!--Close Page-->
+    <div data-role="page" id="exam-preparation" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div id="hospital-list-cont" data-role="content">
+            <div id="exam-categories-cont" data-role="fieldcontain">
+                <label for="textinput6">Select Category:</label>
+
+                <select id="ddExamCategories" name="ddExamCategories" class="ddExamCategories"
+                        ng-model="ddExamCategories">
+                    <option value="" ng-selected="1" selected="selected">Select</option>
+                    <option ng-repeat="category in examCategories" value="{{category.Id}}">{{category.Name}}</option>
+                </select>
+            </div>
+            <ul class="firstaid-list" data-role="listview">
+                <li ng-repeat="item in examPreparations| filter: { ExamPreparationCategoryId : ddExamCategories }">
+                    <a ng-click="getExamPreparation(item.Id)"
+                       class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="#">{{item.Title}}</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <!--Close Page-->
+    <div data-role="page" id="exam-preparation-details" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div id="hospital-list-cont" data-role="content">
+
+            <div class="detailscont" ng-repeat="item in examPreparations| filter: { Id : examId }:true">
+
+                <h2>{{item.Title}}</h2>
+
+                <div ng-bind-html="item.Description" class="paratext"></div>
+
+            </div>
+        </div>
+
+    </div>
+    <!--Close Page-->
+    <div data-role="page" id="profile" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div data-role="content">
+            <form id="frmUpdateProfile">
+
+                <div data-role="fieldcontain">
+                    <label for="textinput6">Surname:</label>
+                    <input type="text" name="Surname" id="textinput6" value="{{user.Surname}}"/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput5">First Name:</label>
+                    <input type="text" name="FirstName" id="textinput5" value="{{user.FirstName}}"/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput5">Last Name:</label>
+                    <input type="text" name="LastName" id="textinput5" value="{{user.LastName}}"/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="textinput4">Phone:</label>
+                    <input type="text" name="Phone" id="textinput4" value="{{user.Phone}}"/>
+                </div>
+                 <div data-role="fieldcontain">
+                    <label for="textinput4">Phone:</label>
+                    <input type="text"   id="phoneUpdate" name="Phone" value="{{user.Phone}}"/>
+                    <input type="hidden" id="IdNumberUpdate" name="IdNumber" value="{{user.IdNumber}}"/>
+                </div>
+               
+
+                <div data-role="fieldcontain">
+
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup" data-type="horizontal">
+                            <legend>Gender</legend>
+                            <input type="radio" name="GenderId" ng-checked="(user.GenderId == 1)" id="gender_0"
+                                   value="1"/>
+                            <label for="gender_0">Male</label>
+                            <input type="radio" name="GenderId" ng-checked="(user.GenderId == 2)" id="gender_1"
+                                   value="2"/>
+                            <label for="gender_1">Female</label>
+                        </fieldset>
+                    </div>
+
+                </div>
+
+                <input type="hidden" class="UserId" name="Id" value="{{user.Id}}"/>
+                <a id="updateProfile" data-role="button" data-icon="star">Update</a>
+            </form>
+
+            <!-- Start Popup --->
+            <a id="lnk-profile-popup" class="lnkpopup hidden" href="#profile-popup" data-rel="popup"
+               data-position-to="window" data-transition="pop" data-role="none">PopUp</a>
+
+            <div data-role="popup" id="profile-popup" data-dismissible="true" style="max-width: 400px;">
+                <div data-role="header">
+                    <h1 class="popup-header">Success</h1>
+                </div>
+                <div role="main" class="ui-content">
+                    <div class="popup-text">
+                        <p>Profile information updated</p>
+                    </div>
+                    <div class="mc-text-left">
+                        <a data-role="button" href="#" class="close-popup">Close</a>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End Popup --->
+
+
+        </div>
+        <div data-role="footer">
+
+        </div>
+    </div>
+    <!-- Close Page -->
+    <div id="forgot-password" class="login-register" data-role="page">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div data-role="content" data-theme="a">
+
+            <br/>
+
+            <p>
+                Enter your email below to recover your password.
+            </p>
+
+
+            <form name="password-reset" id="frm-forgot-password" class="register" method="POST">
+                <input type="text" name="Email" id="txtEmailReset" placeholder="Email Address" value="">
+                <button class="passwordResetButton" data-icon="arrow-r">Submit</button>
+            </form>
+
+
+        </div>
+    </div>
+    <div data-role="page" id="product-details" data-theme="a">
+        <div data-role="header">
+            <a href="#" data-role="none"
+               class="jqm-navmenu-link ui-btn ui-btn-icon-notext  ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+            <img src="images/logo.png" width="254" height="56" alt=""/>
+        </div>
+        <div id="hospital-details" data-bind="foreach: singleHospital" data-role="content">
+
+
+            <div class="row small-gutter branch-header">
+                <div class="col-md-3 col-xs-3 clientlogo">
+                    <a data-lightbox="product-img" class="clearfix text-white"
+                       href='{{UploadsRoot}}/products/{{product.Image}}'>
+                        <img src="{{UploadsRoot}}/products/th_{{product.Image}}" class="img-responsive">
+                    </a>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-9 no-gutter">
+                    <div class="col-lg-12 col-xs-12 col-sm-12">
+
+                        <a class="title-link" href="#"
+                           ng-click="getHospitalDetails(hospital.Id)">
+                            {{product.Name}}</a>
+                        <label><strong>Category:</strong> {{product.Category.Name}}</label>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- row-->
+            <div class="row">
+
+                <div class="col-md-12 details-cont">
+                    <div ng-bind-html="product.Description" id="desc"></div>
+
+                    <h2 class="bordered">Surplier Details</h2>
+                    <div>
+                        <label>Name:</label>{{product.Surplier.Name}}
+                    </div>
+                    <div ng-show="product.Surplier.Phone!=='' && product.Surplier.Phone!==null">
+                        <label>Phone:</label><a href="tel:{{product.Surplier.Mobile}}">{{product.Surplier.Phone}}</a>
+                    </div>
+
+                    <div ng-show="product.Surplier.Email!=='' && product.Surplier.Email!==null">
+                        <label>Email:</label><a href="mailto:{{product.Surplier.Email}}">{{product.Surplier.Email}}</a>
+                    </div>
+                    <div ng-show="product.Surplier.Website!=='' && product.Surplier.Website!==null">
+                        <label>Website:</label><a href="{{product.Surplier.Website|httpWebsite}}">{{product.Surplier.
+                        .Website}}</a>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    <div id="customPreloader" class="ui-loader ui-corner-all ui-body-a ui-loader-default"><span
+            class="ui-icon-loading"></span>
+
+        <h1>loading</h1></div>
+
+</main>
+
+<!--
+<input type="hidden" id="RootUrl" value="http://localhost:26153/api/"/>
+<input type="hidden" id="SiteUrl" value="http://localhost:14931/"/>
+
+<script src="http://localhost:14931/Scripts/jquery.signalR-2.2.0.js"></script>
+<script src="http://localhost:14931/signalr/hubs"></script>
+-->
+<input type="hidden" id="UserId" value=""/>
+<input type="hidden" id="accessToken" value=""/>
+<input type="hidden" id="runned" value="0"/>
+<!--
+<input type="hidden" id="HFLatitude" value="-1.268125" />
+<input type="hidden" id="HFLongitude" value="36.806330" />
+-->
+
+
+<script src="http://www.afyaplus.co.ke/Scripts/jquery.signalR-2.2.0.js"></script>
+<script src="http://www.afyaplus.co.ke/signalr/hubs"></script>
+<input type="hidden" id="RootUrl" value="http://www.afyaplus.co.ke/MobileApi/api/"/>
+<input type="hidden" id="SiteUrl" value="http://www.afyaplus.co.ke/"/>
+
+
+<script src="themes/js/bootstrap.min.js"></script>
+<script src="themes/js/date.js"></script>
+<script src="themes/js/knockout-3.4.0.js"></script>
+<script src="themes/js/angular.min.js"></script>
+<script src="themes/js/angular-sanitize.min.js"></script>
+<script src="themes/js/customSelect.js"></script>
+<script src="themes/js/lightbox.js"></script>
+<script src="themes/js/client.js"></script>
+<script src="themes/js/signalr-client.js"></script>
+<script src="themes/js/common.js"></script>
 
 </body>
 </html>
