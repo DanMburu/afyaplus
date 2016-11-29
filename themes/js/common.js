@@ -56,7 +56,7 @@ $(document).on("pageshow", "#login", function () { // When entering login
             //alert(url);
             //alert(data);
             $.post(url, data).done(function (data) {
-                hideLoader();
+              //  hideLoader();
                 var rdata = data.trim();
 
                 if (rdata.indexOf("Error") === 0) {
@@ -75,7 +75,7 @@ $(document).on("pageshow", "#login", function () { // When entering login
                         SaveUserDetails(data);
                     }catch(err){}
 
-
+                     $('#lnkInit').trigger('click');
                     // $('.span-success').show();
                     $.mobile.changePage('#landing', {
                         type: "get",
@@ -242,6 +242,7 @@ function validateEmail(email){
 
 $(document).ready(function(){
     setTimeout(function(){
-        $('#lnkInit').trigger('click');
+      //  $('#lnkInit').trigger('click');
+      hideLoader();
     },1000);
 });
