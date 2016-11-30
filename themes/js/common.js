@@ -26,15 +26,15 @@ var ajaxError = function (object) {
 };
 $(document).on("pageshow",function(){ 
 $("a[target='_blank']").off('click').click(function(e){
-		
-	  e.preventDefault();
-	  var linktarget=$(e.currentTarget).attr('href');
-	  //window.open($(e.currentTarget).attr('href'), '_blank', 'location=yes');
-	 // window.open($(e.currentTarget).attr('href'), '_system', '');
-	   navigator.app.loadUrl(linktarget, {openExternal: true});
-	  return false;
-	});
- 	
+        
+      e.preventDefault();
+      var linktarget=$(e.currentTarget).attr('href');
+      //window.open($(e.currentTarget).attr('href'), '_blank', 'location=yes');
+     // window.open($(e.currentTarget).attr('href'), '_system', '');
+       navigator.app.loadUrl(linktarget, {openExternal: true});
+      return false;
+    });
+    
 });
 
 $(document).on("pageshow", "#login", function () { // When entering login
@@ -56,7 +56,7 @@ $(document).on("pageshow", "#login", function () { // When entering login
             //alert(url);
             //alert(data);
             $.post(url, data).done(function (data) {
-              //  hideLoader();
+               // hideLoader();
                 var rdata = data.trim();
 
                 if (rdata.indexOf("Error") === 0) {
@@ -75,12 +75,13 @@ $(document).on("pageshow", "#login", function () { // When entering login
                         SaveUserDetails(data);
                     }catch(err){}
 
-                     $('#lnkInit').trigger('click');
+                   
                     // $('.span-success').show();
                     $.mobile.changePage('#landing', {
                         type: "get",
                         transition: "slide"
                     });
+
                 }
             }).fail(ajaxError).always(ajaxAlways);
 
@@ -95,13 +96,19 @@ $(document).on("pageshow", "#login", function () { // When entering login
 
 $(document).on("pageshow","#landing", function () { // When entering login
 
+  
+var scope = angular.element(document.querySelector('body')).scope();
+if(typeof scope.specialities==='undefined'){
+     $('#lnkInit').trigger('click');
+}
+
 
     setTimeout(function(){
-		 try{
-$("#owl-carousel").data('owlCarousel').destroy();	
+         try{
+$("#owl-carousel").data('owlCarousel').destroy();   
 }catch(err){}
 
-		 $("#owl-carousel").owlCarousel({items:3,margin:5,autoplay:true,autoplayTimeout:5000,loop:true,responsive: false});
+         $("#owl-carousel").owlCarousel({items:3,margin:5,autoplay:true,autoplayTimeout:5000,loop:true,responsive: false});
 
     },100);
 }); //pageshow
@@ -175,21 +182,6 @@ function menuOpen() {
     //}//end if
 }
 
-function showLoader() {
-
-    $.mobile.loading("show", {
-        text: 'loading',
-        textVisible: false,
-        theme: 'a',
-        textonly: false,
-        html: ''
-    });
-}
-
-function hideLoader() {
-    $.mobile.loading("hide");
-}
-
 $.urlParam = function (shows) {
     var results = new RegExp('[\\?&]' + shows + '=([^&#]*)').exec(window.location.href);
     if (!results) {
@@ -242,7 +234,7 @@ function validateEmail(email){
 
 $(document).ready(function(){
     setTimeout(function(){
-      //  $('#lnkInit').trigger('click');
-      hideLoader();
+       // $('#lnkInit').trigger('click');
+       hideLoader();
     },1000);
 });

@@ -58,7 +58,7 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
             scope.examCategories = data['examCategories'];
             scope.examPreparations = data['examPreparations'];
             scope.titles = data['userTitles'];
-            $('#customPreloader,#customPreloaderBg').remove();
+            
             hideLoader();
         }).fail(ajaxError);
     };
@@ -765,6 +765,7 @@ $(function () {
 });
 function showLoader() {
 
+ 
     $.mobile.loading("show", {
         text: 'loading',
         textVisible: false,
@@ -772,11 +773,14 @@ function showLoader() {
         textonly: false,
         html: ''
     });
+   $('#customPreloaderBg').fadeIn();
 }
 
 function hideLoader() {
 
     $.mobile.loading("hide");
+     $('#customPreloaderBg').fadeOut();
+   
 }
 
 $.urlParam = function (shows) {
