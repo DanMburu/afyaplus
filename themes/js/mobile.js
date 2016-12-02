@@ -240,7 +240,7 @@ function RemoveLocationNotification() {
 }
 
 
-$(document).on("pageshow", function() { // login
+/* $(document).on("pageshow", function() { // login
 
 
     $('.lnkLogout').off('click').on("click", function (e) {
@@ -258,6 +258,7 @@ $(document).on("pageshow", function() { // login
     });
 
 });
+*/
 $(document).on("pageshow",'#decoyLanding', function() { // login
 
 

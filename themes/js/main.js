@@ -75,6 +75,7 @@ $( document).bind( "mobileinit", function() {
     $.mobile.allowCrossDomainPages = true; 
 	
 });
+
 $(document).on("pageshow",function(){ 
 $("a[target='_blank']").off('click').click(function(e){
 		
@@ -232,7 +233,8 @@ $(document).on("pageshow","#hospitals-list",function(){
 	});
 });
  $('.insurance-accepted').off('click').on("click", function(e) {
-       e.preventDefault();  showLoader();
+      
+       showLoader();
        var url = $('#RootUrl').val() + 'api.aspx?option=get-insurance&hospital-id='+ $('#HOSPITALID').val();
         $.getJSON(url, function(data) {
 		   var $cont = $('#insurance-cont'); 

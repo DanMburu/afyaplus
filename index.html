@@ -7,7 +7,7 @@
       <title>Client</title>
       <link rel="stylesheet" type="text/css" href="themes/jquery.mobile-1.4.5.min.css">
       <link rel="stylesheet" type="text/css" href="themes/css/jquery.mobile.datepicker.css">
-      <script src="themes/js/jquery-2.2.3.min.js"></script>
+      <script src="themes/js/jquery-1.11.1.min.js"></script>
       <script src="themes/js/jquery.mobile-1.4.5.min.js"></script>
       <script src="themes/js/jquery.mobile.dynamic.popup.js"></script>
       <!--
@@ -36,6 +36,7 @@
       <div id="customPreloaderBg"></div>
       <input type="hidden" id="HFLatitude" value=""/>
       <input type="hidden" id="HFLongitude" value=""/>
+       <input type="hidden"  id="LOGGEDIN" value="no" />
       <a data-role="none" href="#menupanel" id="menuicon"></a>
       <a data-role="none" href="#menupanel" id="menuclose" data-rel="close"></a>
       <div id="menupanel" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="push" data-theme="a">
@@ -66,9 +67,7 @@
             <li><a class="lnkMyAccount ui-btn ui-btn-icon-right ui-icon-carat-r" ng-click="getProfile()" href="#">My
                Profile</a>
             </li>
-            <li><a class="lnkLanding ui-btn ui-btn-icon-right ui-icon-carat-r" href="#main-landing" data-transition="slide">Landing
-               Page</a>
-            </li>
+           
             <li><a class="lnkLogout ui-btn ui-btn-icon-right ui-icon-carat-r" href="#">Log out</a></li>
          </ul>
       </div>

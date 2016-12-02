@@ -34,6 +34,16 @@ $("a[target='_blank']").off('click').click(function(e){
        navigator.app.loadUrl(linktarget, {openExternal: true});
       return false;
     });
+
+$('.lnkLogout').off('click').on("click", function (e) {
+
+      $('#LOGGEDIN').val('no');
+        $.mobile.changePage( '#login', {
+            type: "get",
+            transition: "slide"
+        });
+
+    });
     
 });
 
@@ -68,6 +78,7 @@ $(document).on("pageshow", "#login", function () { // When entering login
                 else {
                     var dArray=rdata.split(",");
                     $("#UserId").val(dArray[0]);
+                    $('#LOGGEDIN').val('yes');
                     startChat();
 
 
@@ -93,7 +104,12 @@ $(document).on("pageshow", "#login", function () { // When entering login
         return false;
     });
 });
+$(document).on("pagebeforeshow", function () {
+   if($('#LOGGEDIN').val()=='no' && $.mobile.activePage.attr('id')!=='register'){
 
+     $.mobile.changePage('#login', {type: "get", transition: "slide"});
+  }
+   });
 $(document).on("pageshow","#landing", function () { // When entering login
 
   
@@ -181,7 +197,6 @@ function menuOpen() {
     }
     //}//end if
 }
-
 $.urlParam = function (shows) {
     var results = new RegExp('[\\?&]' + shows + '=([^&#]*)').exec(window.location.href);
     if (!results) {
