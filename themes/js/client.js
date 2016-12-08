@@ -268,14 +268,7 @@ app.controller('clientCtrl', ['$scope', '$http', function (scope, http) {
             hideLoader();
         });
     };// End Function
-    scope.register = function () {
-        var url = rootUrl + 'Mobile/Specialities';
-        showLoader();
-        http.get(url).success(function (data) {
-            scope.specialities = data;
-            hideLoader();
-        });
-    }; // End Function
+   
     scope.getBranches = function () {
         var url = rootUrl + 'Hospitals/Branches/' + scope.selectedHospital;
         showLoader();

@@ -101,6 +101,7 @@ function GetUserDetails() {
                 var len = result.rows.length;
                 var row = result.rows.item(0);
                 $('#UserId').val(row.UserId);
+                $('#LOGGEDIN').val('yes');
                 $.mobile.changePage( '#landing', {
                     type: "get",
                     transition: "flip"
